@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		3EB994F31CBCAA4000EF6291 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB994F21CBCAA4000EF6291 /* AppDelegate.swift */; };
-		3EB994F51CBCAA4000EF6291 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB994F41CBCAA4000EF6291 /* ViewController.swift */; };
 		3EB994F81CBCAA4000EF6291 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EB994F61CBCAA4000EF6291 /* Main.storyboard */; };
 		3EB994FA1CBCAA4000EF6291 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EB994F91CBCAA4000EF6291 /* Assets.xcassets */; };
 		3EB994FD1CBCAA4000EF6291 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EB994FB1CBCAA4000EF6291 /* LaunchScreen.storyboard */; };
 		3EB995081CBCAA4000EF6291 /* GauchoBackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB995071CBCAA4000EF6291 /* GauchoBackTests.swift */; };
 		3EB995131CBCAA4000EF6291 /* GauchoBackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB995121CBCAA4000EF6291 /* GauchoBackUITests.swift */; };
+		4DCF286C8E1B3DB1FC67A94A /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0AFEDF1F9468FA63819612 /* Pods.framework */; };
+		FBC21EFF1CC5DB6200B5AC8C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC21EFE1CC5DB6200B5AC8C /* BaseService.swift */; };
+		FBC21F011CC5DC6900B5AC8C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC21F001CC5DC6900B5AC8C /* LoginViewController.swift */; };
+		FBC21F031CC5DC8400B5AC8C /* CreatAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC21F021CC5DC8400B5AC8C /* CreatAccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		35A8507F40B77DE7C0C9689C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3EB994EF1CBCAA4000EF6291 /* GauchoBack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GauchoBack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB994F21CBCAA4000EF6291 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3EB994F41CBCAA4000EF6291 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3EB994F71CBCAA4000EF6291 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3EB994F91CBCAA4000EF6291 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EB994FC1CBCAA4000EF6291 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +50,11 @@
 		3EB9950E1CBCAA4000EF6291 /* GauchoBackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GauchoBackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB995121CBCAA4000EF6291 /* GauchoBackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GauchoBackUITests.swift; sourceTree = "<group>"; };
 		3EB995141CBCAA4000EF6291 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		878C1A88B67E85E04D009611 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		EA0AFEDF1F9468FA63819612 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBC21EFE1CC5DB6200B5AC8C /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		FBC21F001CC5DC6900B5AC8C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FBC21F021CC5DC8400B5AC8C /* CreatAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatAccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DCF286C8E1B3DB1FC67A94A /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		209A4BDA11E991F124EC595D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA0AFEDF1F9468FA63819612 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3EB994E61CBCAA4000EF6291 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +98,8 @@
 				3EB995061CBCAA4000EF6291 /* GauchoBackTests */,
 				3EB995111CBCAA4000EF6291 /* GauchoBackUITests */,
 				3EB994F01CBCAA4000EF6291 /* Products */,
+				8AE1B1059F107A28419E5DF0 /* Pods */,
+				209A4BDA11E991F124EC595D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,7 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				3EB994F21CBCAA4000EF6291 /* AppDelegate.swift */,
-				3EB994F41CBCAA4000EF6291 /* ViewController.swift */,
+				FBC21EFE1CC5DB6200B5AC8C /* BaseService.swift */,
+				FBC21F001CC5DC6900B5AC8C /* LoginViewController.swift */,
+				FBC21F021CC5DC8400B5AC8C /* CreatAccountViewController.swift */,
 				3EB994F61CBCAA4000EF6291 /* Main.storyboard */,
 				3EB994F91CBCAA4000EF6291 /* Assets.xcassets */,
 				3EB994FB1CBCAA4000EF6291 /* LaunchScreen.storyboard */,
@@ -125,6 +146,15 @@
 			path = GauchoBackUITests;
 			sourceTree = "<group>";
 		};
+		8AE1B1059F107A28419E5DF0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				878C1A88B67E85E04D009611 /* Pods.debug.xcconfig */,
+				35A8507F40B77DE7C0C9689C /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +162,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EB995171CBCAA4000EF6291 /* Build configuration list for PBXNativeTarget "GauchoBack" */;
 			buildPhases = (
+				F8CE0CA2F30EF7E80D53B1C5 /* Check Pods Manifest.lock */,
 				3EB994EB1CBCAA4000EF6291 /* Sources */,
 				3EB994EC1CBCAA4000EF6291 /* Frameworks */,
 				3EB994ED1CBCAA4000EF6291 /* Resources */,
+				E3B7485A848566E5105E5325 /* Embed Pods Frameworks */,
+				2322E12F5F214EBCBC84690A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,13 +284,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2322E12F5F214EBCBC84690A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3B7485A848566E5105E5325 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8CE0CA2F30EF7E80D53B1C5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3EB994EB1CBCAA4000EF6291 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EB994F51CBCAA4000EF6291 /* ViewController.swift in Sources */,
+				FBC21F031CC5DC8400B5AC8C /* CreatAccountViewController.swift in Sources */,
+				FBC21F011CC5DC6900B5AC8C /* LoginViewController.swift in Sources */,
 				3EB994F31CBCAA4000EF6291 /* AppDelegate.swift in Sources */,
+				FBC21EFF1CC5DB6200B5AC8C /* BaseService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +482,7 @@
 		};
 		3EB995181CBCAA4000EF6291 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 878C1A88B67E85E04D009611 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GauchoBack/Info.plist;
@@ -410,6 +494,7 @@
 		};
 		3EB995191CBCAA4000EF6291 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35A8507F40B77DE7C0C9689C /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GauchoBack/Info.plist;
@@ -484,6 +569,7 @@
 				3EB995191CBCAA4000EF6291 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3EB9951A1CBCAA4000EF6291 /* Build configuration list for PBXNativeTarget "GauchoBackTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +578,7 @@
 				3EB9951C1CBCAA4000EF6291 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3EB9951D1CBCAA4000EF6291 /* Build configuration list for PBXNativeTarget "GauchoBackUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +587,7 @@
 				3EB9951F1CBCAA4000EF6291 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
