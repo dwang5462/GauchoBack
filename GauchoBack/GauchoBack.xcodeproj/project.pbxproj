@@ -17,7 +17,7 @@
 		FB3FFFB01CCF10040044A57F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3FFFAE1CCF10040044A57F /* FBSDKLoginKit.framework */; };
 		FB3FFFB11CCF10040044A57F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3FFFAF1CCF10040044A57F /* FBSDKCoreKit.framework */; };
 		FB788CB51CC70268009992F2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB788CB41CC70268009992F2 /* MapViewController.swift */; };
-		FB85D4511CD17F4900D314AA /* FirebaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB85D4501CD17F4900D314AA /* FirebaseInterface.swift */; };
+		FB85D4511CD17F4900D314AA /* FirebaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB85D4501CD17F4900D314AA /* FirebaseAdapter.swift */; };
 		FBC21EFF1CC5DB6200B5AC8C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC21EFE1CC5DB6200B5AC8C /* BaseService.swift */; };
 		FBC21F011CC5DC6900B5AC8C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC21F001CC5DC6900B5AC8C /* LoginViewController.swift */; };
 		FBC21F031CC5DC8400B5AC8C /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC21F021CC5DC8400B5AC8C /* CreateAccountViewController.swift */; };
@@ -59,7 +59,7 @@
 		FB3FFFAE1CCF10040044A57F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		FB3FFFAF1CCF10040044A57F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		FB788CB41CC70268009992F2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		FB85D4501CD17F4900D314AA /* FirebaseInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseInterface.swift; sourceTree = "<group>"; };
+		FB85D4501CD17F4900D314AA /* FirebaseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAdapter.swift; sourceTree = "<group>"; };
 		FBC21EFE1CC5DB6200B5AC8C /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		FBC21F001CC5DC6900B5AC8C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FBC21F021CC5DC8400B5AC8C /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 				FBC21F001CC5DC6900B5AC8C /* LoginViewController.swift */,
 				FB788CB41CC70268009992F2 /* MapViewController.swift */,
 				FBC21F021CC5DC8400B5AC8C /* CreateAccountViewController.swift */,
-				FB85D4501CD17F4900D314AA /* FirebaseInterface.swift */,
+				FB85D4501CD17F4900D314AA /* FirebaseAdapter.swift */,
 				3EB994F61CBCAA4000EF6291 /* Main.storyboard */,
 				3EB994F91CBCAA4000EF6291 /* Assets.xcassets */,
 				3EB994FB1CBCAA4000EF6291 /* LaunchScreen.storyboard */,
@@ -351,7 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB85D4511CD17F4900D314AA /* FirebaseInterface.swift in Sources */,
+				FB85D4511CD17F4900D314AA /* FirebaseAdapter.swift in Sources */,
 				FBC21F031CC5DC8400B5AC8C /* CreateAccountViewController.swift in Sources */,
 				FBC21F011CC5DC6900B5AC8C /* LoginViewController.swift in Sources */,
 				3EB994F31CBCAA4000EF6291 /* AppDelegate.swift in Sources */,

@@ -40,7 +40,6 @@ class CreatAccountViewController: UIViewController {
     */
     
     
-    
     @IBAction func createAccount(sender: AnyObject) {
         
         
@@ -68,12 +67,12 @@ class CreatAccountViewController: UIViewController {
                             print(authData.uid)
                             
                             //
-                            let fireBase = FirebaseInterface()
+                            let fireBase = FirebaseAdapter()
                             fireBase.setUserInfo(firstName, lastName: lastName, email: email)
                             
+                            fireBase.addAccount(email)
                             
-                            //self.performSegueWithIdentifier("createAcountMapSegue", sender: self)
-                            self.dismissViewControllerAnimated(true,completion: nil)
+                            self.performSegueWithIdentifier("createAcountMapSegue", sender: self)
                         }
                         else
                         {

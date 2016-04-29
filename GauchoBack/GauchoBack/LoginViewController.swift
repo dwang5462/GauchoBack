@@ -13,16 +13,15 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
 {
-
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var logoutButton: UIButton!
-    @IBOutlet weak var viewOnlySegue: UIButton!
     @IBOutlet weak var createAccountButton: UIButton!
     
-    let fireBase = FirebaseInterface()
+    @IBOutlet weak var logoutButton: UIButton!
+    @IBOutlet weak var viewOnlySegue: UIButton!
     
     
+    //Method called once the screen is loaded, prior to appearing.
     override func viewDidLoad() {
         super.viewDidLoad()
         if(FBSDKAccessToken.currentAccessToken() == nil)
@@ -31,16 +30,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
         }
         else
         {
-            //Either Creates an account or logs a user in to our firebase server with data from facebook.
             print("Currently logged in with Facebook")
-            
-            
-            
-            
-            //createOrLoginFacebookAccountOnFirebase()
-            
-            
-            
         }
         
         //Initialize the facebook button
@@ -58,50 +48,27 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
         
     }
     
-    
+    //This method is called once the screen is shown to the user.
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
         
         if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil && CURRENT_USER.authData != nil
         {
-            performSegueWithIdentifier("loginSegue", sender: self)
             print("Using Firebase login to segue to mapView")
+            performSegueWithIdentifier("loginSegue", sender: self)
         }
         else if(FBSDKAccessToken.currentAccessToken() != nil)
         {
+            facebookProfileToFirebaseAccount()
+            print("Using Facebook login to segue to mapView")
             performSegueWithIdentifier("loginSegue", sender: self)
             
-            createOrLoginFacebookAccountOnFirebase()
-        
-            print("Using Facebook login to segue to mapView")
         }
-        
-        
     }
     
-
-    func loginToFirebase(email: String, password: String) ->Void{
-        
-        FIREBASE_REF.authUser(email, password: password, withCompletionBlock: { (error, authData)-> Void in
-            
-            
-            if error == nil
-            {
-                NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
-                print("Logged In as ", authData.uid)
-                print("Login complete using Firebase")
-                self.performSegueWithIdentifier("loginSegue", sender: self);
-            }
-            else
-            {
-                print(error)
-            }
-        })
-    }
-    
-
-    func facebookCreateAccountFireBase(firstName: String,lastName: String, email:String, password:String)->Void
+    //Will either create a new account if facebook email has never been used before, or will use the firebase login if email has already been taken.
+    func facebookCreateAccountOrLoginToFirebase(firstName: String,lastName: String, email:String, password:String)->Void
     {
         FIREBASE_REF.createUser(email, password: password, withValueCompletionBlock: { (error, authData) -> Void in
             
@@ -115,10 +82,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
                         NSUserDefaults.standardUserDefaults().setValue(authData.description, forKey: "description")
                         NSUserDefaults.standardUserDefaults().synchronize()
                         
+                        let fireBase = FirebaseAdapter()
                         //Save values of user_info on firebase.
-                        self.fireBase.setUserInfo(firstName, lastName: lastName, email: email)
+                        fireBase.setUserInfo(firstName, lastName: lastName, email: email)
                         
-                        print(authData.uid)
+                        fireBase.addAccount(email)
+                        print("Added facebook member", firstName, " ", lastName, " to firebase with uid: ", authData.uid)
                     }
                     else
                     {
@@ -128,35 +97,48 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
             }
             else
             {
-                print(error)
+                switch (error.code) {
+                    
+                    //If error code is 9 then the email has already been used.  This is usually a problem, but because this is all through Facebook.  If this error is thrown we will cover it by routing to the login with login to firebase method.
+                    case -9:
+                        print("facebook account already exists on firebase")
+                        self.loginToFirebase(email, password: password)
+                        break;
+                    
+                    
+                    //We still want to print errors out if anything else happens.
+                    default:
+                        print(error)
+                }
             }
-            
         })
 
     }
     
-    func createOrLoginFacebookAccountOnFirebase(){
+    //Method to be called when loggin in with facebook to register user in GauchoBack
+    func facebookProfileToFirebaseAccount(){
+        
         if((FBSDKAccessToken.currentAccessToken()) != nil)
         {
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
-                    print(result)
                     
                     let email = result.valueForKey("email") as! String!
                     let id = result.valueForKey("id") as! String!
                     let firstName = result.valueForKey("first_name") as! String!
                     let lastName = result.valueForKey("last_name") as! String!
                     
-                    if(self.fireBase.doesUserExist(email)){
-                        print("email exists")
-                        self.loginToFirebase(email, password: id)
+                    if email != nil
+                    {
+                        self.facebookCreateAccountOrLoginToFirebase(firstName, lastName: lastName, email: email, password: id)
                     }
-                    else{
-                        print("email does not exist")
-                        self.facebookCreateAccountFireBase(firstName, lastName: lastName, email: email, password: id)
+                    else
+                    {
+                            print("Email from facebook does not exist")
                     }
                 }
-                else{
+                else
+                {
                     print(error.debugDescription)
                 }
             })
@@ -165,13 +147,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
     }
     
     
-    //Facebook login button to appear on screen. Used for debugging the facebook login process.
+    
+    //Facebook login button to appear on screen.
     func loginButton(loginButton:FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)
     {
         if error == nil
         {
-            print("login complete FaceBook")
-
+            print("Login complete FaceBook")
         }
         else
         {
@@ -179,17 +161,34 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
         }
     }
     
-    //Facebook logout button
+    //Facebook logout button.
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("user did logout FaceBook")
+        print("User logged out using FaceBook")
     }
     
-    //
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
+    //Given an email and password, we can login to Gauchoback with Firebase's authentication system.
+    func loginToFirebase(email: String, password: String) ->Void
+    {
+        FIREBASE_REF.authUser(email, password: password, withCompletionBlock: { (error, authData)-> Void in
+            
+            if error == nil
+            {
+                NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
+                print()
+                print("Logged In as ", authData.uid, ", using Firebase ")
+                print()
+                self.performSegueWithIdentifier("loginSegue", sender: self);
+            }
+            else
+            {
+                print(error)
+            }
+        })
+    }
 
     //Action performed when the login button is pressed.
     @IBAction func loginAction(sender: AnyObject)
