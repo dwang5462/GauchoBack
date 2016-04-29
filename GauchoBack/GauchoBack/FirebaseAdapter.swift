@@ -23,6 +23,8 @@ class FirebaseAdapter {
         //let userInfoRef = FIREBASE_REF.childByAppendingPath("users").childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("user_info")
         let userInfo:[String] = ["empty"]
         
+        
+        
         return userInfo
     }
     

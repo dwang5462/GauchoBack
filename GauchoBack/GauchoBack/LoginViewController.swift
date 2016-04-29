@@ -146,8 +146,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
         
     }
     
-    
-    
     //Facebook login button to appear on screen.
     func loginButton(loginButton:FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)
     {
