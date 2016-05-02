@@ -58,7 +58,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
             print("Using Firebase login to segue to mapView")
             performSegueWithIdentifier("loginSegue", sender: self)
         }
-        else if(FBSDKAccessToken.currentAccessToken() != nil)
+        else if FBSDKAccessToken.currentAccessToken() != nil
         {
             facebookProfileToFirebaseAccount()
             print("Using Facebook login to segue to mapView")
@@ -71,7 +71,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
     func facebookCreateAccountOrLoginToFirebase(firstName: String,lastName: String, email:String, password:String)->Void
     {
         FIREBASE_REF.createUser(email, password: password, withValueCompletionBlock: { (error, authData) -> Void in
-            
             if error == nil
             {
                 FIREBASE_REF.authUser(email, password: password, withCompletionBlock: { (error, authData)-> Void in
@@ -85,7 +84,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
                         let fireBase = FirebaseAdapter()
                         //Save values of user_info on firebase.
                         fireBase.setUserInfo(firstName, lastName: lastName, email: email)
-                        
                         fireBase.addAccount(email)
                         print("Added facebook member", firstName, " ", lastName, " to firebase with uid: ", authData.uid)
                     }
@@ -143,7 +141,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
                 }
             })
         }
-        
     }
     
     //Facebook login button to appear on screen.
