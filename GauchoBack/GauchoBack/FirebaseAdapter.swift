@@ -14,13 +14,15 @@ class FirebaseAdapter {
     
     //Base if you are not logged in.
     
-    var eventRef = FIREBASE_REF.childByAppendingPath("events")
+    var eventsBranch = FIREBASE_REF.childByAppendingPath("events")
     
     var usersRef = FIREBASE_REF.childByAppendingPath("users")
     
-    
+    //returns userinfo from firebase, in a string array.
     func getUserInfo() -> [String]{
-        //let userInfoRef = FIREBASE_REF.childByAppendingPath("users").childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("user_info")
+        
+        let userInfoRef = FIREBASE_REF.childByAppendingPath("users").childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("user_info")
+        
         let userInfo:[String] = ["empty"]
         
         
@@ -29,7 +31,7 @@ class FirebaseAdapter {
     }
     
     
-    //Sets user info using a string array
+    //Sets user info on firebase.
     func setUserInfo(firstName:String, lastName:String, email: String) -> Void{
         
         let userInfoRef = FIREBASE_REF.childByAppendingPath("users").childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("user_info")
@@ -89,119 +91,91 @@ class FirebaseAdapter {
     }
     
     
-   
-    func addEvent(eventName:String, eventDescription:String,longitude:String, latitude:String, startTime:String, endTime:String)-> Void
+   //
+    func addEvent(newEvent:Event)-> Void
     {
-        let newEvent = ["event_name" : eventName, "event_description" : eventDescription, "start_time" : startTime,"longitude":longitude, "latitude":latitude,  "end_time" : endTime, "author": CURRENT_USER.authData.uid]
+        let newEventDict = ["event_name" : newEvent.eventName, "event_description" : newEvent.eventDescription, "start_time" : newEvent.startTime,"longitude":newEvent.longitude, "latitude":newEvent.latitude,  "end_time" : newEvent.endTime, "author": CURRENT_USER.authData.uid]
         
-        let eventsBranch = FIREBASE_REF.childByAppendingPath("events").childByAutoId()
+        //create a new branch off the events branch for this new event, to hold the newEvent dictionary
+        let newEventBranch = eventsBranch.childByAutoId()
         
-        eventsBranch.setValue(newEvent)
-        
-        /*
-        var eventName:String = ""
-        
-        var backslashCounter = 0
-        
-        for var i = currentBranch.characters.count; i >= 0; i -= 1
-        {
-            
-            if currentBranch[i] == "/"  {
-                backslashCounter = backslashCounter + 1
-            }
-            if backslashCounter > 1 {
-                eventName = eventName + currentBranch.
-            }
-        }
-        
-        */
+        //save the event at the newEventBranch
+        newEventBranch.setValue(newEventDict)
         
     }
-    /*
-    //This function retrieves a list of events that match a certain keyword.
+
+    //This function Returns an array of events that match a certain keyword.
     func searchEvents(keyword:String) -> [Event]
     {
         var matchedEvents = [Event]()
-        
-        
-        var eventsBranch = FIREBASE_REF.childByAppendingPath("events")
-        
-        eventsBranch.once("value", function(snapshot)
-        {
+     
+        eventsBranch.observeSingleEventOfType(.Value, withBlock:{snapshot in
+     
+            let enumerator = snapshot.children
             
-            snapshot.forEach(function(childSnapshot)
+            //iterate over the all the children of the events branch
+            while let child = enumerator.nextObject() as? FDataSnapshot
             {
-                
-                let eventName = childSnapshot.valueForKey("event_name")
-                let eventDescription = childSnapshot.valueForKey("event_description")
-                let longitude = childSnapshot.valueForKey("longitude")
-                let latitude = childSnapshot.valueForKey("latitude")
-                let startTime = childSnapshot.valueForKey("start_time")
-                let endTime = childSnapshot.valueForKey("end_time")
-                
+                let eventName = child.valueForKey("event_name") as! String!
+                let eventDescription = child.valueForKey("event_description") as! String!
+
+                //if keyword is a substring of the event name or the event description
                 if eventName.rangeOfString(keyword) != nil || eventDescription.rangeOfString(keyword) != nil
                 {
-                    let matchedEvent = Event(eventName: eventName, eventDescription: eventDescription, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime)
-                    
-                    matchedEvents.append(matchEvent)
-
+                    let longitude = child.valueForKey("longitude")as! String!
+                    let latitude = child.valueForKey("latitude")as! String!
+                    let startTime = child.valueForKey("start_time")as! String!
+                    let endTime = child.valueForKey("end_time")as! String!
+                    let author = child.valueForKey("author")as! String!
+     
+                    matchedEvents.append(Event(eventName: eventName, eventDescription: eventDescription, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, author: author))
                 }
-                
-                });
-            });
-        
+            }
+        })
     
         return matchedEvents
     }
+ 
+    
+    
     
     //This function retrieves the events that pertain to the user.  This will be used when the user enters the "MyAccount" tab.
-    func myEvents()->[Event]{
+    //Returns an array of events that the user has created.
+    func myEvents()->[Event]
+    {
         
-        var usersEvents = [Event]()
+        var myEvents = [Event]()
         
+        eventsBranch.observeSingleEventOfType(.Value, withBlock:{snapshot in
         
-        var eventsBranch = FIREBASE_REF.childByAppendingPath("events")
-        
-        
-        eventsBranch.observeSingleEventOfType(.Value, withBlock: {
-            snapshot in
+            let enumerator = snapshot.children
             
-            }, withCancelBlock: <#T##((NSError!) -> Void)!##((NSError!) -> Void)!##(NSError!) -> Void#>)
-        
-    
-        eventsBranch.observeEventType(.Value, withBlock: {
-            
-            snapshot in
-            
-            snapshot.forEach(eventsBranch.observeEventType(.Value, withBlock :{childSnapshot in
-            
+            //iterate over the all the children of the events branch
+            while let child = enumerator.nextObject() as? FDataSnapshot
+            {
+                let eventAuthor = child.valueForKey("author") as! String!
                 
-                let eventName = childSnapshot.valueForKey("event_name") as! String!
-                let eventDescription = childSnapshot.valueForKey("event_description")
-                let longitude = childSnapshot.valueForKey("longitude")
-                let latitude = childSnapshot.valueForKey("latitude")
-                let startTime = childSnapshot.valueForKey("start_time")
-                let endTime = childSnapshot.valueForKey("end_time")
-                let author = childSnapshot.valueForKey("author")
-                
-                if author == CURRENT_USER.authData.uid
+                //if the author of the event matches the current author
+                if eventAuthor == CURRENT_USER.authData.uid
                 {
-                    let matchedEvent = Event(eventName: eventName, eventDescription: eventDescription, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime)
                     
-                    usersEvents.append(matchEvent)
+                    let eventName = child.valueForKey("event_name") as! String!
+                    let eventDescription = child.valueForKey("event_description") as! String!
+                    let longitude = child.valueForKey("longitude")as! String!
+                    let latitude = child.valueForKey("latitude")as! String!
+                    let startTime = child.valueForKey("start_time")as! String!
+                    let endTime = child.valueForKey("end_time")as! String!
                     
+                    myEvents.append(Event(eventName: eventName, eventDescription: eventDescription, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, author: eventAuthor))
                 }
-                
-            });
-            )}
-    
-    
-                
-        return usersEvents
+            }
+        })
+        
+        return myEvents
     }
 
     
-    
+    /*
     func deleteEvent()->
     {
         
@@ -243,14 +217,14 @@ class Event{
     }
     
     
-    init(eventName:String, eventDescription:String,longitude:String, latitude:String, startTime:String, endTime:String){
+    init(eventName:String, eventDescription:String,longitude:String, latitude:String, startTime:String, endTime:String, author:String){
         self.eventName = eventName
         self.eventDescription = eventDescription
         self.longitude = longitude
         self.latitude = latitude
         self.startTime = startTime
         self.endTime = endTime
-        self.author = CURRENT_USER.authData.uid
+        self.author = author
     }
     
     
