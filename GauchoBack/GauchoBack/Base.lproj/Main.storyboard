@@ -21,14 +21,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="6Cf-ZC-J2h" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GauchoBack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7a-l6-vDT">
-                                <rect key="frame" x="0.0" y="85" width="600" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="GauchoBack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7a-l6-vDT">
+                                <rect key="frame" x="0.0" y="28" width="600" height="95"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="81"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYh-dK-0yi">
-                                <rect key="frame" x="281" y="207" width="38" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TYh-dK-0yi">
+                                <rect key="frame" x="281" y="227" width="38" height="30"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -36,13 +36,8 @@
                                     <action selector="loginAction:" destination="Cdx-3M-Skd" eventType="touchUpInside" id="gn5-QX-Mhr"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8s-LB-m4g">
-                                <rect key="frame" x="20" y="131" width="560" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RTf-QC-DPJ">
-                                <rect key="frame" x="20" y="169" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RTf-QC-DPJ">
+                                <rect key="frame" x="20" y="195" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
@@ -55,8 +50,8 @@
                                     <segue destination="6A7-la-lym" kind="presentation" modalTransitionStyle="coverVertical" id="uWQ-vF-9kD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xie-UB-UCg">
-                                <rect key="frame" x="247" y="235" width="107" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xie-UB-UCg">
+                                <rect key="frame" x="247" y="256" width="107" height="30"/>
                                 <state key="normal" title="Create Account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -65,12 +60,17 @@
                                     <segue destination="AMo-aH-h1J" kind="presentation" identifier="createAccountSegue" modalTransitionStyle="flipHorizontal" id="M6B-re-FhX"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d8s-LB-m4g">
+                                <rect key="frame" x="20" y="157" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.95756179094314575" green="0.85734295845031738" blue="0.60687851905822754" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="p7a-l6-vDT" firstAttribute="top" secondItem="Vu4-6l-MJ0" secondAttribute="bottom" constant="65" id="05T-Hj-bhw"/>
+                            <constraint firstItem="p7a-l6-vDT" firstAttribute="top" secondItem="Vu4-6l-MJ0" secondAttribute="bottom" constant="8" id="05T-Hj-bhw"/>
                             <constraint firstItem="p7a-l6-vDT" firstAttribute="leading" secondItem="WGH-cW-Ve8" secondAttribute="leading" id="0Zx-B5-ViV"/>
-                            <constraint firstItem="xie-UB-UCg" firstAttribute="top" secondItem="TYh-dK-0yi" secondAttribute="bottom" constant="-2" id="18x-Hc-a8M"/>
+                            <constraint firstItem="xie-UB-UCg" firstAttribute="top" secondItem="TYh-dK-0yi" secondAttribute="bottom" constant="-1" id="18x-Hc-a8M"/>
                             <constraint firstItem="xie-UB-UCg" firstAttribute="centerX" secondItem="4X2-yC-y6x" secondAttribute="centerX" id="4Le-wG-tyx"/>
                             <constraint firstItem="p7a-l6-vDT" firstAttribute="centerX" secondItem="d8s-LB-m4g" secondAttribute="centerX" id="5Q5-EJ-eCu"/>
                             <constraint firstItem="6Cf-ZC-J2h" firstAttribute="top" secondItem="WGH-cW-Ve8" secondAttribute="top" id="EL1-NQ-KkE"/>
@@ -83,8 +83,8 @@
                             <constraint firstItem="RTf-QC-DPJ" firstAttribute="top" secondItem="d8s-LB-m4g" secondAttribute="bottom" constant="8" id="fFX-xE-Hbs"/>
                             <constraint firstItem="5dB-RI-dMC" firstAttribute="top" secondItem="4X2-yC-y6x" secondAttribute="bottom" constant="125" id="hyG-KN-JMN"/>
                             <constraint firstItem="6Cf-ZC-J2h" firstAttribute="bottom" secondItem="5dB-RI-dMC" secondAttribute="top" id="jDz-QM-Mqv"/>
-                            <constraint firstItem="d8s-LB-m4g" firstAttribute="top" secondItem="p7a-l6-vDT" secondAttribute="bottom" constant="25" id="ktn-mg-asu"/>
-                            <constraint firstItem="TYh-dK-0yi" firstAttribute="top" secondItem="RTf-QC-DPJ" secondAttribute="bottom" constant="8" id="nG6-V4-X5Z"/>
+                            <constraint firstItem="d8s-LB-m4g" firstAttribute="top" secondItem="p7a-l6-vDT" secondAttribute="bottom" constant="34" id="ktn-mg-asu"/>
+                            <constraint firstItem="TYh-dK-0yi" firstAttribute="top" secondItem="RTf-QC-DPJ" secondAttribute="bottom" constant="2" id="nG6-V4-X5Z"/>
                             <constraint firstItem="d8s-LB-m4g" firstAttribute="leading" secondItem="RTf-QC-DPJ" secondAttribute="leading" id="u9O-28-Suf"/>
                             <constraint firstItem="d8s-LB-m4g" firstAttribute="leading" secondItem="WGH-cW-Ve8" secondAttribute="leadingMargin" id="wRh-WQ-sFS"/>
                         </constraints>
@@ -360,6 +360,6 @@
         <image name="SearchView" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CEN-OT-zY1"/>
+        <segue reference="uWQ-vF-9kD"/>
     </inferredMetricsTieBreakers>
 </document>
