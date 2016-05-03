@@ -261,7 +261,7 @@
                         <viewControllerLayoutGuide type="top" id="RGO-jg-Bt9"/>
                         <viewControllerLayoutGuide type="bottom" id="Vui-o1-qom"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="we7-Cs-WH4" customClass="GMSMapView">
+                    <view key="view" contentMode="scaleToFill" id="we7-Cs-WH4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -271,16 +271,23 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="394-q6-hSa" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="57" width="600" height="494"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Vui-o1-qom" firstAttribute="top" secondItem="394-q6-hSa" secondAttribute="bottom" id="0hm-NJ-Eu4"/>
                             <constraint firstItem="He3-rD-OYi" firstAttribute="top" secondItem="RGO-jg-Bt9" secondAttribute="bottom" constant="8" symbolic="YES" id="1iq-z8-dk6"/>
                             <constraint firstItem="He3-rD-OYi" firstAttribute="centerX" secondItem="we7-Cs-WH4" secondAttribute="centerX" id="A67-Fb-czR"/>
+                            <constraint firstItem="394-q6-hSa" firstAttribute="leading" secondItem="we7-Cs-WH4" secondAttribute="leadingMargin" constant="-20" id="K1c-qo-Jga"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="394-q6-hSa" secondAttribute="trailing" constant="-20" id="SB6-ah-YPB"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Add Event" image="AddEventIcon" id="wTK-0e-ayU"/>
                     <connections>
-                        <outlet property="mapView" destination="we7-Cs-WH4" id="xFz-cn-Ix3"/>
+                        <outlet property="mapView" destination="394-q6-hSa" id="TEb-d5-hPD"/>
                         <segue destination="aOv-xd-mT0" kind="show" identifier="eventCreator" id="ZZq-Sf-c7e"/>
                     </connections>
                 </viewController>

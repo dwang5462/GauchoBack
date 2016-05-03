@@ -16,6 +16,7 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
     var userLocation:CLLocation!
     
     
+    
     @IBOutlet var mapView: GMSMapView!
     
     
