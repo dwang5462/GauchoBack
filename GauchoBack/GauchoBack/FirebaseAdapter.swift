@@ -89,12 +89,12 @@ class FirebaseAdapter {
     }
     
     
-   /*
-    func addEvent()->
+   
+    func addEvent(eventName:String, eventDescription:String, startTime:String, endTime:String)-> Void
     {
         
     }
-    
+    /*
     func deleteEvent()->
     {
         
