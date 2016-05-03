@@ -8,7 +8,6 @@
 
 import Foundation
 import Firebase
-import Event
 
 class FirebaseAdapter {
     
@@ -118,7 +117,7 @@ class FirebaseAdapter {
         */
         
     }
-    
+    /*
     //This function retrieves a list of events that match a certain keyword.
     func searchEvents(keyword:String) -> [Event]
     {
@@ -156,18 +155,26 @@ class FirebaseAdapter {
     }
     
     //This function retrieves the events that pertain to the user.  This will be used when the user enters the "MyAccount" tab.
-    func usersEvents(){
+    func myEvents()->[Event]{
         
         var usersEvents = [Event]()
         
         
         var eventsBranch = FIREBASE_REF.childByAppendingPath("events")
         
-        eventsBranch.once("value", function(snapshot)
-        {
+        
+        eventsBranch.observeSingleEventOfType(.Value, withBlock: {
+            snapshot in
             
-            snapshot.forEach(function(childSnapshot)
-            {
+            }, withCancelBlock: <#T##((NSError!) -> Void)!##((NSError!) -> Void)!##(NSError!) -> Void#>)
+        
+    
+        eventsBranch.observeEventType(.Value, withBlock: {
+            
+            snapshot in
+            
+            snapshot.forEach(eventsBranch.observeEventType(.Value, withBlock :{childSnapshot in
+            
                 
                 let eventName = childSnapshot.valueForKey("event_name") as! String!
                 let eventDescription = childSnapshot.valueForKey("event_description")
@@ -185,15 +192,16 @@ class FirebaseAdapter {
                     
                 }
                 
-                });
             });
-        
-        
-        return matchedEvents
+            )}
+    
+    
+                
+        return usersEvents
     }
 
     
-    /*
+    
     func deleteEvent()->
     {
         
@@ -205,25 +213,33 @@ class FirebaseAdapter {
 class Event{
     
     var eventName: String{
-        get{return eventName}
+        get{return self.eventName}
+        set{self.eventName = newValue}
     }
     var eventDescription: String{
-        get{return eventDescription}
+        get{return self.eventDescription}
+        set{self.eventDescription = newValue}
     }
     var longitude:String{
-        get{return longitude}
+        get{return self.longitude}
+        set{self.longitude = newValue}
     }
     var latitude:String{
-        get{return latitude}
+        get{return self.latitude}
+        set{self.latitude = newValue}
     }
     var startTime:String{
-        get{return startTime}
+        get{return self.startTime}
+        set{self.startTime = newValue}
     }
     var endTime:String{
-        get{return endTime}
+        get{return self.endTime}
+        set{self.endTime = newValue}
+        
     }
     var author:String{
-        get{return author}
+        get{return self.author}
+        set{self.author = newValue}
     }
     
     

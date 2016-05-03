@@ -13,7 +13,6 @@ import FBSDKLoginKit
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
 {
-    let fireBase = Event(
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var createAccountButton: UIButton!
