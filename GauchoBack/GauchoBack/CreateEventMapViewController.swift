@@ -18,6 +18,7 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
     
     @IBOutlet var mapView: GMSMapView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
