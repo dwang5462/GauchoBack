@@ -11,17 +11,13 @@ import Firebase
 
 class FirebaseAdapter {
     
-    
-    //Base if you are not logged in.
-    
-    var eventsBranch = FIREBASE_REF.childByAppendingPath("events")
-    
-    var usersRef = FIREBASE_REF.childByAppendingPath("users")
+    let eventsBranch = FIREBASE_REF.childByAppendingPath("events")
+    let usersBranch = FIREBASE_REF.childByAppendingPath("users")
     
     //returns userinfo from firebase, in a string array.
     func getUserInfo() -> [String]{
         
-        let userInfoRef = FIREBASE_REF.childByAppendingPath("users").childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("user_info")
+        let userInfoBranch = usersBranch.childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("user_info")
         
         let userInfo:[String] = ["empty"]
         
@@ -34,23 +30,23 @@ class FirebaseAdapter {
     //Sets user info on firebase.
     func setUserInfo(firstName:String, lastName:String, email: String) -> Void{
         
-        let userInfoRef = FIREBASE_REF.childByAppendingPath("users").childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("user_info")
+        let userInfoBranch = usersBranch.childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("user_info")
         let userInfoDict = ["first_name": firstName, "last_name" :lastName, "email" : email]
         
         //saving info at user info location
-        userInfoRef.setValue(userInfoDict)
+        userInfoBranch.setValue(userInfoDict)
     }
     
-    //Removes all characters from email address that firebase does not allow for chil names.
-    func removeBadChars(email:String)->String
+    //Removes all characters from strings that firebase does not allow for branch names.
+    func removeBadChars(input:String)->String
     {
-        var email = email.stringByReplacingOccurrencesOfString(".", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
-        email = email.stringByReplacingOccurrencesOfString("#", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
-        email = email.stringByReplacingOccurrencesOfString("$", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
-        email = email.stringByReplacingOccurrencesOfString("[", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
-        email = email.stringByReplacingOccurrencesOfString("]", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
+        var input = input.stringByReplacingOccurrencesOfString(".", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
+        input = input.stringByReplacingOccurrencesOfString("#", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
+        input = input.stringByReplacingOccurrencesOfString("$", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
+        input = input.stringByReplacingOccurrencesOfString("[", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
+        input = input.stringByReplacingOccurrencesOfString("]", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
 
-        return email
+        return input
     }
     
     //Returns true if an email exists in our system, false if not.
@@ -60,17 +56,15 @@ class FirebaseAdapter {
         
         var exists: Bool = false
         
-        let accountRef = FIREBASE_REF.childByAppendingPath("accounts")
+        let accountsBranch = FIREBASE_REF.childByAppendingPath("accounts")
         
-        accountRef.observeEventType(.Value, withBlock:
+        accountsBranch.observeEventType(.Value, withBlock:
             { snapshot  in
             
             if snapshot.hasChild(emailToCheck)
             {
                 print("child found")
-                
                 exists = true
-                
             }
             else{
                 //create an account
@@ -91,7 +85,7 @@ class FirebaseAdapter {
     }
     
     
-   //
+   //Adds an event to the events branch
     func addEvent(newEvent:Event)-> Void
     {
         let newEventDict = ["event_name" : newEvent.eventName, "event_description" : newEvent.eventDescription, "start_time" : newEvent.startTime,"longitude":newEvent.longitude, "latitude":newEvent.latitude,  "end_time" : newEvent.endTime, "author": CURRENT_USER.authData.uid]
@@ -111,6 +105,7 @@ class FirebaseAdapter {
      
         eventsBranch.observeSingleEventOfType(.Value, withBlock:{snapshot in
      
+            //initialize the iterator object
             let enumerator = snapshot.children
             
             //iterate over the all the children of the events branch
@@ -136,8 +131,6 @@ class FirebaseAdapter {
         return matchedEvents
     }
  
-    
-    
     
     //This function retrieves the events that pertain to the user.  This will be used when the user enters the "MyAccount" tab.
     //Returns an array of events that the user has created.

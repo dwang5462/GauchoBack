@@ -110,7 +110,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
                 }
             }
         })
-
     }
     
     //Method to be called when loggin in with facebook to register user in GauchoBack
