@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 import FBSDKCoreKit
 
 @UIApplicationMain
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
+        GMSServices.provideAPIKey("AIzaSyCHg6Ggv0lH0KMsWPq0zI0ljK-ti5pSYYo")
         // Override point for customization after application launch.
         UITabBar.appearance().tintColor = UIColor.whiteColor()
         

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cdx-3M-Skd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cdx-3M-Skd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -232,7 +232,7 @@
         <!--Map View-->
         <scene sceneID="OOI-e4-jOf">
             <objects>
-                <viewController id="OUh-PA-hVs" sceneMemberID="viewController">
+                <viewController id="OUh-PA-hVs" customClass="MapViewController" customModule="GauchoBack" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Qg-av-sTU"/>
                         <viewControllerLayoutGuide type="bottom" id="fb3-BG-KTK"/>
@@ -247,14 +247,24 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfJ-b8-f4E" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="76" width="600" height="475"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="sfJ-b8-f4E" secondAttribute="trailing" constant="-20" id="0rW-0l-N2H"/>
                             <constraint firstItem="aLX-0q-Ii2" firstAttribute="top" secondItem="5Qg-av-sTU" secondAttribute="bottom" constant="8" id="77i-nS-QNh"/>
+                            <constraint firstItem="fb3-BG-KTK" firstAttribute="top" secondItem="sfJ-b8-f4E" secondAttribute="bottom" id="Ai6-zU-T3s"/>
+                            <constraint firstItem="sfJ-b8-f4E" firstAttribute="leading" secondItem="1H9-uw-nSM" secondAttribute="leadingMargin" constant="-20" id="L09-e7-elq"/>
                             <constraint firstItem="aLX-0q-Ii2" firstAttribute="centerX" secondItem="1H9-uw-nSM" secondAttribute="centerX" id="s5M-GY-Vgs"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map View" image="MapView" id="p9b-dI-iRA"/>
+                    <connections>
+                        <outlet property="mapView" destination="sfJ-b8-f4E" id="Ncu-Jy-ZMf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcX-5H-GYN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -263,7 +273,7 @@
         <!--Add Event-->
         <scene sceneID="lyX-cF-URK">
             <objects>
-                <viewController id="g3T-xF-K3Z" sceneMemberID="viewController">
+                <viewController id="g3T-xF-K3Z" customClass="CreateEventMapController" customModule="GauchoBack" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RGO-jg-Bt9"/>
                         <viewControllerLayoutGuide type="bottom" id="Vui-o1-qom"/>
@@ -278,14 +288,25 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="394-q6-hSa" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="57" width="600" height="494"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Vui-o1-qom" firstAttribute="top" secondItem="394-q6-hSa" secondAttribute="bottom" id="0hm-NJ-Eu4"/>
                             <constraint firstItem="He3-rD-OYi" firstAttribute="top" secondItem="RGO-jg-Bt9" secondAttribute="bottom" constant="8" symbolic="YES" id="1iq-z8-dk6"/>
                             <constraint firstItem="He3-rD-OYi" firstAttribute="centerX" secondItem="we7-Cs-WH4" secondAttribute="centerX" id="A67-Fb-czR"/>
+                            <constraint firstItem="394-q6-hSa" firstAttribute="leading" secondItem="we7-Cs-WH4" secondAttribute="leadingMargin" constant="-20" id="K1c-qo-Jga"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="394-q6-hSa" secondAttribute="trailing" constant="-20" id="SB6-ah-YPB"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Add Event" image="AddEventIcon" id="wTK-0e-ayU"/>
+                    <connections>
+                        <outlet property="mapView" destination="394-q6-hSa" id="TEb-d5-hPD"/>
+                        <segue destination="aOv-xd-mT0" kind="show" identifier="eventCreator" id="ZZq-Sf-c7e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SeH-Nf-YRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
