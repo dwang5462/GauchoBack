@@ -18,6 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="6Cf-ZC-J2h" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GauchoBack" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7a-l6-vDT">
                                 <rect key="frame" x="0.0" y="85" width="600" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -63,19 +66,23 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.44375587406015038" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.95756179094314575" green="0.85734295845031738" blue="0.60687851905822754" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="p7a-l6-vDT" firstAttribute="top" secondItem="Vu4-6l-MJ0" secondAttribute="bottom" constant="65" id="05T-Hj-bhw"/>
                             <constraint firstItem="p7a-l6-vDT" firstAttribute="leading" secondItem="WGH-cW-Ve8" secondAttribute="leading" id="0Zx-B5-ViV"/>
                             <constraint firstItem="xie-UB-UCg" firstAttribute="top" secondItem="TYh-dK-0yi" secondAttribute="bottom" constant="-2" id="18x-Hc-a8M"/>
                             <constraint firstItem="xie-UB-UCg" firstAttribute="centerX" secondItem="4X2-yC-y6x" secondAttribute="centerX" id="4Le-wG-tyx"/>
                             <constraint firstItem="p7a-l6-vDT" firstAttribute="centerX" secondItem="d8s-LB-m4g" secondAttribute="centerX" id="5Q5-EJ-eCu"/>
+                            <constraint firstItem="6Cf-ZC-J2h" firstAttribute="top" secondItem="WGH-cW-Ve8" secondAttribute="top" id="EL1-NQ-KkE"/>
+                            <constraint firstItem="6Cf-ZC-J2h" firstAttribute="trailing" secondItem="p7a-l6-vDT" secondAttribute="trailing" id="GU0-VT-pO8"/>
                             <constraint firstItem="RTf-QC-DPJ" firstAttribute="centerX" secondItem="TYh-dK-0yi" secondAttribute="centerX" id="O7C-Jf-Mwj"/>
                             <constraint firstItem="xie-UB-UCg" firstAttribute="centerX" secondItem="TYh-dK-0yi" secondAttribute="centerX" id="P6A-Sr-5u1"/>
+                            <constraint firstItem="6Cf-ZC-J2h" firstAttribute="leading" secondItem="p7a-l6-vDT" secondAttribute="leading" id="Por-QH-laO"/>
                             <constraint firstItem="d8s-LB-m4g" firstAttribute="trailing" secondItem="RTf-QC-DPJ" secondAttribute="trailing" id="dui-Wa-sh3"/>
                             <constraint firstAttribute="trailing" secondItem="p7a-l6-vDT" secondAttribute="trailing" id="f4c-oK-80a"/>
                             <constraint firstItem="RTf-QC-DPJ" firstAttribute="top" secondItem="d8s-LB-m4g" secondAttribute="bottom" constant="8" id="fFX-xE-Hbs"/>
                             <constraint firstItem="5dB-RI-dMC" firstAttribute="top" secondItem="4X2-yC-y6x" secondAttribute="bottom" constant="125" id="hyG-KN-JMN"/>
+                            <constraint firstItem="6Cf-ZC-J2h" firstAttribute="bottom" secondItem="5dB-RI-dMC" secondAttribute="top" id="jDz-QM-Mqv"/>
                             <constraint firstItem="d8s-LB-m4g" firstAttribute="top" secondItem="p7a-l6-vDT" secondAttribute="bottom" constant="25" id="ktn-mg-asu"/>
                             <constraint firstItem="TYh-dK-0yi" firstAttribute="top" secondItem="RTf-QC-DPJ" secondAttribute="bottom" constant="8" id="nG6-V4-X5Z"/>
                             <constraint firstItem="d8s-LB-m4g" firstAttribute="leading" secondItem="RTf-QC-DPJ" secondAttribute="leading" id="u9O-28-Suf"/>
@@ -92,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kxM-j9-r29" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34" y="-420"/>
+            <point key="canvasLocation" x="24" y="-450"/>
         </scene>
         <!--Creat Account View Controller-->
         <scene sceneID="2dC-r7-QU7">
@@ -189,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oka-Pk-0pE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="925" y="-420"/>
+            <point key="canvasLocation" x="921" y="-450"/>
         </scene>
         <!--Search-->
         <scene sceneID="Hfu-GX-QTL">
@@ -284,7 +291,7 @@
             </objects>
             <point key="canvasLocation" x="733" y="1045"/>
         </scene>
-        <!--Account Info-->
+        <!--My Account-->
         <scene sceneID="J9S-XP-158">
             <objects>
                 <viewController id="7wf-MV-jhB" sceneMemberID="viewController">
@@ -300,8 +307,8 @@
                                 <rect key="frame" x="533" y="28" width="48" height="30"/>
                                 <state key="normal" title="Logout"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giI-CV-4Uo">
-                                <rect key="frame" x="252" y="28" width="97" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giI-CV-4Uo">
+                                <rect key="frame" x="254" y="28" width="92" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -315,7 +322,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="e8A-1k-nAF" secondAttribute="trailing" constant="-1" id="wML-pm-VzC"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account Info" image="AccountInfo" selectedImage="Test" id="dgp-T7-8vf"/>
+                    <tabBarItem key="tabBarItem" title="My Account" image="AccountInfo" selectedImage="AccountInfo" id="dgp-T7-8vf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRE-Bd-QX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -342,15 +349,15 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nBb-RE-0cT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="438" y="304"/>
+            <point key="canvasLocation" x="526" y="352"/>
         </scene>
     </scenes>
     <resources>
         <image name="AccountInfo" width="25" height="25"/>
         <image name="AddEventIcon" width="25" height="25"/>
+        <image name="Background" width="500" height="330"/>
         <image name="MapView" width="25" height="25"/>
         <image name="SearchView" width="25" height="25"/>
-        <image name="Test" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CEN-OT-zY1"/>

@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import Event
 
 class FirebaseAdapter {
     
@@ -90,14 +91,152 @@ class FirebaseAdapter {
     
     
    
-    func addEvent(eventName:String, eventDescription:String, startTime:String, endTime:String)-> Void
+    func addEvent(eventName:String, eventDescription:String,longitude:String, latitude:String, startTime:String, endTime:String)-> Void
     {
+        let newEvent = ["event_name" : eventName, "event_description" : eventDescription, "start_time" : startTime,"longitude":longitude, "latitude":latitude,  "end_time" : endTime, "author": CURRENT_USER.authData.uid]
+        
+        let eventsBranch = FIREBASE_REF.childByAppendingPath("events").childByAutoId()
+        
+        eventsBranch.setValue(newEvent)
+        
+        /*
+        var eventName:String = ""
+        
+        var backslashCounter = 0
+        
+        for var i = currentBranch.characters.count; i >= 0; i -= 1
+        {
+            
+            if currentBranch[i] == "/"  {
+                backslashCounter = backslashCounter + 1
+            }
+            if backslashCounter > 1 {
+                eventName = eventName + currentBranch.
+            }
+        }
+        
+        */
         
     }
+    
+    //This function retrieves a list of events that match a certain keyword.
+    func searchEvents(keyword:String) -> [Event]
+    {
+        var matchedEvents = [Event]()
+        
+        
+        var eventsBranch = FIREBASE_REF.childByAppendingPath("events")
+        
+        eventsBranch.once("value", function(snapshot)
+        {
+            
+            snapshot.forEach(function(childSnapshot)
+            {
+                
+                let eventName = childSnapshot.valueForKey("event_name")
+                let eventDescription = childSnapshot.valueForKey("event_description")
+                let longitude = childSnapshot.valueForKey("longitude")
+                let latitude = childSnapshot.valueForKey("latitude")
+                let startTime = childSnapshot.valueForKey("start_time")
+                let endTime = childSnapshot.valueForKey("end_time")
+                
+                if eventName.rangeOfString(keyword) != nil || eventDescription.rangeOfString(keyword) != nil
+                {
+                    let matchedEvent = Event(eventName: eventName, eventDescription: eventDescription, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime)
+                    
+                    matchedEvents.append(matchEvent)
+
+                }
+                
+                });
+            });
+        
+    
+        return matchedEvents
+    }
+    
+    //This function retrieves the events that pertain to the user.  This will be used when the user enters the "MyAccount" tab.
+    func usersEvents(){
+        
+        var usersEvents = [Event]()
+        
+        
+        var eventsBranch = FIREBASE_REF.childByAppendingPath("events")
+        
+        eventsBranch.once("value", function(snapshot)
+        {
+            
+            snapshot.forEach(function(childSnapshot)
+            {
+                
+                let eventName = childSnapshot.valueForKey("event_name") as! String!
+                let eventDescription = childSnapshot.valueForKey("event_description")
+                let longitude = childSnapshot.valueForKey("longitude")
+                let latitude = childSnapshot.valueForKey("latitude")
+                let startTime = childSnapshot.valueForKey("start_time")
+                let endTime = childSnapshot.valueForKey("end_time")
+                let author = childSnapshot.valueForKey("author")
+                
+                if author == CURRENT_USER.authData.uid
+                {
+                    let matchedEvent = Event(eventName: eventName, eventDescription: eventDescription, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime)
+                    
+                    usersEvents.append(matchEvent)
+                    
+                }
+                
+                });
+            });
+        
+        
+        return matchedEvents
+    }
+
+    
     /*
     func deleteEvent()->
     {
         
     }
  */
+}
+
+
+class Event{
+    
+    var eventName: String{
+        get{return eventName}
+    }
+    var eventDescription: String{
+        get{return eventDescription}
+    }
+    var longitude:String{
+        get{return longitude}
+    }
+    var latitude:String{
+        get{return latitude}
+    }
+    var startTime:String{
+        get{return startTime}
+    }
+    var endTime:String{
+        get{return endTime}
+    }
+    var author:String{
+        get{return author}
+    }
+    
+    
+    init(eventName:String, eventDescription:String,longitude:String, latitude:String, startTime:String, endTime:String){
+        self.eventName = eventName
+        self.eventDescription = eventDescription
+        self.longitude = longitude
+        self.latitude = latitude
+        self.startTime = startTime
+        self.endTime = endTime
+        self.author = CURRENT_USER.authData.uid
+    }
+    
+    
+    
 }
