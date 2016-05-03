@@ -21,8 +21,6 @@ class FirebaseAdapter {
         
         let userInfo:[String] = ["empty"]
         
-        
-        
         return userInfo
     }
     
@@ -35,53 +33,6 @@ class FirebaseAdapter {
         
         //saving info at user info location
         userInfoBranch.setValue(userInfoDict)
-    }
-    
-    //Removes all characters from strings that firebase does not allow for branch names.
-    func removeBadChars(input:String)->String
-    {
-        var input = input.stringByReplacingOccurrencesOfString(".", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
-        input = input.stringByReplacingOccurrencesOfString("#", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
-        input = input.stringByReplacingOccurrencesOfString("$", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
-        input = input.stringByReplacingOccurrencesOfString("[", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
-        input = input.stringByReplacingOccurrencesOfString("]", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
-
-        return input
-    }
-    
-    //Returns true if an email exists in our system, false if not.
-    func doesUserExist(emailToCheck:String)->Bool
-    {
-        let emailToCheck = removeBadChars(emailToCheck)
-        
-        var exists: Bool = false
-        
-        let accountsBranch = FIREBASE_REF.childByAppendingPath("accounts")
-        
-        accountsBranch.observeEventType(.Value, withBlock:
-            { snapshot  in
-            
-            if snapshot.hasChild(emailToCheck)
-            {
-                print("child found")
-                exists = true
-            }
-            else{
-                //create an account
-                }
-        }, withCancelBlock: {error in
-                print(error.description)
-        })
-        
-        return exists
-    }
-    
-    //Add account to our list of accounts.
-    func addAccount(email:String)->Void
-    {
-        let email = removeBadChars(email)
-        let addedAccount = ["added": true]
-        FIREBASE_REF.childByAppendingPath("accounts").childByAppendingPath(email).setValue(addedAccount)
     }
     
     
@@ -131,7 +82,6 @@ class FirebaseAdapter {
         return matchedEvents
     }
  
-    
     //This function retrieves the events that pertain to the user.  This will be used when the user enters the "MyAccount" tab.
     //Returns an array of events that the user has created.
     func myEvents()->[Event]
@@ -166,7 +116,46 @@ class FirebaseAdapter {
         
         return myEvents
     }
+    
+    //get all nearby events to user's current location, based on maximum distance away.
+    func getNearbyEvents(currentLongitude:String, currentLatitude:String, maxDistance:Double) -> [Event]
+    {
+        
+        var nearbyEvents = [Event]()
+        
+        eventsBranch.observeSingleEventOfType(.Value, withBlock:{snapshot in
+            
+            let enumerator = snapshot.children
+            
+            //iterate over the all the children of the events branch
+            while let child = enumerator.nextObject() as? FDataSnapshot
+            {
+                let eventLongitude = child.valueForKey("longitude")as! String!
+                let eventLatitude = child.valueForKey("latitude")as! String!
+                
+                let longitudeDelta = abs(Double(currentLongitude) - Double(eventLongitude)) as! Double!
+                let latitudeDelta = abs(Double(currentLatitude) - Double(eventLatitude)) as! Double!
+                
+                let distanceAway = sqrt((longitudeDelta * longitudeDelta) + (latitudeDelta * latitudeDelta))
+                
+                //if distance away from current loaction is within maximum distance
+                if distanceAway <= maxDistance
+                {
+                    let eventName = child.valueForKey("event_name") as! String!
+                    let eventDescription = child.valueForKey("event_description") as! String!
+                    let startTime = child.valueForKey("start_time")as! String!
+                    let endTime = child.valueForKey("end_time")as! String!
+                    let eventAuthor = child.valueForKey("author") as! String!
 
+                    //add event to event list
+                    myEvents.append(Event(eventName: eventName, eventDescription: eventDescription, longitude: eventLongitude, latitude: eventLatitude, startTime: startTime, endTime: endTime, author: eventAuthor))
+                }
+            }
+        })
+        
+        return nearbyEvents
+    }
+    
     
     /*
     func deleteEvent()->
@@ -174,6 +163,54 @@ class FirebaseAdapter {
         
     }
  */
+    
+    //Removes all characters from strings that firebase does not allow for branch names.
+    func removeIllegalChars(input:String)->String
+    {
+        var input = input.stringByReplacingOccurrencesOfString(".", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
+        input = input.stringByReplacingOccurrencesOfString("#", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
+        input = input.stringByReplacingOccurrencesOfString("$", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
+        input = input.stringByReplacingOccurrencesOfString("[", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
+        input = input.stringByReplacingOccurrencesOfString("]", withString: "", options: NSStringCompareOptions.LiteralSearch, range:nil)
+        
+        return input
+    }
+    
+    //Returns true if an email exists in our system, false if not.
+    func doesUserExist(emailToCheck:String)->Bool
+    {
+        let emailToCheck = removeBadChars(emailToCheck)
+        
+        var exists: Bool = false
+        
+        let accountsBranch = FIREBASE_REF.childByAppendingPath("accounts")
+        
+        accountsBranch.observeEventType(.Value, withBlock:
+            { snapshot  in
+                
+                if snapshot.hasChild(emailToCheck)
+                {
+                    print("child found")
+                    exists = true
+                }
+                else{
+                    //create an account
+                }
+            }, withCancelBlock: {error in
+                print(error.description)
+        })
+        
+        return exists
+    }
+    
+    //Add account to our list of accounts.
+    func addAccount(email:String)->Void
+    {
+        let email = removeBadChars(email)
+        let addedAccount = ["added": true]
+        FIREBASE_REF.childByAppendingPath("accounts").childByAppendingPath(email).setValue(addedAccount)
+    }
+
 }
 
 

@@ -136,11 +136,11 @@
 			children = (
 				3EB994F21CBCAA4000EF6291 /* AppDelegate.swift */,
 				FBC21EFE1CC5DB6200B5AC8C /* BaseService.swift */,
-				FBC21F001CC5DC6900B5AC8C /* LoginViewController.swift */,
 				3EC9D2441CD8A81C00FD1628 /* CreateEventMapViewController.swift */,
 				FB4264BC1CD936F00084A0B3 /* MyAccountViewController.swift */,
 				3EC9D2461CD8A9B300FD1628 /* CreateEventDetailsViewController.swift */,
 				FB788CB41CC70268009992F2 /* MapViewController.swift */,
+				FBC21F001CC5DC6900B5AC8C /* LoginViewController.swift */,
 				FBC21F021CC5DC8400B5AC8C /* CreateAccountViewController.swift */,
 				FB85D4501CD17F4900D314AA /* FirebaseAdapter.swift */,
 				3EB994F61CBCAA4000EF6291 /* Main.storyboard */,

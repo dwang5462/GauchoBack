@@ -81,10 +81,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
                         NSUserDefaults.standardUserDefaults().setValue(authData.description, forKey: "description")
                         NSUserDefaults.standardUserDefaults().synchronize()
                         
-                        let fireBase = FirebaseAdapter()
+                        let firebaseAdapter = FirebaseAdapter()
                         //Save values of user_info on firebase.
-                        fireBase.setUserInfo(firstName, lastName: lastName, email: email)
-                        fireBase.addAccount(email)
+                        firebaseAdapter.setUserInfo(firstName, lastName: lastName, email: email)
+                        firebaseAdapter.addAccount(email)
                         print("Added facebook member", firstName, " ", lastName, " to firebase with uid: ", authData.uid)
                     }
                     else
