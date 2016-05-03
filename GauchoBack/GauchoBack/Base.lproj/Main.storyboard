@@ -307,7 +307,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="giI-CV-4Uo" firstAttribute="top" secondItem="qTy-tj-aR9" secondAttribute="bottom" constant="8" id="6bc-Sn-2Wg"/>
                             <constraint firstItem="giI-CV-4Uo" firstAttribute="centerX" secondItem="ahF-TX-3k2" secondAttribute="centerX" id="8Nm-zw-CZu"/>
@@ -315,7 +316,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="e8A-1k-nAF" secondAttribute="trailing" constant="-1" id="wML-pm-VzC"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account Info" id="dgp-T7-8vf"/>
+                    <tabBarItem key="tabBarItem" title="Account Info" image="Test" selectedImage="Test" id="dgp-T7-8vf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRE-Bd-QX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -324,12 +325,14 @@
         <!--mainTabViewController-->
         <scene sceneID="Jq4-ba-9P8">
             <objects>
-                <tabBarController title="mainTabViewController" modalTransitionStyle="flipHorizontal" id="6A7-la-lym" sceneMemberID="viewController">
+                <tabBarController title="mainTabViewController" wantsFullScreenLayout="YES" modalTransitionStyle="flipHorizontal" id="6A7-la-lym" sceneMemberID="viewController">
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="QdU-X6-9s0">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="QdU-X6-9s0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="OUh-PA-hVs" kind="relationship" relationship="viewControllers" id="S2J-4H-FVj"/>
@@ -343,6 +346,9 @@
             <point key="canvasLocation" x="438" y="304"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Test" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CEN-OT-zY1"/>
     </inferredMetricsTieBreakers>
