@@ -216,7 +216,7 @@
                             <constraint firstItem="5iW-IH-X22" firstAttribute="centerX" secondItem="48I-PU-iVF" secondAttribute="centerX" id="Ze5-33-g1T"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="7iO-h2-izW"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="SearchView" id="7iO-h2-izW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hzg-43-yMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -247,7 +247,7 @@
                             <constraint firstItem="aLX-0q-Ii2" firstAttribute="centerX" secondItem="1H9-uw-nSM" secondAttribute="centerX" id="s5M-GY-Vgs"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map View" id="p9b-dI-iRA"/>
+                    <tabBarItem key="tabBarItem" title="Map View" image="MapView" id="p9b-dI-iRA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcX-5H-GYN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -278,7 +278,7 @@
                             <constraint firstItem="He3-rD-OYi" firstAttribute="centerX" secondItem="we7-Cs-WH4" secondAttribute="centerX" id="A67-Fb-czR"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Add Event" id="wTK-0e-ayU"/>
+                    <tabBarItem key="tabBarItem" title="Add Event" image="AddEventIcon" id="wTK-0e-ayU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SeH-Nf-YRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -308,7 +308,6 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="giI-CV-4Uo" firstAttribute="top" secondItem="qTy-tj-aR9" secondAttribute="bottom" constant="8" id="6bc-Sn-2Wg"/>
                             <constraint firstItem="giI-CV-4Uo" firstAttribute="centerX" secondItem="ahF-TX-3k2" secondAttribute="centerX" id="8Nm-zw-CZu"/>
@@ -316,7 +315,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="e8A-1k-nAF" secondAttribute="trailing" constant="-1" id="wML-pm-VzC"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account Info" image="Test" selectedImage="Test" id="dgp-T7-8vf"/>
+                    <tabBarItem key="tabBarItem" title="Account Info" image="AccountInfo" selectedImage="Test" id="dgp-T7-8vf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cRE-Bd-QX8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -347,6 +346,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AccountInfo" width="25" height="25"/>
+        <image name="AddEventIcon" width="25" height="25"/>
+        <image name="MapView" width="25" height="25"/>
+        <image name="SearchView" width="25" height="25"/>
         <image name="Test" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
