@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import GoogleMaps
+//import GoogleMaps
 
 class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, UIAlertViewDelegate{
     var locationManager = CLLocationManager()

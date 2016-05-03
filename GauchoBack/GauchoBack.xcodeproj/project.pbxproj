@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2949C4AE1CD95531005D093E /* GoogleMapsM4B.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2949C4AD1CD95531005D093E /* GoogleMapsM4B.framework */; };
 		3EB994F31CBCAA4000EF6291 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB994F21CBCAA4000EF6291 /* AppDelegate.swift */; };
 		3EB994F81CBCAA4000EF6291 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EB994F61CBCAA4000EF6291 /* Main.storyboard */; };
 		3EB994FA1CBCAA4000EF6291 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EB994F91CBCAA4000EF6291 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2949C4AD1CD95531005D093E /* GoogleMapsM4B.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsM4B.framework; sourceTree = "<group>"; };
 		35A8507F40B77DE7C0C9689C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3EB994EF1CBCAA4000EF6291 /* GauchoBack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GauchoBack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB994F21CBCAA4000EF6291 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2949C4AE1CD95531005D093E /* GoogleMapsM4B.framework in Frameworks */,
 				FB3FFFB01CCF10040044A57F /* FBSDKLoginKit.framework in Frameworks */,
 				FB3FFFB11CCF10040044A57F /* FBSDKCoreKit.framework in Frameworks */,
 				4DCF286C8E1B3DB1FC67A94A /* Pods.framework in Frameworks */,
@@ -110,6 +113,7 @@
 		3EB994E61CBCAA4000EF6291 = {
 			isa = PBXGroup;
 			children = (
+				2949C4AD1CD95531005D093E /* GoogleMapsM4B.framework */,
 				FB3FFFAE1CCF10040044A57F /* FBSDKLoginKit.framework */,
 				FB3FFFAF1CCF10040044A57F /* FBSDKCoreKit.framework */,
 				3EB994F11CBCAA4000EF6291 /* GauchoBack */,
