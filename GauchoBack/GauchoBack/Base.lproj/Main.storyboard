@@ -225,7 +225,7 @@
         <!--Map View-->
         <scene sceneID="OOI-e4-jOf">
             <objects>
-                <viewController id="OUh-PA-hVs" sceneMemberID="viewController">
+                <viewController id="OUh-PA-hVs" customClass="MapViewController" customModule="GauchoBack" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5Qg-av-sTU"/>
                         <viewControllerLayoutGuide type="bottom" id="fb3-BG-KTK"/>
@@ -240,14 +240,24 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfJ-b8-f4E" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="76" width="600" height="475"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="sfJ-b8-f4E" secondAttribute="trailing" constant="-20" id="0rW-0l-N2H"/>
                             <constraint firstItem="aLX-0q-Ii2" firstAttribute="top" secondItem="5Qg-av-sTU" secondAttribute="bottom" constant="8" id="77i-nS-QNh"/>
+                            <constraint firstItem="fb3-BG-KTK" firstAttribute="top" secondItem="sfJ-b8-f4E" secondAttribute="bottom" id="Ai6-zU-T3s"/>
+                            <constraint firstItem="sfJ-b8-f4E" firstAttribute="leading" secondItem="1H9-uw-nSM" secondAttribute="leadingMargin" constant="-20" id="L09-e7-elq"/>
                             <constraint firstItem="aLX-0q-Ii2" firstAttribute="centerX" secondItem="1H9-uw-nSM" secondAttribute="centerX" id="s5M-GY-Vgs"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map View" image="MapView" id="p9b-dI-iRA"/>
+                    <connections>
+                        <outlet property="mapView" destination="sfJ-b8-f4E" id="Ncu-Jy-ZMf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcX-5H-GYN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

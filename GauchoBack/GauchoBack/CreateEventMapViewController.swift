@@ -35,7 +35,7 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
         
         userLocation = locations[0]
         
-        print(userLocation)
+        //print(userLocation)
         if(cam == nil){
             cam = GMSCameraPosition.cameraWithTarget(userLocation.coordinate, zoom: 18)
             //mapView = GMSMapView.mapWithFrame(CGRectZero, camera: cam)
