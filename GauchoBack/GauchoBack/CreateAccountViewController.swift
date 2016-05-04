@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class CreatAccountViewController: UIViewController {
+class CreateAccountViewController: UIViewController {
 
     @IBOutlet weak var firstNameTextField: UITextField!
     
@@ -61,7 +61,7 @@ class CreatAccountViewController: UIViewController {
                             
                             firebaseAdapter.addAccount(email)
                             
-                            self.performSegueWithIdentifier("createAcountMapSegue", sender: self)
+                            self.performSegueWithIdentifier("createAccountSegue", sender: self)
                         }
                         else
                         {

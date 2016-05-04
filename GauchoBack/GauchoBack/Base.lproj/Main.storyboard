@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cdx-3M-Skd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cdx-3M-Skd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="24" y="-450"/>
         </scene>
-        <!--Creat Account View Controller-->
+        <!--Create Account View Controller-->
         <scene sceneID="2dC-r7-QU7">
             <objects>
-                <viewController id="AMo-aH-h1J" customClass="CreatAccountViewController" customModule="GauchoBack" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AMo-aH-h1J" customClass="CreateAccountViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fyd-Fp-OpD"/>
                         <viewControllerLayoutGuide type="bottom" id="d0l-0K-lmm"/>
@@ -406,7 +406,7 @@
         <image name="SearchView" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uWQ-vF-9kD"/>
         <segue reference="2zC-73-6ve"/>
+        <segue reference="CEN-OT-zY1"/>
     </inferredMetricsTieBreakers>
 </document>
