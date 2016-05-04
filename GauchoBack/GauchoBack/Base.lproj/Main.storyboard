@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cdx-3M-Skd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cdx-3M-Skd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -324,8 +324,81 @@
                     <view key="view" contentMode="scaleToFill" id="Mdh-D7-rv8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BP1-1V-TkK">
+                                <rect key="frame" x="251" y="20" width="99" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ECb-hj-Rcr">
+                                <rect key="frame" x="20" y="71" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5ek-qa-OpX">
+                                <rect key="frame" x="20" y="316" width="560" height="78"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="78" id="Atf-Iw-5uK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Host" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5FN-V4-Val">
+                                <rect key="frame" x="20" y="109" width="279" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="279" id="jD2-iZ-nw4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lCy-5C-IFI">
+                                <rect key="frame" x="20" y="147" width="279" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxt-Xf-Olz">
+                                <rect key="frame" x="258" y="402" width="84" height="30"/>
+                                <state key="normal" title="CreateEvent"/>
+                                <connections>
+                                    <action selector="createEventAction:" destination="KD7-sT-SBh" eventType="touchUpInside" id="4ng-Pj-TYY"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTB-O4-reZ">
+                                <rect key="frame" x="20" y="287" width="93" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="5ek-qa-OpX" secondAttribute="bottom" constant="157" id="4Qz-d1-ceI"/>
+                            <constraint firstItem="ECb-hj-Rcr" firstAttribute="trailing" secondItem="Mdh-D7-rv8" secondAttribute="trailingMargin" id="7L6-we-zKm"/>
+                            <constraint firstItem="5ek-qa-OpX" firstAttribute="centerX" secondItem="Qxt-Xf-Olz" secondAttribute="centerX" id="7c3-mR-bFt"/>
+                            <constraint firstItem="5FN-V4-Val" firstAttribute="top" secondItem="ECb-hj-Rcr" secondAttribute="bottom" constant="8" symbolic="YES" id="BXF-yW-iH4"/>
+                            <constraint firstItem="ECb-hj-Rcr" firstAttribute="leading" secondItem="Mdh-D7-rv8" secondAttribute="leadingMargin" id="C1V-RA-9gd"/>
+                            <constraint firstItem="5ek-qa-OpX" firstAttribute="top" secondItem="tTB-O4-reZ" secondAttribute="bottom" constant="8" symbolic="YES" id="LIv-iv-hSE"/>
+                            <constraint firstItem="BP1-1V-TkK" firstAttribute="top" secondItem="Yln-qS-Uay" secondAttribute="bottom" id="Nga-w5-agI"/>
+                            <constraint firstItem="BP1-1V-TkK" firstAttribute="centerX" secondItem="ECb-hj-Rcr" secondAttribute="centerX" id="Teu-ho-VTP"/>
+                            <constraint firstItem="ECb-hj-Rcr" firstAttribute="top" secondItem="BP1-1V-TkK" secondAttribute="bottom" constant="30" id="VRW-5k-iLW"/>
+                            <constraint firstItem="lCy-5C-IFI" firstAttribute="top" secondItem="5FN-V4-Val" secondAttribute="bottom" constant="8" symbolic="YES" id="YAo-sk-thN"/>
+                            <constraint firstItem="5FN-V4-Val" firstAttribute="leading" secondItem="lCy-5C-IFI" secondAttribute="leading" id="gXz-3Y-6cd"/>
+                            <constraint firstItem="ECb-hj-Rcr" firstAttribute="leading" secondItem="5FN-V4-Val" secondAttribute="leading" id="hWo-5H-znQ"/>
+                            <constraint firstItem="tTB-O4-reZ" firstAttribute="leading" secondItem="5ek-qa-OpX" secondAttribute="leading" id="iLZ-fa-rPb"/>
+                            <constraint firstItem="tTB-O4-reZ" firstAttribute="leading" secondItem="lCy-5C-IFI" secondAttribute="leading" id="is3-Ay-bdo"/>
+                            <constraint firstItem="5FN-V4-Val" firstAttribute="trailing" secondItem="lCy-5C-IFI" secondAttribute="trailing" id="kX1-mc-zGg"/>
+                            <constraint firstItem="Qxt-Xf-Olz" firstAttribute="top" secondItem="5ek-qa-OpX" secondAttribute="bottom" constant="8" symbolic="YES" id="uvG-1T-Pie"/>
+                            <constraint firstItem="ECb-hj-Rcr" firstAttribute="trailing" secondItem="5ek-qa-OpX" secondAttribute="trailing" id="vV3-Hj-Ai3"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="5ek-qa-OpX" id="A7c-gz-PTg"/>
+                        <outlet property="eventNameTextField" destination="ECb-hj-Rcr" id="1su-QS-41q"/>
+                        <outlet property="hostTextField" destination="5FN-V4-Val" id="LO5-Po-72s"/>
+                        <outlet property="locationTextField" destination="lCy-5C-IFI" id="o5q-HS-kye"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cpl-88-YSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
