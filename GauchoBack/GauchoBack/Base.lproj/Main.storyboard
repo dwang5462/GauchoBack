@@ -241,11 +241,11 @@
                         <viewControllerLayoutGuide type="bottom" id="fb3-BG-KTK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1H9-uw-nSM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfJ-b8-f4E" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="49" width="600" height="543"/>
+                                <rect key="frame" x="0.0" y="49" width="600" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLX-0q-Ii2">
@@ -258,7 +258,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="sfJ-b8-f4E" secondAttribute="trailing" id="0mt-UE-gFs"/>
-                            <constraint firstItem="fb3-BG-KTK" firstAttribute="top" secondItem="sfJ-b8-f4E" secondAttribute="bottom" constant="8" symbolic="YES" id="6bC-rt-Zfk"/>
+                            <constraint firstItem="fb3-BG-KTK" firstAttribute="top" secondItem="sfJ-b8-f4E" secondAttribute="bottom" id="6bC-rt-Zfk"/>
                             <constraint firstItem="aLX-0q-Ii2" firstAttribute="centerX" secondItem="sfJ-b8-f4E" secondAttribute="centerX" id="N1L-JM-Sgu"/>
                             <constraint firstItem="aLX-0q-Ii2" firstAttribute="top" secondItem="5Qg-av-sTU" secondAttribute="bottom" id="iZq-lK-nIp"/>
                             <constraint firstItem="sfJ-b8-f4E" firstAttribute="leading" secondItem="1H9-uw-nSM" secondAttribute="leading" id="uDD-JW-UG3"/>
@@ -287,7 +287,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="394-q6-hSa" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="49" width="600" height="494"/>
+                                <rect key="frame" x="0.0" y="49" width="600" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="He3-rD-OYi">
@@ -304,7 +304,7 @@
                             <constraint firstItem="394-q6-hSa" firstAttribute="top" secondItem="He3-rD-OYi" secondAttribute="bottom" constant="8" symbolic="YES" id="Ll2-rL-cwR"/>
                             <constraint firstItem="He3-rD-OYi" firstAttribute="top" secondItem="RGO-jg-Bt9" secondAttribute="bottom" id="eAn-4u-oTq"/>
                             <constraint firstItem="394-q6-hSa" firstAttribute="leading" secondItem="we7-Cs-WH4" secondAttribute="leading" id="jGr-n5-QZ1"/>
-                            <constraint firstItem="Vui-o1-qom" firstAttribute="top" secondItem="394-q6-hSa" secondAttribute="bottom" constant="8" symbolic="YES" id="n2c-gY-YU4"/>
+                            <constraint firstItem="Vui-o1-qom" firstAttribute="top" secondItem="394-q6-hSa" secondAttribute="bottom" id="n2c-gY-YU4"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Add Event" image="AddEventIcon" id="wTK-0e-ayU"/>
@@ -403,12 +403,12 @@
                         <outlet property="eventNameTextField" destination="ECb-hj-Rcr" id="1su-QS-41q"/>
                         <outlet property="hostTextField" destination="5FN-V4-Val" id="LO5-Po-72s"/>
                         <outlet property="locationTextField" destination="lCy-5C-IFI" id="o5q-HS-kye"/>
-                        <segue destination="OUh-PA-hVs" kind="presentation" identifier="eventCreatedSegue" id="8CC-8C-Wfh"/>
+                        <segue destination="6A7-la-lym" kind="presentation" identifier="eventCreatedSegue" id="zaq-SQ-D1z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cpl-88-YSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="733" y="1795"/>
+            <point key="canvasLocation" x="733" y="1838"/>
         </scene>
         <!--My Account-->
         <scene sceneID="J9S-XP-158">
@@ -485,8 +485,7 @@
         <image name="SearchView" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uWQ-vF-9kD"/>
+        <segue reference="zaq-SQ-D1z"/>
         <segue reference="2zC-73-6ve"/>
-        <segue reference="8CC-8C-Wfh"/>
     </inferredMetricsTieBreakers>
 </document>

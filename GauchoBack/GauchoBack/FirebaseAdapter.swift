@@ -82,7 +82,7 @@ class FirebaseAdapter {
                     
                     //For each case we initialize the pertaining variable and check if the keyword exists.
                     case "eventName":
-                        let eventName = child.valueForKey("event_name") as! String!
+                        let eventName = child.value.objectForKey("event_name") as! String!
                         if eventName.rangeOfString(keyword) != nil
                         {
                             match = true
@@ -90,7 +90,7 @@ class FirebaseAdapter {
                         break;
                     
                     case "description":
-                        let eventDescription = child.valueForKey("event_description") as! String!
+                        let eventDescription = child.value.objectForKey("event_description") as! String!
                         if eventDescription.rangeOfString(keyword) != nil
                         {
                             match = true
@@ -98,7 +98,7 @@ class FirebaseAdapter {
                         break;
                     
                     case "host":
-                        let host = child.valueForKey("event_host") as! String!
+                        let host = child.value.objectForKey("event_host") as! String!
                         if host.rangeOfString(keyword) != nil
                         {
                             match = true
@@ -106,7 +106,7 @@ class FirebaseAdapter {
                         break;
                     
                     case "location":
-                        let location = child.valueForKey("location") as! String!
+                        let location = child.value.objectForKey("location") as! String!
                         if location.rangeOfString(keyword) != nil
                         {
                             match = true
@@ -114,7 +114,7 @@ class FirebaseAdapter {
                         break;
                     
                     case "startTime":
-                        let startTime = child.valueForKey("start_time")as! String!
+                        let startTime = child.value.objectForKey("start_time")as! String!
                         if startTime.rangeOfString(keyword) != nil
                         {
                             match = true
@@ -122,7 +122,7 @@ class FirebaseAdapter {
                         break;
                     
                     case "eventType":
-                        let eventType = child.valueForKey("event_type") as! String!
+                        let eventType = child.value.objectForKey("event_type") as! String!
                         if eventType.rangeOfString(keyword) != nil
                         {
                             match = true
@@ -135,15 +135,15 @@ class FirebaseAdapter {
                 if match
                 {
                     print("Match Found")
-                    let eventName = child.valueForKey("event_name") as! String!
-                    let eventDescription = child.valueForKey("event_description") as! String!
-                    let host = child.valueForKey("event_host") as! String!
-                    let location = child.valueForKey("location") as! String!
-                    let startTime = child.valueForKey("start_time")as! String!
-                    let eventType = child.valueForKey("event_type") as! String!
-                    let longitude = child.valueForKey("longitude")as! String!
-                    let latitude = child.valueForKey("latitude")as! String!
-                    let endTime = child.valueForKey("end_time")as! String!
+                    let eventName = child.value.objectForKey("event_name") as! String!
+                    let eventDescription = child.value.objectForKey("event_description") as! String!
+                    let host = child.value.objectForKey("event_host") as! String!
+                    let location = child.value.objectForKey("location") as! String!
+                    let startTime = child.value.objectForKey("start_time")as! String!
+                    let eventType = child.value.objectForKey("event_type") as! String!
+                    let longitude = child.value.objectForKey("longitude")as! String!
+                    let latitude = child.value.objectForKey("latitude")as! String!
+                    let endTime = child.value.objectForKey("end_time")as! String!
 
                     matchedEvents.append(Event(eventName: eventName, eventDescription: eventDescription,location:location, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, host: host, eventType:eventType))
                 }
@@ -168,21 +168,21 @@ class FirebaseAdapter {
             //iterate over the all the children of the events branch
             while let child = enumerator.nextObject() as? FDataSnapshot
             {
-                let eventAuthor = child.valueForKey("author") as! String!
+                let eventAuthor = child.value.objectForKey("author") as! String!
                 
                 //if the author of the event matches the current author
                 if eventAuthor == CURRENT_USER.authData.uid
                 {
                     
-                    let eventName = child.valueForKey("event_name") as! String!
-                    let eventDescription = child.valueForKey("event_description") as! String!
-                    let longitude = child.valueForKey("longitude")as! String!
-                    let latitude = child.valueForKey("latitude")as! String!
-                    let startTime = child.valueForKey("start_time")as! String!
-                    let endTime = child.valueForKey("end_time")as! String!
-                    let location = child.valueForKey("location") as! String!
-                    let eventType = child.valueForKey("event_type") as! String!
-                    let host = child.valueForKey("host") as! String!
+                    let eventName = child.value.objectForKey("event_name") as! String!
+                    let eventDescription = child.value.objectForKey("event_description") as! String!
+                    let longitude = child.value.objectForKey("longitude")as! String!
+                    let latitude = child.value.objectForKey("latitude")as! String!
+                    let startTime = child.value.objectForKey("start_time")as! String!
+                    let endTime = child.value.objectForKey("end_time")as! String!
+                    let location = child.value.objectForKey("location") as! String!
+                    let eventType = child.value.objectForKey("event_type") as! String!
+                    let host = child.value.objectForKey("host") as! String!
                     
                     myEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location:location, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, host:host, eventType: eventType))
 
@@ -206,8 +206,8 @@ class FirebaseAdapter {
             //iterate over the all the children of the events branch
             while let child = enumerator.nextObject() as? FDataSnapshot
             {
-                let eventLongitude = child.valueForKey("longitude")as! String!
-                let eventLatitude = child.valueForKey("latitude")as! String!
+                let eventLongitude = child.value.objectForKey("longitude")as! String!
+                let eventLatitude = child.value.objectForKey("latitude")as! String!
                 
                 let longitudeDelta = abs(Double(currentLongitude)! - Double(eventLongitude)!) as Double!
                 let latitudeDelta = abs(Double(currentLatitude)! - Double(eventLatitude)!) as Double!
@@ -217,13 +217,13 @@ class FirebaseAdapter {
                 //if distance away from current loaction is within maximum distance
                 if distanceAway <= maxDistance
                 {
-                    let eventName = child.valueForKey("event_name") as! String!
-                    let eventDescription = child.valueForKey("event_description") as! String!
-                    let location = child.valueForKey("location") as! String!
-                    let startTime = child.valueForKey("start_time")as! String!
-                    let endTime = child.valueForKey("end_time")as! String!
-                    let host = child.valueForKey("host") as! String!
-                    let eventType = child.valueForKey("event_type") as! String!
+                    let eventName = child.value.objectForKey("event_name") as! String!
+                    let eventDescription = child.value.objectForKey("event_description") as! String!
+                    let location = child.value.objectForKey("location") as! String!
+                    let startTime = child.value.objectForKey("start_time")as! String!
+                    let endTime = child.value.objectForKey("end_time")as! String!
+                    let host = child.value.objectForKey("host") as! String!
+                    let eventType = child.value.objectForKey("event_type") as! String!
 
                     //add event to event list
                     nearbyEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location: location, longitude: eventLongitude, latitude: eventLatitude, startTime: startTime, endTime: endTime, host: host, eventType:eventType))
