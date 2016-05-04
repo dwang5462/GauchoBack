@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class MyAccountViewController: UIViewController {
 
@@ -43,6 +44,8 @@ class MyAccountViewController: UIViewController {
         //***force facebook account to logout
         
         NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "uid")
+        
+        FBSDKAccessToken.setCurrentAccessToken(nil)
         performSegueWithIdentifier("backToLoginSegue", sender: self)
     }
     

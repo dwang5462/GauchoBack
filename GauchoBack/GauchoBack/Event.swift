@@ -12,50 +12,18 @@ import Foundation
 
 class Event:NSObject{
     
-    var eventName: String{
-        get{return self.eventName}
-        set{self.eventName = newValue}
-    }
-    var eventDescription: String{
-        get{return self.eventDescription}
-        set{self.eventDescription = newValue}
-    }
-    var location:String{
-        get{return self.location}
-        set{self.location = newValue}
-    }
-    var longitude:String{
-        get{return self.longitude}
-        set{self.longitude = newValue}
-    }
-    var latitude:String{
-        get{return self.latitude}
-        set{self.latitude = newValue}
-    }
-    var startTime:String{
-        get{return self.startTime}
-        set{self.startTime = newValue}
-    }
-    var endTime:String{
-        get{return self.endTime}
-        set{self.endTime = newValue}
-        
-    }
-    var author:String{
-        get{return self.author}
-        set{self.author = newValue}
-    }
-    var host:String{
-        get{return self.host}
-        set{self.host = newValue}
-    }
-    var eventType:String{
-        get{return self.eventType}
-        set{self.eventType = newValue}
-    }
+    var eventName: String = ""
+    var eventDescription: String = ""
+    var location:String = ""
+    var longitude:String = ""
+    var latitude:String = ""
+    var startTime:String = ""
+    var endTime:String = ""
+    var host:String = ""
+    var eventType:String = ""
     
     
-    init(eventName:String, eventDescription:String, location:String, longitude:String, latitude:String, startTime:String, endTime:String, author:String, host:String, eventType:String){
+    init(eventName:String, eventDescription:String, location:String, longitude:String, latitude:String, startTime:String, endTime:String, host:String, eventType:String){
         super.init()
         self.eventName = eventName
         self.eventDescription = eventDescription
@@ -64,7 +32,6 @@ class Event:NSObject{
         self.latitude = latitude
         self.startTime = startTime
         self.endTime = endTime
-        self.author = author
         self.host = host
         self.eventType = eventType
     }

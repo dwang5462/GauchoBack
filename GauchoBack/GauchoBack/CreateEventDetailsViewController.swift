@@ -22,14 +22,17 @@ class CreateEventDetailsController : UIViewController{
     }
     
     @IBAction func createEventAction(sender: AnyObject) {
+        
         let eventName = eventNameTextField.text
         let host = hostTextField.text
         let location = locationTextField.text
         let description = descriptionTextField.text
         
-        let newEvent = Event(eventName: eventName!, eventDescription: description, location: location!, longitude: "", latitude: "", startTime: "", endTime: "", author: CURRENT_USER.authData.uid, host: host!, eventType: "")
+        let newEvent = Event(eventName: eventName!, eventDescription: description, location: location!, longitude: "", latitude: "", startTime: "", endTime: "", host: host!, eventType: "")
         let firebaseAdapter = FirebaseAdapter()
         
         firebaseAdapter.addEvent(newEvent)
+        
+        performSegueWithIdentifier("eventCreatedSegue", sender: self)
     }
 }

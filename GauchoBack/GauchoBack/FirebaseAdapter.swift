@@ -15,12 +15,21 @@ class FirebaseAdapter {
     let usersBranch = FIREBASE_REF.childByAppendingPath("users")
     
     
-    //returns userinfo from firebase, in a string array.
+    //Returns user's "firstName" at index 0, "lastName"  at index 1 and "email" at index 2
     func getUserInfo() -> [String]{
         
         let userInfoBranch = usersBranch.childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("user_info")
         
-        let userInfo:[String] = ["empty"]
+        var userInfo:[String] = []
+        
+        userInfoBranch.observeSingleEventOfType(.Value, withBlock: {
+            snapshot in
+            
+            userInfo.append(snapshot.value.objectForKey("first_name") as! String!)
+            userInfo.append(snapshot.value.objectForKey("last_name") as! String!)
+            userInfo.append(snapshot.value.objectForKey("email") as! String!)
+        })
+
         
         return userInfo
     }
@@ -40,8 +49,7 @@ class FirebaseAdapter {
    //Adds an event to the events branch
     func addEvent(newEvent:Event)-> Void
     {
-        
-        
+        //"author" is strictly used only in addEvent and MyEvents.  It will be used whenever we create events or look for events made by current user.
         let newEventDict = ["event_name" : newEvent.eventName, "event_description" : newEvent.eventDescription, "start_time" : newEvent.startTime,"longitude":newEvent.longitude, "latitude":newEvent.latitude,  "end_time" : newEvent.endTime, "author": CURRENT_USER.authData.uid, "event_host": newEvent.host]
         
         //create a new branch off the events branch for this new event, to hold the newEvent dictionary
@@ -136,9 +144,8 @@ class FirebaseAdapter {
                     let longitude = child.valueForKey("longitude")as! String!
                     let latitude = child.valueForKey("latitude")as! String!
                     let endTime = child.valueForKey("end_time")as! String!
-                    let author = child.valueForKey("author")as! String!
 
-                    matchedEvents.append(Event(eventName: eventName, eventDescription: eventDescription,location:location, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, author: author, host: host, eventType:eventType))
+                    matchedEvents.append(Event(eventName: eventName, eventDescription: eventDescription,location:location, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, host: host, eventType:eventType))
                 }
                 //else don't add event
             }
@@ -177,7 +184,7 @@ class FirebaseAdapter {
                     let eventType = child.valueForKey("event_type") as! String!
                     let host = child.valueForKey("host") as! String!
                     
-                    myEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location:location, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, author: eventAuthor, host:host, eventType: eventType))                    
+                    myEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location:location, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, host:host, eventType: eventType))
 
                 }
             }
@@ -215,12 +222,11 @@ class FirebaseAdapter {
                     let location = child.valueForKey("location") as! String!
                     let startTime = child.valueForKey("start_time")as! String!
                     let endTime = child.valueForKey("end_time")as! String!
-                    let eventAuthor = child.valueForKey("author") as! String!
                     let host = child.valueForKey("host") as! String!
                     let eventType = child.valueForKey("event_type") as! String!
 
                     //add event to event list
-                    nearbyEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location: location, longitude: eventLongitude, latitude: eventLatitude, startTime: startTime, endTime: endTime, author: eventAuthor, host: host, eventType:eventType))
+                    nearbyEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location: location, longitude: eventLongitude, latitude: eventLatitude, startTime: startTime, endTime: endTime, host: host, eventType:eventType))
                 }
             }
         })
