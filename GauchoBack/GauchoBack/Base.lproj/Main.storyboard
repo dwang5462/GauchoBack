@@ -305,11 +305,30 @@
                     <tabBarItem key="tabBarItem" title="Add Event" image="AddEventIcon" id="wTK-0e-ayU"/>
                     <connections>
                         <outlet property="mapView" destination="394-q6-hSa" id="TEb-d5-hPD"/>
+                        <segue destination="KD7-sT-SBh" kind="show" identifier="eventCreator" id="1Yh-FS-ZoT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SeH-Nf-YRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="733" y="1045"/>
+        </scene>
+        <!--Create Event Details Controller-->
+        <scene sceneID="TfD-ry-hl9">
+            <objects>
+                <viewController id="KD7-sT-SBh" customClass="CreateEventDetailsController" customModule="GauchoBack" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yln-qS-Uay"/>
+                        <viewControllerLayoutGuide type="bottom" id="UeY-3z-KSI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mdh-D7-rv8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cpl-88-YSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="733" y="1795"/>
         </scene>
         <!--My Account-->
         <scene sceneID="J9S-XP-158">
