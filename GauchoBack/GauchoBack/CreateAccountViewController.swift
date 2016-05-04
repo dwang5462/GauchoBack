@@ -57,9 +57,9 @@ class CreatAccountViewController: UIViewController {
                             
                             //
                             let firebaseAdapter = FirebaseAdapter()
-                            fireBase.setUserInfo(firstName, lastName: lastName, email: email)
+                            firebaseAdapter.setUserInfo(firstName, lastName: lastName, email: email)
                             
-                            fireBase.addAccount(email)
+                            firebaseAdapter.addAccount(email)
                             
                             self.performSegueWithIdentifier("createAcountMapSegue", sender: self)
                         }

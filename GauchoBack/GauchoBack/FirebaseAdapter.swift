@@ -133,8 +133,8 @@ class FirebaseAdapter {
                 let eventLongitude = child.valueForKey("longitude")as! String!
                 let eventLatitude = child.valueForKey("latitude")as! String!
                 
-                let longitudeDelta = abs(Double(currentLongitude) - Double(eventLongitude)) as! Double!
-                let latitudeDelta = abs(Double(currentLatitude) - Double(eventLatitude)) as! Double!
+                let longitudeDelta = abs(Double(currentLongitude)! - Double(eventLongitude)!) as Double!
+                let latitudeDelta = abs(Double(currentLatitude)! - Double(eventLatitude)!) as Double!
                 
                 let distanceAway = sqrt((longitudeDelta * longitudeDelta) + (latitudeDelta * latitudeDelta))
                 
@@ -148,7 +148,7 @@ class FirebaseAdapter {
                     let eventAuthor = child.valueForKey("author") as! String!
 
                     //add event to event list
-                    myEvents.append(Event(eventName: eventName, eventDescription: eventDescription, longitude: eventLongitude, latitude: eventLatitude, startTime: startTime, endTime: endTime, author: eventAuthor))
+                    nearbyEvents.append(Event(eventName: eventName, eventDescription: eventDescription, longitude: eventLongitude, latitude: eventLatitude, startTime: startTime, endTime: endTime, author: eventAuthor))
                 }
             }
         })
@@ -175,11 +175,11 @@ class FirebaseAdapter {
         
         return input
     }
-    
+   
     //Returns true if an email exists in our system, false if not.
     func doesUserExist(emailToCheck:String)->Bool
     {
-        let emailToCheck = removeBadChars(emailToCheck)
+        let emailToCheck = removeIllegalChars(emailToCheck)
         
         var exists: Bool = false
         
@@ -206,7 +206,7 @@ class FirebaseAdapter {
     //Add account to our list of accounts.
     func addAccount(email:String)->Void
     {
-        let email = removeBadChars(email)
+        let email = removeIllegalChars(email)
         let addedAccount = ["added": true]
         FIREBASE_REF.childByAppendingPath("accounts").childByAppendingPath(email).setValue(addedAccount)
     }

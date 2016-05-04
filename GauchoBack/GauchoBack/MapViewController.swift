@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import GoogleMaps
+import GoogleMaps
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     

@@ -21,7 +21,7 @@ class MyAccountViewController: UIViewController {
         super.viewDidAppear(animated)
         
         //If user is not already logged in then segue back to login page.
-        if NSUserDefaults.standardUserDefaults().valueForKey("uid") = nil || CURRENT_USER.authData = nil
+        if NSUserDefaults.standardUserDefaults().valueForKey("uid") == nil || CURRENT_USER.authData == nil
         {
             performSegueWithIdentifier("backToLoginSegue", sender: self)
         }
