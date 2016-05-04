@@ -306,6 +306,7 @@
                     <connections>
                         <outlet property="mapView" destination="394-q6-hSa" id="TEb-d5-hPD"/>
                         <segue destination="KD7-sT-SBh" kind="show" identifier="eventCreator" id="1Yh-FS-ZoT"/>
+                        <segue destination="Cdx-3M-Skd" kind="presentation" identifier="addEventAttemptNoAccountSegue" id="2zC-73-6ve"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SeH-Nf-YRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -406,5 +407,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uWQ-vF-9kD"/>
+        <segue reference="2zC-73-6ve"/>
     </inferredMetricsTieBreakers>
 </document>

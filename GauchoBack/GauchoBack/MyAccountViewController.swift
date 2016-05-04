@@ -37,9 +37,12 @@ class MyAccountViewController: UIViewController {
 
     @IBAction func logoutAction(sender: AnyObject) {
         
-        CURRENT_USER.unauth()
-        NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "uid")
         print(CURRENT_USER.authData.uid, " has logged out.")
+        CURRENT_USER.unauth()
+        
+        //***force facebook account to logout
+        
+        NSUserDefaults.standardUserDefaults().setValue(nil, forKey: "uid")
         performSegueWithIdentifier("backToLoginSegue", sender: self)
     }
     

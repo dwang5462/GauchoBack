@@ -30,6 +30,19 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
         // Do any additional setup after loading the view, typically from a nib.
     }
     
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        
+        //If user is not already logged in then segue back to login page.
+        if NSUserDefaults.standardUserDefaults().valueForKey("uid") == nil || CURRENT_USER.authData == nil
+        {
+            performSegueWithIdentifier("addEventAttemptNoAccountSegue", sender: self)
+        }
+        
+        
+    }
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         
