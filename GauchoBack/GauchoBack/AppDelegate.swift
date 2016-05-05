@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         GMSServices.provideAPIKey("AIzaSyCHg6Ggv0lH0KMsWPq0zI0ljK-ti5pSYYo")
         // Override point for customization after application launch.
-        UITabBar.appearance().tintColor = UIColor.whiteColor()
+        let ucsbGold = UIColor(red: 222/255, green: 151/255, blue: 0, alpha: 1)
+        UITabBar.appearance().tintColor =  ucsbGold
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

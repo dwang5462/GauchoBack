@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-
 class Event:NSObject{
     
     var eventName: String = ""
@@ -35,7 +33,4 @@ class Event:NSObject{
         self.host = host
         self.eventType = eventType
     }
-    
-    
-    
 }
