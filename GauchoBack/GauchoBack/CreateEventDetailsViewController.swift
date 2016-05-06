@@ -18,7 +18,7 @@ class CreateEventDetailsController : UIViewController{
     @IBOutlet weak var descriptionTextField: UITextView!
     
     override func viewDidLoad() {
-        print("Hello")
+        
     }
     
     @IBAction func createEventAction(sender: AnyObject) {
@@ -33,6 +33,6 @@ class CreateEventDetailsController : UIViewController{
         
         firebaseAdapter.addEvent(newEvent)
         
-        performSegueWithIdentifier("eventCreatedSegue", sender: self)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -26,8 +26,6 @@ class MyAccountViewController: UIViewController {
         {
             performSegueWithIdentifier("backToLoginSegue", sender: self)
         }
-        
-        
     }
 
     override func didReceiveMemoryWarning() {

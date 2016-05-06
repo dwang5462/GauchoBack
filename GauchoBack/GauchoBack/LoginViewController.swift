@@ -15,6 +15,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
 {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
     @IBOutlet weak var createAccountButton: UIButton!
     
     @IBOutlet weak var logoutButton: UIButton!
@@ -203,8 +204,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
         }
     }
     
-    //Creating an account through Firebase.
+    
     @IBAction func createAccountAction(sender: AnyObject) {
         performSegueWithIdentifier("createAccountSegue", sender: self)
     }
+    //Creating an account through Firebase.
+    
 }
