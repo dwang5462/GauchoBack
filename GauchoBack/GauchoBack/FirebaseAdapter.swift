@@ -212,6 +212,7 @@ class FirebaseAdapter {
                 let longitudeDelta = abs(Double(currentLongitude)! - Double(eventLongitude)!) as Double!
                 let latitudeDelta = abs(Double(currentLatitude)! - Double(eventLatitude)!) as Double!
                 
+                
                 let distanceAway = sqrt((longitudeDelta * longitudeDelta) + (latitudeDelta * latitudeDelta))
                 
                 //if distance away from current loaction is within maximum distance
