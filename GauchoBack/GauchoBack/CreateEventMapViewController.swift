@@ -14,11 +14,9 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
     
     var cam:GMSCameraPosition! = nil
     var userLocation:CLLocation!
-    
-    
-    
+    var eventCoordinate:CLLocationCoordinate2D!
+    var eventType:String!
     @IBOutlet var mapView: GMSMapView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +87,7 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
         marker.position = coordinate
         marker.snippet = "Hello World"
         marker.appearAnimation = kGMSMarkerAnimationPop
+        eventCoordinate = coordinate
         
         // Create the alert controller
         let alertController = UIAlertController(title: "Choose Type", message: "Blue for Event\nYellow for Meeting\nRed for Warning\n", preferredStyle: .ActionSheet)
@@ -97,16 +96,19 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
         let warningAction = UIAlertAction(title: "Warning", style: UIAlertActionStyle.Default) {
             UIAlertAction in
             marker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())
+            self.eventType = "warning"
             self.performSegueWithIdentifier("eventCreator", sender: self)
         }
         let eventAction = UIAlertAction(title: "Event", style: UIAlertActionStyle.Default) {
             UIAlertAction in
             marker.icon = GMSMarker.markerImageWithColor(UIColor.blueColor())
+            self.eventType = "event"
             self.performSegueWithIdentifier("eventCreator", sender: self)
         }
         let meetingAction = UIAlertAction(title: "Meeting", style: UIAlertActionStyle.Default) {
             UIAlertAction in
             marker.icon = GMSMarker.markerImageWithColor(UIColor.yellowColor())
+            self.eventType = "meeting"
             self.performSegueWithIdentifier("eventCreator", sender: self)
             
         }
@@ -129,6 +131,15 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if(segue.identifier == "eventCreator") {
+            
+            let yourNextViewController = (segue.destinationViewController as! CreateEventDetailsController)
+            yourNextViewController.eventCoordinate = eventCoordinate
+            yourNextViewController.eventType = eventType
+        }
     }
 }
 

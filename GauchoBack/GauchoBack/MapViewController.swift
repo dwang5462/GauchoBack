@@ -8,18 +8,22 @@
 
 import UIKit
 import GoogleMaps
-
+var nearbyEventsMapView:[Event]!
 class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
     var locationManager = CLLocationManager()
     var userLocation = CLLocation()
+    var markersPlaced = false
     var cam:GMSCameraPosition! = nil
     var viewLoaded = false
+    var nearbyEvents:[Event]! = nil
+    var firebaseAdapter:FirebaseAdapter!
+    
     @IBOutlet var mapView: GMSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        nearbyEventsMapView = nil
         viewLoaded = true
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -47,13 +51,38 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         {
             print("This is view-only")
         }
+        
+        firebaseAdapter = FirebaseAdapter()
+        
     }
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if viewLoaded{
             userLocation = locations[0]
             cam = GMSCameraPosition.cameraWithTarget(userLocation.coordinate, zoom: 18)
             mapView.camera = cam
+            nearbyEvents = firebaseAdapter.getNearbyEvents(String(userLocation.coordinate.longitude), currentLatitude: String(userLocation.coordinate.latitude), maxDistance: 1)
+            
             viewLoaded = false
+        }
+        if (nearbyEventsMapView != nil && markersPlaced == false){
+            for singleEvent in nearbyEventsMapView {
+                let marker = GMSMarker()
+                marker.map = mapView
+                marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees(singleEvent.latitude)!, longitude: CLLocationDegrees(singleEvent.longitude)!)
+                marker.snippet = singleEvent.eventName
+                marker.appearAnimation = kGMSMarkerAnimationPop
+                if(singleEvent.eventType == "warning"){
+                    marker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())
+                }
+                else if(singleEvent.eventType == "event"){
+                    marker.icon = GMSMarker.markerImageWithColor(UIColor.blueColor())
+                }
+                else{
+                    marker.icon = GMSMarker.markerImageWithColor(UIColor.yellowColor())
+                }
+            }
+            markersPlaced = true
+
         }
     }
     override func didReceiveMemoryWarning() {
