@@ -9,6 +9,7 @@
 import UIKit
 import GoogleMaps
 var nearbyEventsMapView:[Event]!
+
 class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
     var locationManager = CLLocationManager()
@@ -55,6 +56,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         firebaseAdapter = FirebaseAdapter()
         
     }
+
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if viewLoaded{
             userLocation = locations[0]

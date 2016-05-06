@@ -37,6 +37,8 @@ class CreateEventDetailsController : UIViewController{
         
         firebaseAdapter.addEvent(newEvent)
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        performSegueWithIdentifier("eventCreatedSegue", sender: self)
+        
+        //self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
