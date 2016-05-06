@@ -50,7 +50,7 @@ class FirebaseAdapter {
     func addEvent(newEvent:Event)-> Void
     {
         //"author" is strictly used only in addEvent and MyEvents.  It will be used whenever we create events or look for events made by current user.
-        let newEventDict = ["event_name" : newEvent.eventName, "event_description" : newEvent.eventDescription, "start_time" : newEvent.startTime,"longitude":newEvent.longitude, "latitude":newEvent.latitude,  "end_time" : newEvent.endTime, "author": CURRENT_USER.authData.uid, "event_host": newEvent.host]
+        let newEventDict = ["event_name" : newEvent.eventName, "event_description" : newEvent.eventDescription, "start_time" : newEvent.startTime,"longitude":newEvent.longitude, "latitude":newEvent.latitude,  "end_time" : newEvent.endTime, "author": CURRENT_USER.authData.uid, "event_host": newEvent.host, "location":newEvent.location, "event_type" : newEvent.eventType]
         
         //create a new branch off the events branch for this new event, to hold the newEvent dictionary
         let newEventBranch = eventsBranch.childByAutoId()
@@ -198,7 +198,6 @@ class FirebaseAdapter {
     {
         
         var nearbyEvents = [Event]()
-        
         eventsBranch.observeSingleEventOfType(.Value, withBlock:{snapshot in
             
             let enumerator = snapshot.children
@@ -212,6 +211,7 @@ class FirebaseAdapter {
                 let longitudeDelta = abs(Double(currentLongitude)! - Double(eventLongitude)!) as Double!
                 let latitudeDelta = abs(Double(currentLatitude)! - Double(eventLatitude)!) as Double!
                 
+                
                 let distanceAway = sqrt((longitudeDelta * longitudeDelta) + (latitudeDelta * latitudeDelta))
                 
                 //if distance away from current loaction is within maximum distance
@@ -220,15 +220,17 @@ class FirebaseAdapter {
                     let eventName = child.value.objectForKey("event_name") as! String!
                     let eventDescription = child.value.objectForKey("event_description") as! String!
                     let location = child.value.objectForKey("location") as! String!
-                    let startTime = child.value.objectForKey("start_time")as! String!
-                    let endTime = child.value.objectForKey("end_time")as! String!
-                    let host = child.value.objectForKey("host") as! String!
+                    //let startTime = child.value.objectForKey("start_time")as! String!
+                    let startTime = "3:00"
+                    let endTime = "3:00"
+                    //let endTime = child.value.objectForKey("end_time")as! String!
+                    let host = child.value.objectForKey("event_host") as! String!
                     let eventType = child.value.objectForKey("event_type") as! String!
-
                     //add event to event list
                     nearbyEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location: location, longitude: eventLongitude, latitude: eventLatitude, startTime: startTime, endTime: endTime, host: host, eventType:eventType))
                 }
             }
+            nearbyEventsMapView = nearbyEvents
         })
         
         return nearbyEvents

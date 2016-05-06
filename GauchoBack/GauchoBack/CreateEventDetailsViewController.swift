@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class CreateEventDetailsController : UIViewController{
     @IBOutlet weak var eventNameTextField: UITextField!
@@ -17,6 +18,8 @@ class CreateEventDetailsController : UIViewController{
     
     @IBOutlet weak var descriptionTextField: UITextView!
     
+    var eventCoordinate:CLLocationCoordinate2D!
+    var eventType:String!
     override func viewDidLoad() {
         
     }
@@ -27,8 +30,9 @@ class CreateEventDetailsController : UIViewController{
         let host = hostTextField.text
         let location = locationTextField.text
         let description = descriptionTextField.text
-        
-        let newEvent = Event(eventName: eventName!, eventDescription: description, location: location!, longitude: "", latitude: "", startTime: "", endTime: "", host: host!, eventType: "")
+        let longitude = String(eventCoordinate.longitude)
+        let latitude = String(eventCoordinate.latitude)
+        let newEvent = Event(eventName: eventName!, eventDescription: description, location: location!, longitude: longitude, latitude: latitude, startTime: "", endTime: "", host: host!, eventType: eventType!)
         let firebaseAdapter = FirebaseAdapter()
         
         firebaseAdapter.addEvent(newEvent)
