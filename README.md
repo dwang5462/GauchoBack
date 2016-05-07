@@ -24,6 +24,9 @@ App Control Instructions:
  - The Map view displays all of the events nearby the user's current location, within the their maximum distance.  
  - The maximum distance variable can be set within the My Account tab.  
  - Events are user created inside the Add Event tab.
+  
+ Domain Analysis: https://docs.google.com/document/d/1c7jndBene1AhU0S6PBw1l5HZ36MROI9XPindBDC1AAY/edit?usp=sharing
+
 
  - In the Search Tab the user can search by a keyword and search type. The search types are: eventName, description, host, location, start time, and event type.
  - Once the search is done there will be a list of events undernesth the search text field that matched what the user searched.
