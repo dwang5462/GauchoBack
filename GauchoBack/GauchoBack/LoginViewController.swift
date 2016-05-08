@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
         let loginButton = FBSDKLoginButton()
         //Allow the correct read permissions, so we get data from the account on facebook
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        //say wherethe facebook button will be locatedon the loginViewController
+        //say where the facebook button will be located on the loginViewController
         loginButton.center = self.view.center
         //Make this view controller handle the output of the facebook button.
         loginButton.delegate = self
@@ -113,7 +113,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
         })
     }
     
-    //Method to be called when loggin in with facebook to register user in GauchoBack
+    //Method to be called when logging in with facebook to register user in GauchoBack
     func facebookProfileToFirebaseAccount(){
         
         if((FBSDKAccessToken.currentAccessToken()) != nil)
