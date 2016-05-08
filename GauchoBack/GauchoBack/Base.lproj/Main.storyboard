@@ -487,7 +487,7 @@
         <image name="SearchView" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2zC-73-6ve"/>
         <segue reference="zaq-SQ-D1z"/>
+        <segue reference="3Yc-Sh-YHa"/>
     </inferredMetricsTieBreakers>
 </document>
