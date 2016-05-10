@@ -64,7 +64,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             cam = GMSCameraPosition.cameraWithTarget(userLocation.coordinate, zoom: 18)
             mapView.camera = cam
             nearbyEvents = firebaseAdapter.getNearbyEvents(String(userLocation.coordinate.longitude), currentLatitude: String(userLocation.coordinate.latitude), maxDistance: 1)
-            
             viewLoaded = false
         }
         if (nearbyEventsMapView != nil && markersPlaced == false){
@@ -85,8 +84,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 }
             }
             markersPlaced = true
-
         }
+        if viewLoaded == false{
+            var longitudeDelta = (Double(String(locations[0].coordinate.longitude))! - Double(userLocation.coordinate.longitude)) as Double!
+            var latitudeDelta = (Double(locations[0].coordinate.latitude) - Double(userLocation.coordinate.latitude)) as Double!
+            longitudeDelta = abs(longitudeDelta!) as Double!
+            latitudeDelta = abs(latitudeDelta!) as Double!
+            let distanceAway = sqrt((longitudeDelta * longitudeDelta) + (latitudeDelta * latitudeDelta))
+            if (distanceAway >= 1.0){
+                viewLoaded = true
+                markersPlaced = false
+                nearbyEventsMapView = nil
+            }
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
