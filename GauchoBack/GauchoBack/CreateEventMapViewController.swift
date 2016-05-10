@@ -16,6 +16,7 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
     var userLocation:CLLocation!
     var eventCoordinate:CLLocationCoordinate2D!
     var eventType:String!
+    var eventMarker:GMSMarker!
     @IBOutlet var mapView: GMSMapView!
     
     override func viewDidLoad() {
@@ -82,11 +83,11 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
     
     func mapView(mapView: GMSMapView, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D){
         print("Did it work?")
-        let marker = GMSMarker()
-        marker.map = mapView
-        marker.position = coordinate
-        marker.snippet = "Hello World"
-        marker.appearAnimation = kGMSMarkerAnimationPop
+        eventMarker = GMSMarker()
+        eventMarker.map = mapView
+        eventMarker.position = coordinate
+        eventMarker.snippet = "Hello World"
+        eventMarker.appearAnimation = kGMSMarkerAnimationPop
         eventCoordinate = coordinate
         
         // Create the alert controller
@@ -95,26 +96,26 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
         // Create the actions
         let warningAction = UIAlertAction(title: "Warning", style: UIAlertActionStyle.Default) {
             UIAlertAction in
-            marker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())
+            self.eventMarker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())
             self.eventType = "warning"
             self.performSegueWithIdentifier("eventCreator", sender: self)
         }
         let eventAction = UIAlertAction(title: "Event", style: UIAlertActionStyle.Default) {
             UIAlertAction in
-            marker.icon = GMSMarker.markerImageWithColor(UIColor.blueColor())
+            self.eventMarker.icon = GMSMarker.markerImageWithColor(UIColor.blueColor())
             self.eventType = "event"
             self.performSegueWithIdentifier("eventCreator", sender: self)
         }
         let meetingAction = UIAlertAction(title: "Meeting", style: UIAlertActionStyle.Default) {
             UIAlertAction in
-            marker.icon = GMSMarker.markerImageWithColor(UIColor.yellowColor())
+            self.eventMarker.icon = GMSMarker.markerImageWithColor(UIColor.yellowColor())
             self.eventType = "meeting"
             self.performSegueWithIdentifier("eventCreator", sender: self)
             
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
             UIAlertAction in
-            marker.map = nil
+            self.eventMarker.map = nil
             
         }
         
@@ -122,7 +123,7 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
         alertController.addAction(eventAction)
         alertController.addAction(meetingAction)
         alertController.addAction(warningAction)
-        
+        alertController.view.alpha = 0.91
         //alertController.view.tintColor = UIColor.redColor()
         self.presentViewController(alertController, animated: true, completion: nil)
         
@@ -135,7 +136,7 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if(segue.identifier == "eventCreator") {
-            
+            self.eventMarker.map = nil
             let yourNextViewController = (segue.destinationViewController as! CreateEventDetailsController)
             yourNextViewController.eventCoordinate = eventCoordinate
             yourNextViewController.eventType = eventType
