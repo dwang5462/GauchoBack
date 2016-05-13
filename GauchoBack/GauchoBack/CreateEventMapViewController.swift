@@ -38,6 +38,9 @@ class CreateEventMapController: UIViewController, CLLocationManagerDelegate, GMS
             performSegueWithIdentifier("addEventAttemptNoAccountSegue", sender: self)
         }
         
+        //Need to delete where the pin is.
+        //print("this happened")
+        
         
     }
     

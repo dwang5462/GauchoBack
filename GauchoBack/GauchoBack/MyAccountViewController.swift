@@ -9,11 +9,15 @@
 import UIKit
 import FBSDKLoginKit
 
-class MyAccountViewController: UIViewController {
+class MyAccountViewController: UIViewController // UITableViewController
+{
 
+    //@IBOutlet var myEvents: [UIView]!
+    
+       
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -26,6 +30,8 @@ class MyAccountViewController: UIViewController {
         {
             performSegueWithIdentifier("backToLoginSegue", sender: self)
         }
+        
+        //add events to myEvents.
     }
 
     override func didReceiveMemoryWarning() {
