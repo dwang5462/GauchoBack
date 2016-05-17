@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cdx-3M-Skd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cdx-3M-Skd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -212,10 +212,10 @@
                         <viewControllerLayoutGuide type="bottom" id="Xe4-CE-LZl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="48I-PU-iVF">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" misplaced="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QT5-fB-ZYj">
+                            <searchBar contentMode="redraw" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QT5-fB-ZYj">
                                 <rect key="frame" x="20" y="28" width="560" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -257,10 +257,10 @@
                         <viewControllerLayoutGuide type="bottom" id="fb3-BG-KTK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1H9-uw-nSM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sfJ-b8-f4E" customClass="GMSMapView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfJ-b8-f4E" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -291,10 +291,10 @@
                         <viewControllerLayoutGuide type="bottom" id="Vui-o1-qom"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="we7-Cs-WH4">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="394-q6-hSa" customClass="GMSMapView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="394-q6-hSa" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -419,10 +419,10 @@
                         <viewControllerLayoutGuide type="bottom" id="VCQ-9c-ayc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ahF-TX-3k2">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8A-1k-nAF" userLabel="settings">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8A-1k-nAF" userLabel="settings">
                                 <rect key="frame" x="554" y="28" width="26" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="26" id="lSE-5H-cIk"/>
@@ -432,7 +432,7 @@
                                     <action selector="settingsAction:" destination="7wf-MV-jhB" eventType="touchUpInside" id="2a2-NT-Lel"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jq4-Uu-rzF">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jq4-Uu-rzF">
                                 <rect key="frame" x="553" y="72" width="27" height="25"/>
                                 <state key="normal" image="Settings">
                                     <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -472,10 +472,10 @@
                         <viewControllerLayoutGuide type="bottom" id="m6O-Sn-Jcv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4ps-gV-riT">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uh-8Z-yc6">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uh-8Z-yc6">
                                 <rect key="frame" x="521" y="80" width="48" height="30"/>
                                 <state key="normal" title="Logout">
                                     <color key="titleColor" red="0.031372549020000001" green="0.17254901959999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>

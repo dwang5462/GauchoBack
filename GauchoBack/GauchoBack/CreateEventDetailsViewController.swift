@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-class CreateEventDetailsController : UIViewController{
+class CreateEventDetailsController : UIViewController, UITextFieldDelegate, UITextViewDelegate{
     @IBOutlet weak var eventNameTextField: UITextField!
     
     @IBOutlet weak var hostTextField: UITextField!
@@ -21,7 +21,9 @@ class CreateEventDetailsController : UIViewController{
     var eventCoordinate:CLLocationCoordinate2D!
     var eventType:String!
     override func viewDidLoad() {
-        
+        hostTextField.delegate = self
+        locationTextField.delegate = self
+        eventNameTextField.delegate = self
     }
     
     @IBAction func createEventAction(sender: AnyObject) {
@@ -40,5 +42,12 @@ class CreateEventDetailsController : UIViewController{
         performSegueWithIdentifier("eventCreatedSegue", sender: self)
         
         //self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
