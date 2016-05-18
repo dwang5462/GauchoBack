@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 class FirebaseAdapter {
+    var eventList:[Event]!
     
     let eventsBranch = FIREBASE_REF.childByAppendingPath("events")
     let usersBranch = FIREBASE_REF.childByAppendingPath("users")
@@ -156,7 +157,7 @@ class FirebaseAdapter {
  
     //This function retrieves the events that pertain to the user.  This will be used when the user enters the "MyAccount" tab.
     //Returns an array of events that the user has created.
-    func myEvents()->[Event]
+    func myEvents()-> Void
     {
         
         var myEvents = [Event]()
@@ -182,15 +183,19 @@ class FirebaseAdapter {
                     let endTime = child.value.objectForKey("end_time")as! String!
                     let location = child.value.objectForKey("location") as! String!
                     let eventType = child.value.objectForKey("event_type") as! String!
-                    let host = child.value.objectForKey("host") as! String!
+                    let host = child.value.objectForKey("event_host") as! String!
+                    
+                    //print("found event ", eventName)
                     
                     myEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location:location, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, host:host, eventType: eventType))
 
                 }
             }
+            print(myEvents)
+            myAccountEventList =  myEvents
+            
         })
-        
-        return myEvents
+       // return myEvents
     }
     
     //get all nearby events to user's current location, based on maximum distance away.

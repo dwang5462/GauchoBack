@@ -21,6 +21,8 @@
 		FB3FFFB01CCF10040044A57F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3FFFAE1CCF10040044A57F /* FBSDKLoginKit.framework */; };
 		FB3FFFB11CCF10040044A57F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3FFFAF1CCF10040044A57F /* FBSDKCoreKit.framework */; };
 		FB4264BD1CD936F00084A0B3 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4264BC1CD936F00084A0B3 /* MyAccountViewController.swift */; };
+		FB7561F31CEC20E600A65EC9 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7561F21CEC20E600A65EC9 /* TableViewCell.swift */; };
+		FB7561F71CEC305A00A65EC9 /* MyEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7561F61CEC305A00A65EC9 /* MyEventViewController.swift */; };
 		FB788CB51CC70268009992F2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB788CB41CC70268009992F2 /* MapViewController.swift */; };
 		FB85D4511CD17F4900D314AA /* FirebaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB85D4501CD17F4900D314AA /* FirebaseAdapter.swift */; };
 		FBB4C7CB1CE0558E00DDB5F7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB4C7CA1CE0558E00DDB5F7 /* SettingsViewController.swift */; };
@@ -69,6 +71,8 @@
 		FB3FFFAE1CCF10040044A57F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		FB3FFFAF1CCF10040044A57F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		FB4264BC1CD936F00084A0B3 /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
+		FB7561F21CEC20E600A65EC9 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		FB7561F61CEC305A00A65EC9 /* MyEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventViewController.swift; sourceTree = "<group>"; };
 		FB788CB41CC70268009992F2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FB85D4501CD17F4900D314AA /* FirebaseAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAdapter.swift; sourceTree = "<group>"; };
 		FBB4C7CA1CE0558E00DDB5F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -140,22 +144,12 @@
 		3EB994F11CBCAA4000EF6291 /* GauchoBack */ = {
 			isa = PBXGroup;
 			children = (
-				3EB994F21CBCAA4000EF6291 /* AppDelegate.swift */,
-				FBC21EFE1CC5DB6200B5AC8C /* BaseService.swift */,
-				FBC21F001CC5DC6900B5AC8C /* LoginViewController.swift */,
-				FBC21F021CC5DC8400B5AC8C /* CreateAccountViewController.swift */,
-				FB788CB41CC70268009992F2 /* MapViewController.swift */,
-				FB186D2C1CDA779E00D13A3E /* SearchEventViewController.swift */,
-				3EC9D2441CD8A81C00FD1628 /* CreateEventMapViewController.swift */,
-				3EC9D2461CD8A9B300FD1628 /* CreateEventDetailsViewController.swift */,
-				FB4264BC1CD936F00084A0B3 /* MyAccountViewController.swift */,
-				FBB4C7CA1CE0558E00DDB5F7 /* SettingsViewController.swift */,
-				FB85D4501CD17F4900D314AA /* FirebaseAdapter.swift */,
-				FB30E5F91CDA67D300148773 /* Event.swift */,
-				3EB994F61CBCAA4000EF6291 /* Main.storyboard */,
-				3EB994F91CBCAA4000EF6291 /* Assets.xcassets */,
-				3EB994FB1CBCAA4000EF6291 /* LaunchScreen.storyboard */,
-				3EB994FE1CBCAA4000EF6291 /* Info.plist */,
+				FB7561FE1CEC343600A65EC9 /* System */,
+				FB7561FD1CEC340100A65EC9 /* Login */,
+				FB7561FC1CEC33F300A65EC9 /* MapView */,
+				FB7561FB1CEC33D400A65EC9 /* SearchEvent */,
+				FB7561FA1CEC33CB00A65EC9 /* Create Event */,
+				FB7561F91CEC33A200A65EC9 /* My Account */,
 			);
 			path = GauchoBack;
 			sourceTree = "<group>";
@@ -185,6 +179,66 @@
 				35A8507F40B77DE7C0C9689C /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FB7561F91CEC33A200A65EC9 /* My Account */ = {
+			isa = PBXGroup;
+			children = (
+				FB4264BC1CD936F00084A0B3 /* MyAccountViewController.swift */,
+				FB7561F21CEC20E600A65EC9 /* TableViewCell.swift */,
+				FB7561F61CEC305A00A65EC9 /* MyEventViewController.swift */,
+				FBB4C7CA1CE0558E00DDB5F7 /* SettingsViewController.swift */,
+			);
+			name = "My Account";
+			sourceTree = "<group>";
+		};
+		FB7561FA1CEC33CB00A65EC9 /* Create Event */ = {
+			isa = PBXGroup;
+			children = (
+				3EC9D2441CD8A81C00FD1628 /* CreateEventMapViewController.swift */,
+				3EC9D2461CD8A9B300FD1628 /* CreateEventDetailsViewController.swift */,
+			);
+			name = "Create Event";
+			sourceTree = "<group>";
+		};
+		FB7561FB1CEC33D400A65EC9 /* SearchEvent */ = {
+			isa = PBXGroup;
+			children = (
+				FB186D2C1CDA779E00D13A3E /* SearchEventViewController.swift */,
+			);
+			name = SearchEvent;
+			sourceTree = "<group>";
+		};
+		FB7561FC1CEC33F300A65EC9 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				FB788CB41CC70268009992F2 /* MapViewController.swift */,
+			);
+			name = MapView;
+			sourceTree = "<group>";
+		};
+		FB7561FD1CEC340100A65EC9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FBC21F021CC5DC8400B5AC8C /* CreateAccountViewController.swift */,
+				FBC21F001CC5DC6900B5AC8C /* LoginViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		FB7561FE1CEC343600A65EC9 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				3EB994F61CBCAA4000EF6291 /* Main.storyboard */,
+				3EB994F91CBCAA4000EF6291 /* Assets.xcassets */,
+				3EB994FB1CBCAA4000EF6291 /* LaunchScreen.storyboard */,
+				3EB994FE1CBCAA4000EF6291 /* Info.plist */,
+				FB85D4501CD17F4900D314AA /* FirebaseAdapter.swift */,
+				FB30E5F91CDA67D300148773 /* Event.swift */,
+				3EB994F21CBCAA4000EF6291 /* AppDelegate.swift */,
+				FBC21EFE1CC5DB6200B5AC8C /* BaseService.swift */,
+			);
+			name = System;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,10 +424,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB7561F31CEC20E600A65EC9 /* TableViewCell.swift in Sources */,
 				FB85D4511CD17F4900D314AA /* FirebaseAdapter.swift in Sources */,
 				FBC21F031CC5DC8400B5AC8C /* CreateAccountViewController.swift in Sources */,
 				FBC21F011CC5DC6900B5AC8C /* LoginViewController.swift in Sources */,
 				3EB994F31CBCAA4000EF6291 /* AppDelegate.swift in Sources */,
+				FB7561F71CEC305A00A65EC9 /* MyEventViewController.swift in Sources */,
 				FB30E5FA1CDA67D300148773 /* Event.swift in Sources */,
 				3EC9D2471CD8A9B300FD1628 /* CreateEventDetailsViewController.swift in Sources */,
 				FB788CB51CC70268009992F2 /* MapViewController.swift in Sources */,
