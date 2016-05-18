@@ -18,7 +18,7 @@ class MyAccountViewController: UIViewController
     
     @IBOutlet weak var tableView: UITableView!
     
-    var objects: NSMutableArray! = NSMutableArray()
+    var myEventsTable: NSMutableArray! = NSMutableArray()
        
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +26,10 @@ class MyAccountViewController: UIViewController
         //initialize the firebase adapter.
         firebaseAdapter = FirebaseAdapter()
         
-        myAccountEventList = nil
-        
         firebaseAdapter.myEvents()
         
-        self.tableView.reloadData()
-        
-        
+        buildMyEventsTable()
+
         // Do any additional setup after loading the view.
     }
     
@@ -41,26 +38,30 @@ class MyAccountViewController: UIViewController
         super.viewDidAppear(animated)
         
         
-        if myAccountEventList != nil
-        {
-            for event in myAccountEventList {
-                self.objects.addObject(event.eventName)
-            }
-        }
-            
-        else {
-            
-        }
-        
-        self.tableView.reloadData()
-        
         //If user is not already logged in then segue back to login page.
         if NSUserDefaults.standardUserDefaults().valueForKey("uid") == nil || CURRENT_USER.authData == nil
         {
             performSegueWithIdentifier("backToLoginSegue", sender: self)
         }
+    }
+    
+    func buildMyEventsTable()-> Void
+    {
+        if myAccountEventList != nil
+        {
+            for event in myAccountEventList {
+                if myEventsTable.containsObject(event.eventName) == false
+                {
+                    self.myEventsTable.addObject(event.eventName)
+                }
+            }
+        }
+            
+        else {
+            print("My Account Event List is empty.")
+        }
         
-        //add events to myEvents.
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,15 +71,10 @@ class MyAccountViewController: UIViewController
     
 
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
-    {
-        return 1
-    }
-    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.objects.count
+        return self.myEventsTable.count
     }
     
     
@@ -87,7 +83,7 @@ class MyAccountViewController: UIViewController
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("myEventCell", forIndexPath: indexPath) as! TableViewCell
         
-        cell.eventTitle.text = self.objects.objectAtIndex(indexPath.row) as? String
+        cell.eventTitle.text = self.myEventsTable.objectAtIndex(indexPath.row) as? String
         
         
         
@@ -111,7 +107,7 @@ class MyAccountViewController: UIViewController
             
             let indexPath = self.tableView.indexPathForSelectedRow!
             
-            let titleString = self.objects.objectAtIndex(indexPath.row) as? String
+            let titleString = self.myEventsTable.objectAtIndex(indexPath.row) as? String
             
             upcoming.titleString = titleString
             

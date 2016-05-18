@@ -54,6 +54,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         }
         
         firebaseAdapter = FirebaseAdapter()
+        firebaseAdapter.myEvents()
         
     }
 
