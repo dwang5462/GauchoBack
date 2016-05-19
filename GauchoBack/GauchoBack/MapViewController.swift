@@ -55,6 +55,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
         firebaseAdapter = FirebaseAdapter()
         
+        if CURRENT_USER.authData.uid != nil
+        {
+            firebaseAdapter.myEvents()
+        }
+        
     }
 
     

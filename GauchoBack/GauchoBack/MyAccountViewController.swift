@@ -21,9 +21,11 @@ class MyAccountViewController: UIViewController
     var myEventsTable: NSMutableArray! = NSMutableArray()
        
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         //initialize the firebase adapter.
+        
         firebaseAdapter = FirebaseAdapter()
         
         firebaseAdapter.myEvents()
@@ -37,8 +39,12 @@ class MyAccountViewController: UIViewController
     {
         super.viewDidAppear(animated)
         
+        firebaseAdapter.myEvents()
+
+        buildMyEventsTable()
         
         //If user is not already logged in then segue back to login page.
+        
         if NSUserDefaults.standardUserDefaults().valueForKey("uid") == nil || CURRENT_USER.authData == nil
         {
             performSegueWithIdentifier("backToLoginSegue", sender: self)
@@ -49,6 +55,7 @@ class MyAccountViewController: UIViewController
     {
         if myAccountEventList != nil
         {
+            print("My Account Event List is NOT empty.")
             for event in myAccountEventList {
                 if myEventsTable.containsObject(event.eventName) == false
                 {

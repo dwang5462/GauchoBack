@@ -191,7 +191,7 @@ class FirebaseAdapter {
 
                 }
             }
-            print(myEvents)
+            //print(myEvents)
             myAccountEventList =  myEvents
             
         })
