@@ -25,6 +25,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
     //Method called once the screen is loaded, prior to appearing.
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if(FBSDKAccessToken.currentAccessToken() == nil)
         {
             print("Not currently logged in with Facebook")
@@ -33,12 +34,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
         {
             print("Currently logged in with Facebook")
         }
-        if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil && CURRENT_USER.authData != nil
-        {
-            print("Using Firebase login to segue to mapView")
-            performSegueWithIdentifier("loginSegue", sender: self)
-        }
-
+       
         //Initialize the facebook button
         let loginButton = FBSDKLoginButton()
         //Allow the correct read permissions, so we get data from the account on facebook
