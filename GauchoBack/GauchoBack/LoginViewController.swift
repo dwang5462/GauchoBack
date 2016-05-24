@@ -57,9 +57,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
         
         if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil && CURRENT_USER.authData != nil
         {
+            let firebaseAdapter = FirebaseAdapter()
+            
             print("Using Firebase login to segue to mapView")
             performSegueWithIdentifier("loginSegue", sender: self)
+           
+            firebaseAdapter.myEvents()
         }
+            
         else if FBSDKAccessToken.currentAccessToken() != nil
         {
             facebookProfileToFirebaseAccount()
@@ -67,6 +72,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
             performSegueWithIdentifier("loginSegue", sender: self)
             
         }
+            
     }
     
     //Will either create a new account if facebook email has never been used before, or will use the firebase login if email has already been taken.
@@ -173,10 +179,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate
             
             if error == nil
             {
+                let firebaseAdapter = FirebaseAdapter()
                 NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: "uid")
                 print()
                 print("Logged In as ", authData.uid, ", using Firebase ")
                 print()
+                firebaseAdapter.myEvents()
                 self.performSegueWithIdentifier("loginSegue", sender: self);
             }
             else

@@ -43,8 +43,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
         let uid = NSUserDefaults.standardUserDefaults().objectForKey("uid")
         
-        //prints out the user's current uid
-        if uid != nil
+        firebaseAdapter = FirebaseAdapter()
+        
+        
+        if firebaseAdapter.loggedIn()
         {
             print(uid as! String)
         }
@@ -53,13 +55,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             print("This is view-only")
         }
         
-        firebaseAdapter = FirebaseAdapter()
         
-        if CURRENT_USER.authData.uid != nil
+        
+        
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        super.viewDidAppear(animated)
+
+        if firebaseAdapter.loggedIn()
         {
             firebaseAdapter.myEvents()
         }
-        
     }
 
     

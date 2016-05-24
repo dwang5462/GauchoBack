@@ -19,10 +19,21 @@ class MyAccountViewController: UIViewController
     @IBOutlet weak var tableView: UITableView!
     
     var myEventsTable: NSMutableArray! = NSMutableArray()
+    let settingsButton = UIButton()
        
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
+        settingsButton.setImage(UIImage(named: "Settings"), forState: .Normal)
+        settingsButton.frame = CGRectMake(0, 0, 30, 30)
+        settingsButton.addTarget(self, action: Selector("action"), forControlEvents: .TouchUpInside)
+        
+        //.... Set Right/Left Bar Button item
+        let rightBarButton = UIBarButtonItem()
+        rightBarButton.customView = settingsButton
+        rightBarButton.tintColor = UIColor.whiteColor()
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
         
         //initialize the firebase adapter.
         
@@ -90,9 +101,12 @@ class MyAccountViewController: UIViewController
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("myEventCell", forIndexPath: indexPath) as! TableViewCell
         
-        cell.eventTitle.text = self.myEventsTable.objectAtIndex(indexPath.row) as? String
-        
-        
+        cell.eventTitle.text = (self.myEventsTable.objectAtIndex(indexPath.row) as! String)
+        cell.eventTitle.text = " " + cell.eventTitle.text!
+        cell.eventTitle.textColor = UIColor.whiteColor()
+        cell.layer.cornerRadius = 10
+        cell.layer.masksToBounds = true
+        cell.backgroundColor = UIColor.init(colorLiteralRed: 8/255, green: 44/255, blue: 101/255, alpha: 1)
         
         return cell
         

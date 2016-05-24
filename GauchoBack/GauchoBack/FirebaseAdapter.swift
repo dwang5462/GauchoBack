@@ -295,5 +295,17 @@ class FirebaseAdapter {
         let addedAccount = ["added": true]
         FIREBASE_REF.childByAppendingPath("accounts").childByAppendingPath(email).setValue(addedAccount)
     }
+    
+    func loggedIn() -> Bool
+    {
+        if NSUserDefaults.standardUserDefaults().valueForKey("uid") != nil && CURRENT_USER.authData != nil
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
 
 }

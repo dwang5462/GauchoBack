@@ -12,6 +12,8 @@ class TableViewCell: UITableViewCell {
 
     @IBOutlet weak var eventTitle: UILabel!
     
+    //add more text fields.
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
