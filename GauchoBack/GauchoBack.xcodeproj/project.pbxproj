@@ -31,6 +31,12 @@
 		FBC21EFF1CC5DB6200B5AC8C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC21EFE1CC5DB6200B5AC8C /* BaseService.swift */; };
 		FBC21F011CC5DC6900B5AC8C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC21F001CC5DC6900B5AC8C /* LoginViewController.swift */; };
 		FBC21F031CC5DC8400B5AC8C /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC21F021CC5DC8400B5AC8C /* CreateAccountViewController.swift */; };
+		FBCB9E581CF796E300E89C9D /* NewEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCB9E571CF796E300E89C9D /* NewEventTableViewController.swift */; };
+		FBCB9E5A1CF79B2200E89C9D /* NewEventTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCB9E591CF79B2200E89C9D /* NewEventTextFieldCell.swift */; };
+		FBCB9E5C1CF79BF700E89C9D /* DateDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCB9E5B1CF79BF700E89C9D /* DateDetailCell.swift */; };
+		FBCB9E5E1CF79C1F00E89C9D /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCB9E5D1CF79C1F00E89C9D /* DatePickerCell.swift */; };
+		FBCB9E601CF79D0500E89C9D /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCB9E5F1CF79D0500E89C9D /* DescriptionCell.swift */; };
+		FBCB9E621CF79D7500E89C9D /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCB9E611CF79D7500E89C9D /* EmptyCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +89,12 @@
 		FBC21EFE1CC5DB6200B5AC8C /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		FBC21F001CC5DC6900B5AC8C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FBC21F021CC5DC8400B5AC8C /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		FBCB9E571CF796E300E89C9D /* NewEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventTableViewController.swift; sourceTree = "<group>"; };
+		FBCB9E591CF79B2200E89C9D /* NewEventTextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEventTextFieldCell.swift; sourceTree = "<group>"; };
+		FBCB9E5B1CF79BF700E89C9D /* DateDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDetailCell.swift; sourceTree = "<group>"; };
+		FBCB9E5D1CF79C1F00E89C9D /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
+		FBCB9E5F1CF79D0500E89C9D /* DescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
+		FBCB9E611CF79D7500E89C9D /* EmptyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +213,12 @@
 			children = (
 				3EC9D2441CD8A81C00FD1628 /* CreateEventMapViewController.swift */,
 				3EC9D2461CD8A9B300FD1628 /* CreateEventDetailsViewController.swift */,
+				FBCB9E571CF796E300E89C9D /* NewEventTableViewController.swift */,
+				FBCB9E591CF79B2200E89C9D /* NewEventTextFieldCell.swift */,
+				FBCB9E5B1CF79BF700E89C9D /* DateDetailCell.swift */,
+				FBCB9E5D1CF79C1F00E89C9D /* DatePickerCell.swift */,
+				FBCB9E5F1CF79D0500E89C9D /* DescriptionCell.swift */,
+				FBCB9E611CF79D7500E89C9D /* EmptyCell.swift */,
 			);
 			name = "Create Event";
 			sourceTree = "<group>";
@@ -432,20 +450,26 @@
 			files = (
 				FB7561F31CEC20E600A65EC9 /* TableViewCell.swift in Sources */,
 				FB85D4511CD17F4900D314AA /* FirebaseAdapter.swift in Sources */,
+				FBCB9E581CF796E300E89C9D /* NewEventTableViewController.swift in Sources */,
 				FBC21F031CC5DC8400B5AC8C /* CreateAccountViewController.swift in Sources */,
 				FBC21F011CC5DC6900B5AC8C /* LoginViewController.swift in Sources */,
 				3EB994F31CBCAA4000EF6291 /* AppDelegate.swift in Sources */,
 				FB7561F71CEC305A00A65EC9 /* MyEventViewController.swift in Sources */,
 				FB30E5FA1CDA67D300148773 /* Event.swift in Sources */,
+				FBCB9E601CF79D0500E89C9D /* DescriptionCell.swift in Sources */,
 				3EC9D2471CD8A9B300FD1628 /* CreateEventDetailsViewController.swift in Sources */,
 				FB788CB51CC70268009992F2 /* MapViewController.swift in Sources */,
 				FB0161471CF54216002EC4CB /* SearchTableViewCell.swift in Sources */,
+				FBCB9E5A1CF79B2200E89C9D /* NewEventTextFieldCell.swift in Sources */,
 				FBC21EFF1CC5DB6200B5AC8C /* BaseService.swift in Sources */,
+				FBCB9E5C1CF79BF700E89C9D /* DateDetailCell.swift in Sources */,
 				FB186D2D1CDA779E00D13A3E /* SearchEventViewController.swift in Sources */,
 				3EC9D2451CD8A81C00FD1628 /* CreateEventMapViewController.swift in Sources */,
+				FBCB9E621CF79D7500E89C9D /* EmptyCell.swift in Sources */,
 				FB4264BD1CD936F00084A0B3 /* MyAccountViewController.swift in Sources */,
 				FB0161491CF6A22A002EC4CB /* EventDetailViewController.swift in Sources */,
 				FBB4C7CB1CE0558E00DDB5F7 /* SettingsViewController.swift in Sources */,
+				FBCB9E5E1CF79C1F00E89C9D /* DatePickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
