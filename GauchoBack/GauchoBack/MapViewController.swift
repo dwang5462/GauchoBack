@@ -19,7 +19,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     var viewLoaded = false
     var nearbyEvents:[Event]! = nil
     var firebaseAdapter:FirebaseAdapter!
-    
+    var eventMarker:Event!
     @IBOutlet var mapView: GMSMapView!
     
     override func viewDidLoad() {
@@ -36,7 +36,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         mapView.settings.myLocationButton = true
         mapView.accessibilityElementsHidden = false
         mapView.myLocationEnabled = true
-        
         userLocation = CLLocation(latitude: 34.4140, longitude: -119.8489)
         cam = GMSCameraPosition.cameraWithTarget(userLocation.coordinate, zoom: 18)
         mapView.camera = cam
@@ -87,6 +86,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
                 marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees(singleEvent.latitude)!, longitude: CLLocationDegrees(singleEvent.longitude)!)
                 marker.snippet = singleEvent.eventName
                 marker.appearAnimation = kGMSMarkerAnimationPop
+                marker.userData = singleEvent
                 if(singleEvent.eventType == "warning"){
                     marker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())
                 }
@@ -117,8 +117,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
+    func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
+        if(marker.userData == nil){
+            print("nil")
+        }
+        eventMarker = marker.userData as! Event?
+        print(eventMarker.eventName)
+        print("didTapInfoWindow")
+        performSegueWithIdentifier("eventSegue", sender: self)
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "eventSegue"){
+            let yourNextViewController = (segue.destinationViewController as! EventDetailViewController)
+            yourNextViewController.theEvent = eventMarker
+            print("Performing Segue")
+        }
+        
+    }
     /*
     // MARK: - Navigation
 
