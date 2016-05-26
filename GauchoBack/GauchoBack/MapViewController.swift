@@ -8,7 +8,7 @@
 
 import UIKit
 import GoogleMaps
-var nearbyEventsMapView:[Event]!
+var allNearbyEvents:[Event]!
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
@@ -24,7 +24,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nearbyEventsMapView = nil
+        allNearbyEvents = nil
         viewLoaded = true
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -80,8 +80,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             nearbyEvents = firebaseAdapter.getNearbyEvents(String(userLocation.coordinate.longitude), currentLatitude: String(userLocation.coordinate.latitude), maxDistance: 1)
             viewLoaded = false
         }
-        if (nearbyEventsMapView != nil && markersPlaced == false){
-            for singleEvent in nearbyEventsMapView {
+        if (allNearbyEvents != nil && markersPlaced == false){
+            for singleEvent in allNearbyEvents {
                 let marker = GMSMarker()
                 marker.map = mapView
                 marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees(singleEvent.latitude)!, longitude: CLLocationDegrees(singleEvent.longitude)!)
@@ -108,7 +108,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             if (distanceAway >= 1.0){
                 viewLoaded = true
                 markersPlaced = false
-                nearbyEventsMapView = nil
+                allNearbyEvents = nil
             }
         }
         

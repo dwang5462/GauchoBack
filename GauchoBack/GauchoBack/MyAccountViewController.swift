@@ -16,9 +16,15 @@ class MyAccountViewController: UIViewController
 {
     var firebaseAdapter:FirebaseAdapter!
     
+    @IBOutlet weak var userName: UILabel!
+    
+    @IBOutlet weak var emailLabel: UILabel!
+    
     @IBOutlet weak var tableView: UITableView!
     
+    
     var myEventsTable: NSMutableArray! = NSMutableArray()
+    
     let settingsButton = UIButton()
        
     override func viewDidLoad() {
@@ -27,6 +33,8 @@ class MyAccountViewController: UIViewController
         settingsButton.setImage(UIImage(named: "Settings"), forState: .Normal)
         settingsButton.frame = CGRectMake(0, 0, 30, 30)
         settingsButton.addTarget(self, action: Selector("action"), forControlEvents: .TouchUpInside)
+        
+        
         
         //.... Set Right/Left Bar Button item
         let rightBarButton = UIBarButtonItem()
@@ -43,6 +51,24 @@ class MyAccountViewController: UIViewController
         
         buildMyEventsTable()
 
+        let userInfoBranch = FIREBASE_REF.childByAppendingPath("users").childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("user_info")
+        
+        //var userInfo:[String] = []
+        
+        userInfoBranch.observeSingleEventOfType(.Value, withBlock: {
+            snapshot in
+            
+            print(snapshot.value.objectForKey("first_name") as! String!)
+            
+            let first = snapshot.value.objectForKey("first_name") as! String!
+            let last = snapshot.value.objectForKey("last_name") as! String!
+            
+            self.userName.text = first + " " + last
+            self.emailLabel.text = snapshot.value.objectForKey("email") as! String!
+            
+            //userInfo.append(snapshot.value.objectForKey("email") as! String!)
+        })
+
         // Do any additional setup after loading the view.
     }
     
@@ -55,6 +81,14 @@ class MyAccountViewController: UIViewController
         buildMyEventsTable()
         
         //If user is not already logged in then segue back to login page.
+        //print(firebaseAdapter.getUserInfo())
+        
+        //var userInfo:[String] = firebaseAdapter.getUserInfo()
+        
+        
+        //let fullName = userInfo[0] + " " + userInfo[1]
+
+        //self.userName.text = fullName
         
         if NSUserDefaults.standardUserDefaults().valueForKey("uid") == nil || CURRENT_USER.authData == nil
         {

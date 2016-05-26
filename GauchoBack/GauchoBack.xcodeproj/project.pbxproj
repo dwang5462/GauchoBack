@@ -16,6 +16,8 @@
 		3EC9D2451CD8A81C00FD1628 /* CreateEventMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9D2441CD8A81C00FD1628 /* CreateEventMapViewController.swift */; };
 		3EC9D2471CD8A9B300FD1628 /* CreateEventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9D2461CD8A9B300FD1628 /* CreateEventDetailsViewController.swift */; };
 		4DCF286C8E1B3DB1FC67A94A /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA0AFEDF1F9468FA63819612 /* Pods.framework */; };
+		FB0161471CF54216002EC4CB /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0161461CF54216002EC4CB /* SearchTableViewCell.swift */; };
+		FB0161491CF6A22A002EC4CB /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0161481CF6A22A002EC4CB /* EventDetailViewController.swift */; };
 		FB186D2D1CDA779E00D13A3E /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB186D2C1CDA779E00D13A3E /* SearchEventViewController.swift */; };
 		FB30E5FA1CDA67D300148773 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB30E5F91CDA67D300148773 /* Event.swift */; };
 		FB3FFFB01CCF10040044A57F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3FFFAE1CCF10040044A57F /* FBSDKLoginKit.framework */; };
@@ -66,6 +68,8 @@
 		3EC9D2461CD8A9B300FD1628 /* CreateEventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventDetailsViewController.swift; sourceTree = "<group>"; };
 		878C1A88B67E85E04D009611 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA0AFEDF1F9468FA63819612 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB0161461CF54216002EC4CB /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		FB0161481CF6A22A002EC4CB /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		FB186D2C1CDA779E00D13A3E /* SearchEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
 		FB30E5F91CDA67D300148773 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		FB3FFFAE1CCF10040044A57F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 			isa = PBXGroup;
 			children = (
 				FB186D2C1CDA779E00D13A3E /* SearchEventViewController.swift */,
+				FB0161481CF6A22A002EC4CB /* EventDetailViewController.swift */,
+				FB0161461CF54216002EC4CB /* SearchTableViewCell.swift */,
 			);
 			name = SearchEvent;
 			sourceTree = "<group>";
@@ -433,10 +439,12 @@
 				FB30E5FA1CDA67D300148773 /* Event.swift in Sources */,
 				3EC9D2471CD8A9B300FD1628 /* CreateEventDetailsViewController.swift in Sources */,
 				FB788CB51CC70268009992F2 /* MapViewController.swift in Sources */,
+				FB0161471CF54216002EC4CB /* SearchTableViewCell.swift in Sources */,
 				FBC21EFF1CC5DB6200B5AC8C /* BaseService.swift in Sources */,
 				FB186D2D1CDA779E00D13A3E /* SearchEventViewController.swift in Sources */,
 				3EC9D2451CD8A81C00FD1628 /* CreateEventMapViewController.swift in Sources */,
 				FB4264BD1CD936F00084A0B3 /* MyAccountViewController.swift in Sources */,
+				FB0161491CF6A22A002EC4CB /* EventDetailViewController.swift in Sources */,
 				FBB4C7CB1CE0558E00DDB5F7 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

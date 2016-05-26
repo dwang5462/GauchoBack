@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 
+
 class FirebaseAdapter {
     var eventList:[Event]!
     
@@ -23,8 +24,14 @@ class FirebaseAdapter {
         
         var userInfo:[String] = []
         
-        userInfoBranch.observeSingleEventOfType(.Value, withBlock: {
+        userInfoBranch.observeSingleEventOfType(.ChildAdded, withBlock: {
             snapshot in
+            
+            print(snapshot.value.objectForKey("first_name") as! String!)
+            
+            let first = snapshot.value.objectForKey("first_name") as! String!
+            
+            print(first)
             
             userInfo.append(snapshot.value.objectForKey("first_name") as! String!)
             userInfo.append(snapshot.value.objectForKey("last_name") as! String!)
@@ -58,6 +65,7 @@ class FirebaseAdapter {
         
         //save the event at the newEventBranch
         newEventBranch.setValue(newEventDict)
+        
         
     }
 
@@ -235,7 +243,7 @@ class FirebaseAdapter {
                     nearbyEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location: location, longitude: eventLongitude, latitude: eventLatitude, startTime: startTime, endTime: endTime, host: host, eventType:eventType))
                 }
             }
-            nearbyEventsMapView = nearbyEvents
+            allNearbyEvents = nearbyEvents
         })
         
         return nearbyEvents
