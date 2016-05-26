@@ -13,12 +13,13 @@ class MyEventViewController: UIViewController {
     @IBOutlet weak var eventTitle: UILabel!
     
     
-    var titleString: String!
+    var theEvent: Event!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.eventTitle.text = self.titleString
+        self.navigationItem.title = theEvent.eventName
     }
 
     override func didReceiveMemoryWarning() {

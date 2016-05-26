@@ -30,19 +30,6 @@ class MyAccountViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        settingsButton.setImage(UIImage(named: "Settings"), forState: .Normal)
-        settingsButton.frame = CGRectMake(0, 0, 30, 30)
-        settingsButton.addTarget(self, action: Selector("action"), forControlEvents: .TouchUpInside)
-        
-        
-        
-        //.... Set Right/Left Bar Button item
-        let rightBarButton = UIBarButtonItem()
-        rightBarButton.customView = settingsButton
-        rightBarButton.tintColor = UIColor.whiteColor()
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        
-        
         //initialize the firebase adapter.
         
         firebaseAdapter = FirebaseAdapter()
@@ -63,7 +50,7 @@ class MyAccountViewController: UIViewController
             let first = snapshot.value.objectForKey("first_name") as! String!
             let last = snapshot.value.objectForKey("last_name") as! String!
             
-            self.userName.text = first + " " + last
+            self.navigationItem.title = first + " " + last
             self.emailLabel.text = snapshot.value.objectForKey("email") as! String!
             
             //userInfo.append(snapshot.value.objectForKey("email") as! String!)
@@ -158,21 +145,21 @@ class MyAccountViewController: UIViewController
     {
         if (segue.identifier == "myEventViewController")
         {
-            var upcoming: MyEventViewController = segue.destinationViewController as! MyEventViewController
+            let upcoming: MyEventViewController = segue.destinationViewController as! MyEventViewController
             
             let indexPath = self.tableView.indexPathForSelectedRow!
             
-            let titleString = self.myEventsTable.objectAtIndex(indexPath.row) as? String
-            
-            upcoming.titleString = titleString
+            let curEvent = myAccountEventList[indexPath.row] as Event
+                
+            upcoming.theEvent = curEvent
             
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
         
     }
     
-    @IBAction func settingsAction(sender: AnyObject) {
-        performSegueWithIdentifier("settingsSegue", sender: self)
+    @IBAction func settingsButtonAction(sender: AnyObject) {        performSegueWithIdentifier("settingsSegue", sender: self)
+
     }
     
 }
