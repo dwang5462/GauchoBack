@@ -7,16 +7,48 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class EventDetailViewController: UIViewController {
 
     @IBOutlet weak var eventTitle: UILabel!
     var theEvent: Event!
     var titleString: String!
-
+    var cam:GMSCameraPosition! = nil
+    
+    @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var hostLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var endTimeLabel: UILabel!
+    @IBOutlet weak var eventDescriptionLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let cam = GMSCameraPosition.cameraWithLatitude(CLLocationDegrees(theEvent.latitude)!, longitude: CLLocationDegrees(theEvent.longitude)!, zoom: 17)
+        mapView.camera = cam
+        let marker = GMSMarker()
+        marker.map = mapView
+        marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees(theEvent.latitude)!, longitude: CLLocationDegrees(theEvent.longitude)!)
+        marker.snippet = theEvent.eventName
+        marker.appearAnimation = kGMSMarkerAnimationPop
+        if(theEvent.eventType == "warning"){
+            marker.icon = GMSMarker.markerImageWithColor(UIColor.redColor())
+        }
+        else if(theEvent.eventType == "event"){
+            marker.icon = GMSMarker.markerImageWithColor(UIColor.blueColor())
+        }
+        else{
+            marker.icon = GMSMarker.markerImageWithColor(UIColor.yellowColor())
+        }
+        eventNameLabel.text! += theEvent.eventName
+        hostLabel.text! += theEvent.host
+        locationLabel.text! += theEvent.location
+        startTimeLabel.text! += theEvent.startTime
+        endTimeLabel.text! += theEvent.endTime
+        eventDescriptionLabel.text! = theEvent.eventDescription
         //self.eventTitle.text = theEvent.eventName
         self.navigationItem.title = theEvent.eventName
         // Do any additional setup after loading the view.
