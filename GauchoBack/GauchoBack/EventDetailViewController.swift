@@ -17,7 +17,8 @@ class EventDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.eventTitle.text = self.titleString
+        //self.eventTitle.text = theEvent.eventName
+        self.navigationItem.title = theEvent.eventName
         // Do any additional setup after loading the view.
     }
 

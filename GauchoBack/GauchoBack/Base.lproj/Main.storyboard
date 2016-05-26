@@ -212,7 +212,7 @@
             </objects>
             <point key="canvasLocation" x="921" y="-450"/>
         </scene>
-        <!--Search Event View Controller-->
+        <!--GauchoBack-->
         <scene sceneID="YoU-89-HxU">
             <objects>
                 <tableViewController id="ExF-0t-iQE" customClass="SearchEventViewController" customModule="GauchoBack" customModuleProvider="target" sceneMemberID="viewController">
@@ -220,9 +220,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.031372549020000001" green="0.17254901959999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchTableCell" id="6Pl-Rh-ThK">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Pl-Rh-ThK" id="Afm-Qe-m2T">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -235,7 +236,9 @@
                             <outlet property="delegate" destination="ExF-0t-iQE" id="51C-w9-5jY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="LZ3-zw-k3I"/>
+                    <navigationItem key="navigationItem" title="GauchoBack" id="LZ3-zw-k3I">
+                        <barButtonItem key="backBarButtonItem" title=" " id="pTJ-vz-rDS"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="A5F-VW-wtn" kind="show" identifier="eventDetailViewController" id="RsJ-I7-9yX"/>
                     </connections>
@@ -256,7 +259,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-we-7YX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Event Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mp4-we-7YX">
                                 <rect key="frame" x="20" y="20" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -278,7 +281,7 @@
             </objects>
             <point key="canvasLocation" x="116" y="2725"/>
         </scene>
-        <!--Map View-->
+        <!--GauchoBack-->
         <scene sceneID="OOI-e4-jOf">
             <objects>
                 <viewController id="OUh-PA-hVs" customClass="MapViewController" customModule="GauchoBack" customModuleProvider="target" sceneMemberID="viewController">
@@ -303,7 +306,7 @@
                             <constraint firstItem="sfJ-b8-f4E" firstAttribute="leading" secondItem="1H9-uw-nSM" secondAttribute="leading" id="z3X-6W-n95"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Map View" id="spU-ba-zyz"/>
+                    <navigationItem key="navigationItem" title="GauchoBack" id="spU-ba-zyz"/>
                     <connections>
                         <outlet property="mapView" destination="sfJ-b8-f4E" id="Ncu-Jy-ZMf"/>
                     </connections>
@@ -324,7 +327,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="394-q6-hSa" customClass="GMSMapView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="394-q6-hSa" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -337,7 +340,7 @@
                             <constraint firstItem="Vui-o1-qom" firstAttribute="top" secondItem="394-q6-hSa" secondAttribute="bottom" id="n2c-gY-YU4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Drop Pin" id="QrZ-8P-fJi">
+                    <navigationItem key="navigationItem" title="GauchoBack" id="QrZ-8P-fJi">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="kRB-L3-8Gc"/>
                     </navigationItem>
                     <connections>
@@ -448,7 +451,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User's Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alr-lU-uic">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="User's Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alr-lU-uic">
                                 <rect key="frame" x="20" y="28" width="560" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="560" id="b32-f5-yoC"/>
@@ -457,7 +460,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Events:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u36-Xh-e2d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="My Events:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u36-Xh-e2d">
                                 <rect key="frame" x="20" y="126" width="107" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="107" id="edW-gy-yf3"/>
@@ -467,13 +470,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qX1-xc-Q3h">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qX1-xc-Q3h">
                                 <rect key="frame" x="20" y="67" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="38K-sb-6u8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="38K-sb-6u8">
                                 <rect key="frame" x="20" y="156" width="560" height="444"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -551,7 +554,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stick it right here..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Q6-0d-Qkk">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Stick it right here..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Q6-0d-Qkk">
                                 <rect key="frame" x="228" y="28" width="145" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -584,7 +587,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uh-8Z-yc6">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uh-8Z-yc6">
                                 <rect key="frame" x="532" y="28" width="48" height="30"/>
                                 <state key="normal" title="Logout">
                                     <color key="titleColor" red="0.031372549020000001" green="0.17254901959999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -665,7 +668,7 @@
                         <color key="tintColor" red="0.87058823529999996" green="0.59215686270000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.031372549020000001" green="0.17254901959999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="27"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
                         </textAttributes>
@@ -695,7 +698,7 @@
                         <color key="tintColor" red="0.87058823529999996" green="0.59215686270000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.031372549020000001" green="0.17254901959999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="27"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
@@ -720,7 +723,7 @@
                         <color key="tintColor" red="0.87058823529999996" green="0.59215686270000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.031372549020000001" green="0.17254901959999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="27"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
@@ -745,7 +748,7 @@
                         <color key="tintColor" red="0.87058823529999996" green="0.59215686270000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.031372549020000001" green="0.17254901959999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="27"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
@@ -767,7 +770,7 @@
         <image name="SearchView" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zaq-SQ-D1z"/>
-        <segue reference="OiT-gP-CD1"/>
+        <segue reference="uWQ-vF-9kD"/>
+        <segue reference="2zC-73-6ve"/>
     </inferredMetricsTieBreakers>
 </document>

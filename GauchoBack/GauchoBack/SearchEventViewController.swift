@@ -13,14 +13,8 @@ import Firebase
 
 class SearchEventViewController:   UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
-    
-    //@IBOutlet weak var searchTableView: UITableView!
-    
-    var resultSearchController = UISearchController()
-    
     let searchController = UISearchController(searchResultsController: nil)
     var selectedIndex: Int = 0
-    var searchResults: Bool = false
     
     //Contains the items the user is searching for.
     var matchedEventsList = [Event!]()
@@ -28,18 +22,16 @@ class SearchEventViewController:   UITableViewController, UISearchResultsUpdatin
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        //searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.scopeButtonTitles = ["Title","Descriiption", "Host", "Location"]
+        searchController.searchBar.scopeButtonTitles = ["Title","Description", "Host", "Location"]
         searchController.searchBar.sizeToFit()
+        searchController.searchBar.tintColor = ucsbGold
+        searchController.searchBar.barTintColor = ucsbNavy
         definesPresentationContext = true
         
         self.tableView.tableHeaderView = searchController.searchBar
-        
-        //In default, we will have all nearby events in the matched array.
-        //matchedEventsList = allNearbyEvents
         
         self.tableView.reloadData()
     }
@@ -69,7 +61,6 @@ class SearchEventViewController:   UITableViewController, UISearchResultsUpdatin
         var singleEvent : Event
         
         if searchController.active
-            //searchDisplayController?.searchResultsTableView)
         {
             singleEvent = self.matchedEventsList[indexPath.row] as Event
         }
@@ -78,9 +69,7 @@ class SearchEventViewController:   UITableViewController, UISearchResultsUpdatin
             singleEvent = allNearbyEvents[indexPath.row]
         }
         
-        
         cell!.textLabel?.text = singleEvent.eventName
-        
         
         return cell!
     }
@@ -91,58 +80,27 @@ class SearchEventViewController:   UITableViewController, UISearchResultsUpdatin
         
         var curEvent : Event
         
-        if (self.resultSearchController.active)
+        
+        if searchController.active
         {
             curEvent = self.matchedEventsList[indexPath.row] as Event
             selectedIndex = indexPath.row
-            searchResults = true
         }
         else
         {
             curEvent = allNearbyEvents[indexPath.row] as Event
             selectedIndex = indexPath.row
-            searchResults = false
         }
         
+        print("table view event")
         print(curEvent.eventName)
         
         self.performSegueWithIdentifier("eventDetailViewController", sender: self)
         
-        
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        var curEvent : Event
-
-        if (segue.identifier == "eventDetailViewController")
-        {
-            let upcoming: EventDetailViewController = segue.destinationViewController as! EventDetailViewController
-            
-            
-            if searchResults
-            {
-                curEvent = self.matchedEventsList[selectedIndex] as Event
-            }
-            else
-            {
-                curEvent = allNearbyEvents[selectedIndex] as Event
-            }
-     
-            print(curEvent.eventName)
-            
-            upcoming.titleString = curEvent.eventName
-            
-            upcoming.theEvent = curEvent
-            
-            //self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        }
-        
-    }
-
-    
-    //refresh search when search type updates.
+    //refresh search results when search scope changes.
     func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         updateSearchResultsForSearchController(searchController)
     }
@@ -152,20 +110,13 @@ class SearchEventViewController:   UITableViewController, UISearchResultsUpdatin
         matchedEventsList.removeAll(keepCapacity: false)
         
         let scope = searchController.searchBar.selectedScopeButtonIndex
-        
-    
-        //let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        //searchPredicate is the search text
         print(scope)
         
         
         searchEvents(searchController.searchBar.text!, searchFilter: scope)
         
-        //let array = matchedEventsList as NSArray
-        
         self.tableView.reloadData()
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -177,9 +128,7 @@ class SearchEventViewController:   UITableViewController, UISearchResultsUpdatin
     func searchEvents(keyword:String, searchFilter:Int) -> Void
     {
         matchedEventsList.removeAll()
-            
-            
-            //iterate over the all the children of the events branch
+        print("matches:")
             for event in allNearbyEvents
             {
                 var match: Bool = false
@@ -245,22 +194,45 @@ class SearchEventViewController:   UITableViewController, UISearchResultsUpdatin
                 }
                 if match
                 {
-                    matchedEventsList.append(event)
+                    self.matchedEventsList.append(event)
                     
                 }
                 //else don't add event
             }
     }
 
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        var curEvent : Event
+        
+        if (segue.identifier == "eventDetailViewController")
+        {
+            let upcoming: EventDetailViewController = segue.destinationViewController as! EventDetailViewController
+            
+            for event in self.matchedEventsList
+            {
+                print(event.eventName)
+            }
+            if searchController.active
+            {
+                curEvent = self.matchedEventsList[selectedIndex] as Event
+                print("active")
+            }
+            else
+            {
+                curEvent = allNearbyEvents[selectedIndex] as Event
+                print("inactive")
+            }
+            
+            print("cur event detail")
+            print(curEvent.eventName)
+            
+            //upcoming.titleString = curEvent.eventName
+            self.tableView.reloadData()
+            upcoming.theEvent = curEvent
+            
+        }
+        
     }
-    */
 
 }

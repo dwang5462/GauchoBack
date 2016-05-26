@@ -10,6 +10,8 @@ import UIKit
 import GoogleMaps
 import FBSDKCoreKit
 
+let ucsbGold = UIColor(colorLiteralRed: 250/255, green: 170/255, blue: 0, alpha: 1)
+let ucsbNavy = UIColor(colorLiteralRed: 8/255, green: 44/255, blue: 101/255, alpha: 1)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         GMSServices.provideAPIKey("AIzaSyCHg6Ggv0lH0KMsWPq0zI0ljK-ti5pSYYo")
         // Override point for customization after application launch.
-        let ucsbGold = UIColor(red: 222/255, green: 151/255, blue: 0, alpha: 1)
+        //let ucsbGold = UIColor(red: 222/255, green: 151/255, blue: 0, alpha: 1)
         UITabBar.appearance().tintColor =  ucsbGold
         
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
