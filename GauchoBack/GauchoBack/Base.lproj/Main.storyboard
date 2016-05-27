@@ -462,6 +462,16 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mTj-aS-lpO">
+                                <rect key="frame" x="20" y="185" width="279" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="End Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FWX-hc-KV4">
+                                <rect key="frame" x="20" y="223" width="279" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -469,17 +479,23 @@
                             <constraint firstItem="ECb-hj-Rcr" firstAttribute="trailing" secondItem="Mdh-D7-rv8" secondAttribute="trailingMargin" id="7L6-we-zKm"/>
                             <constraint firstItem="5ek-qa-OpX" firstAttribute="centerX" secondItem="Qxt-Xf-Olz" secondAttribute="centerX" id="7c3-mR-bFt"/>
                             <constraint firstItem="ECb-hj-Rcr" firstAttribute="top" secondItem="Yln-qS-Uay" secondAttribute="bottom" constant="7" id="8d6-gW-CM2"/>
+                            <constraint firstItem="mTj-aS-lpO" firstAttribute="leading" secondItem="FWX-hc-KV4" secondAttribute="leading" id="9BD-6A-ZFZ"/>
+                            <constraint firstItem="mTj-aS-lpO" firstAttribute="top" secondItem="lCy-5C-IFI" secondAttribute="bottom" constant="8" symbolic="YES" id="9UZ-6i-Vih"/>
                             <constraint firstItem="5FN-V4-Val" firstAttribute="top" secondItem="ECb-hj-Rcr" secondAttribute="bottom" constant="8" symbolic="YES" id="BXF-yW-iH4"/>
                             <constraint firstItem="ECb-hj-Rcr" firstAttribute="leading" secondItem="Mdh-D7-rv8" secondAttribute="leadingMargin" id="C1V-RA-9gd"/>
                             <constraint firstItem="5ek-qa-OpX" firstAttribute="top" secondItem="tTB-O4-reZ" secondAttribute="bottom" constant="8" symbolic="YES" id="LIv-iv-hSE"/>
+                            <constraint firstItem="mTj-aS-lpO" firstAttribute="leading" secondItem="lCy-5C-IFI" secondAttribute="leading" id="UW9-8Y-CWW"/>
                             <constraint firstItem="lCy-5C-IFI" firstAttribute="top" secondItem="5FN-V4-Val" secondAttribute="bottom" constant="8" symbolic="YES" id="YAo-sk-thN"/>
+                            <constraint firstItem="mTj-aS-lpO" firstAttribute="trailing" secondItem="lCy-5C-IFI" secondAttribute="trailing" id="Z9b-uZ-1Wh"/>
                             <constraint firstItem="5FN-V4-Val" firstAttribute="leading" secondItem="lCy-5C-IFI" secondAttribute="leading" id="gXz-3Y-6cd"/>
                             <constraint firstItem="ECb-hj-Rcr" firstAttribute="leading" secondItem="5FN-V4-Val" secondAttribute="leading" id="hWo-5H-znQ"/>
                             <constraint firstItem="tTB-O4-reZ" firstAttribute="leading" secondItem="5ek-qa-OpX" secondAttribute="leading" id="iLZ-fa-rPb"/>
                             <constraint firstItem="tTB-O4-reZ" firstAttribute="leading" secondItem="lCy-5C-IFI" secondAttribute="leading" id="is3-Ay-bdo"/>
                             <constraint firstItem="5FN-V4-Val" firstAttribute="trailing" secondItem="lCy-5C-IFI" secondAttribute="trailing" id="kX1-mc-zGg"/>
+                            <constraint firstItem="FWX-hc-KV4" firstAttribute="top" secondItem="mTj-aS-lpO" secondAttribute="bottom" constant="8" symbolic="YES" id="na8-O7-Oto"/>
                             <constraint firstItem="Qxt-Xf-Olz" firstAttribute="top" secondItem="5ek-qa-OpX" secondAttribute="bottom" constant="8" symbolic="YES" id="uvG-1T-Pie"/>
                             <constraint firstItem="ECb-hj-Rcr" firstAttribute="trailing" secondItem="5ek-qa-OpX" secondAttribute="trailing" id="vV3-Hj-Ai3"/>
+                            <constraint firstItem="mTj-aS-lpO" firstAttribute="trailing" secondItem="FWX-hc-KV4" secondAttribute="trailing" id="xBr-pc-24t"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Event Info" id="oPB-N8-Zpg">
@@ -488,9 +504,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionTextField" destination="5ek-qa-OpX" id="A7c-gz-PTg"/>
+                        <outlet property="endTimeTextField" destination="FWX-hc-KV4" id="JAg-Xc-5db"/>
                         <outlet property="eventNameTextField" destination="ECb-hj-Rcr" id="1su-QS-41q"/>
                         <outlet property="hostTextField" destination="5FN-V4-Val" id="LO5-Po-72s"/>
                         <outlet property="locationTextField" destination="lCy-5C-IFI" id="o5q-HS-kye"/>
+                        <outlet property="startTimeTextField" destination="mTj-aS-lpO" id="XvV-Cn-X6s"/>
                         <segue destination="6A7-la-lym" kind="presentation" identifier="eventCreatedSegue" id="zaq-SQ-D1z"/>
                     </connections>
                 </viewController>
@@ -924,8 +942,8 @@
         <image name="Settings" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uWQ-vF-9kD"/>
-        <segue reference="OiT-gP-CD1"/>
+        <segue reference="zaq-SQ-D1z"/>
         <segue reference="Md2-pP-X4e"/>
+        <segue reference="OiT-gP-CD1"/>
     </inferredMetricsTieBreakers>
 </document>

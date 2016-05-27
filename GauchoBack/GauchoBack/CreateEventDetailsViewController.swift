@@ -18,6 +18,10 @@ class CreateEventDetailsController : UIViewController, UITextFieldDelegate, UITe
     
     @IBOutlet weak var descriptionTextField: UITextView!
     
+    @IBOutlet weak var startTimeTextField: UITextField!
+    
+    @IBOutlet weak var endTimeTextField: UITextField!
+    
     var eventCoordinate:CLLocationCoordinate2D!
     var eventType:String!
     override func viewDidLoad() {
@@ -34,7 +38,9 @@ class CreateEventDetailsController : UIViewController, UITextFieldDelegate, UITe
         let description = descriptionTextField.text
         let longitude = String(eventCoordinate.longitude)
         let latitude = String(eventCoordinate.latitude)
-        let newEvent = Event(eventName: eventName!, eventDescription: description, location: location!, longitude: longitude, latitude: latitude, startTime: "", endTime: "", host: host!, eventType: eventType!)
+        let startTime = startTimeTextField.text
+        let endTime = endTimeTextField.text
+        let newEvent = Event(eventName: eventName!, eventDescription: description, location: location!, longitude: longitude, latitude: latitude, startTime: startTime!, endTime: endTime!, host: host!, eventType: eventType!)
         let firebaseAdapter = FirebaseAdapter()
         
         firebaseAdapter.addEvent(newEvent)
