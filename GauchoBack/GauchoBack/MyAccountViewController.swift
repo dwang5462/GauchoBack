@@ -22,6 +22,11 @@ class MyAccountViewController: UIViewController
     
     @IBOutlet weak var tableView: UITableView!
     
+    var selectedIndex: Int = 0
+
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var eventMarker:Event!
     
     var myEventsTable: NSMutableArray! = NSMutableArray()
     
@@ -134,14 +139,69 @@ class MyAccountViewController: UIViewController
         
     }
     
+    
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        var curEvent : Event
+        
+        
+        if searchController.active
+        {
+            curEvent = self.myEventsTable[indexPath.row] as! Event
+            selectedIndex = indexPath.row
+        }
+        else
+        {
+            curEvent = allNearbyEvents[indexPath.row] as Event
+            selectedIndex = indexPath.row
+        }
+        
+        print("table view event")
+        print(curEvent.eventName)
+        
         self.performSegueWithIdentifier("myEventViewController", sender: self)
         
     }
     
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        var curEvent : Event
+        
+        if (segue.identifier == "myAccountViewController")
+        {
+            let upcoming: EventDetailViewController = segue.destinationViewController as! EventDetailViewController
+  
+            if searchController.active
+            {
+                curEvent = self.myEventsTable[selectedIndex] as! Event
+                print("active")
+            }
+            else
+            {
+                curEvent = allNearbyEvents[selectedIndex] as Event
+                print("inactive")
+            }
+            
+            print("cur event detail")
+            print(curEvent.eventName)
+            
+            //upcoming.titleString = curEvent.eventName
+            self.tableView.reloadData()
+            upcoming.theEvent = curEvent
+            
+        }
+        
+    }
+    
+    
+    
+    
+   /* override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         if (segue.identifier == "myEventViewController")
         {
@@ -156,10 +216,11 @@ class MyAccountViewController: UIViewController
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
         
-    }
+    }*/
     
     @IBAction func settingsButtonAction(sender: AnyObject) {        performSegueWithIdentifier("settingsSegue", sender: self)
 
     }
-    
+ 
+        
 }
