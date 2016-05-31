@@ -150,7 +150,7 @@ class MyAccountViewController: UIViewController
         
         if searchController.active
         {
-            curEvent = self.myEventsTable[indexPath.row] as! Event
+            curEvent = myAccountEventList[indexPath.row] 
             selectedIndex = indexPath.row
         }
         else
@@ -178,7 +178,7 @@ class MyAccountViewController: UIViewController
   
             if searchController.active
             {
-                curEvent = self.myEventsTable[selectedIndex] as! Event
+                curEvent = myAccountEventList[selectedIndex]
                 print("active")
             }
             else
