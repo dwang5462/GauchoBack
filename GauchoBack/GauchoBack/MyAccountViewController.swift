@@ -28,6 +28,8 @@ class MyAccountViewController: UIViewController
     
     var eventMarker:Event!
     
+    var thisEvent: Event!
+    
     var myEventsTable: NSMutableArray! = NSMutableArray()
     
     let settingsButton = UIButton()
@@ -162,6 +164,7 @@ class MyAccountViewController: UIViewController
         print("table view event")
         print(curEvent.eventName)
         
+        thisEvent = curEvent
         self.performSegueWithIdentifier("myEventViewController", sender: self)
         
     }
@@ -192,7 +195,7 @@ class MyAccountViewController: UIViewController
             
             //upcoming.titleString = curEvent.eventName
             self.tableView.reloadData()
-            upcoming.theEvent = curEvent
+            upcoming.theEvent = thisEvent
             
         }
         
