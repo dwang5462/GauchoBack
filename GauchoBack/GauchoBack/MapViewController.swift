@@ -67,8 +67,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         super.viewDidAppear(animated)
         
         //markersPlaced = false
-
-        firebaseAdapter.getNearbyEvents(currentLongitude, currentLatitude: currentLattitude, maxDistance: maxDistance)
+        if(currentLongitude != nil && currentLattitude != nil){
+            firebaseAdapter.getNearbyEvents(currentLongitude, currentLatitude: currentLattitude, maxDistance: maxDistance)
+        }
         
         if firebaseAdapter.loggedIn()
         {
