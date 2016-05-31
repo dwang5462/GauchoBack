@@ -27,7 +27,8 @@ class MyEventViewController: UIViewController {
     @IBOutlet weak var eventDescriptionTextView: UITextView!
     
     @IBOutlet weak var mapView: GMSMapView!
-    
+    var cam:GMSCameraPosition! = nil
+
     
     var theEvent: Event!
     

@@ -175,9 +175,9 @@ class MyAccountViewController: UIViewController
     {
         var curEvent : Event
         
-        if (segue.identifier == "myAccountViewController")
+        if (segue.identifier == "myEventViewController")
         {
-            let upcoming: EventDetailViewController = segue.destinationViewController as! EventDetailViewController
+            let upcoming: MyEventViewController = segue.destinationViewController as! MyEventViewController
   
             if searchController.active
             {
