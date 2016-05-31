@@ -233,10 +233,8 @@ class FirebaseAdapter {
                     let eventName = child.value.objectForKey("event_name") as! String!
                     let eventDescription = child.value.objectForKey("event_description") as! String!
                     let location = child.value.objectForKey("location") as! String!
-                    //let startTime = child.value.objectForKey("start_time")as! String!
-                    let startTime = "3:00"
-                    let endTime = "3:00"
-                    //let endTime = child.value.objectForKey("end_time")as! String!
+                    let startTime = child.value.objectForKey("start_time")as! String!
+                    let endTime = child.value.objectForKey("end_time")as! String!
                     let host = child.value.objectForKey("event_host") as! String!
                     let eventType = child.value.objectForKey("event_type") as! String!
                     //add event to event list
@@ -248,6 +246,7 @@ class FirebaseAdapter {
         
         return nearbyEvents
     }
+    
     
     
     /*
