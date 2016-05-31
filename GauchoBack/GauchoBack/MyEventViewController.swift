@@ -32,6 +32,8 @@ class MyEventViewController: UIViewController {
     
     var theEvent: Event!
     
+    //var editButton: UIBarButtonItem
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let cam = GMSCameraPosition.cameraWithLatitude(CLLocationDegrees(theEvent.latitude)!, longitude: CLLocationDegrees(theEvent.longitude)!, zoom: 17)
@@ -59,6 +61,8 @@ class MyEventViewController: UIViewController {
         //self.eventTitle.text = theEvent.eventName
         self.navigationItem.title = theEvent.eventName
         // Do any additional setup after loading the view.
+        
+        //editButton.image =
     }
 
     override func didReceiveMemoryWarning() {

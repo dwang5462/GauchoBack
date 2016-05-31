@@ -150,16 +150,16 @@ class MyAccountViewController: UIViewController
         var curEvent : Event
         
         
-        if searchController.active
-        {
+        //if searchController.active
+        //{
             curEvent = myAccountEventList[indexPath.row] 
             selectedIndex = indexPath.row
-        }
-        else
+        //}
+        /*else
         {
             curEvent = allNearbyEvents[indexPath.row] as Event
             selectedIndex = indexPath.row
-        }
+        }*/
         
         print("table view event")
         print(curEvent.eventName)
@@ -179,16 +179,16 @@ class MyAccountViewController: UIViewController
         {
             let upcoming: MyEventViewController = segue.destinationViewController as! MyEventViewController
   
-            if searchController.active
-            {
+           // if searchController.active
+            //{
                 curEvent = myAccountEventList[selectedIndex]
                 print("active")
-            }
-            else
+            //}
+            /*else
             {
                 curEvent = allNearbyEvents[selectedIndex] as Event
                 print("inactive")
-            }
+            }*/
             
             print("cur event detail")
             print(curEvent.eventName)
