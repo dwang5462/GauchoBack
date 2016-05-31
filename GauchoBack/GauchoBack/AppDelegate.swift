@@ -12,7 +12,12 @@ import FBSDKCoreKit
 
 let ucsbGold = UIColor(colorLiteralRed: 250/255, green: 170/255, blue: 0, alpha: 1)
 let ucsbNavy = UIColor(colorLiteralRed: 8/255, green: 44/255, blue: 101/255, alpha: 1)
+
+var maxDistance = 1.0
+
 @UIApplicationMain
+
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?

@@ -23,6 +23,8 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var eventDescriptionLabel: UILabel!
+   
+    @IBOutlet weak var eventDescriptionTextView: UITextView!
     
     
     override func viewDidLoad() {
@@ -48,7 +50,7 @@ class EventDetailViewController: UIViewController {
         locationLabel.text! += theEvent.location
         startTimeLabel.text! += theEvent.startTime
         endTimeLabel.text! += theEvent.endTime
-        eventDescriptionLabel.text! = theEvent.eventDescription
+        eventDescriptionTextView.text! = theEvent.eventDescription
         //self.eventTitle.text = theEvent.eventName
         self.navigationItem.title = theEvent.eventName
         // Do any additional setup after loading the view.

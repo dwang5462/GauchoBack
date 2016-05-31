@@ -26,6 +26,10 @@ class MyEventViewController: UIViewController {
     @IBOutlet weak var endTimeTextField: UITextField!
     @IBOutlet weak var eventDescriptionTextView: UITextView!
     
+    var tempBarButton: UIBarButtonItem!
+    
+    var eventRef: String!
+    
     @IBOutlet weak var mapView: GMSMapView!
     var cam:GMSCameraPosition! = nil
 
@@ -70,6 +74,61 @@ class MyEventViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func editButtonAction(sender: AnyObject) {
+        tempBarButton = self.navigationItem.rightBarButtonItem!
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(MyEventViewController.saveInfo(_:)))
+        
+        eventNameTextField.enabled = true
+        hostTextField.enabled = true
+        startTimeTextField.enabled = true
+        endTimeTextField.enabled = true
+        eventDescriptionTextView.editable = true
+        
+        eventNameTextField.borderStyle = UITextBorderStyle.Bezel
+        hostTextField.borderStyle = UITextBorderStyle.Bezel
+        startTimeTextField.borderStyle = UITextBorderStyle.Bezel
+        endTimeTextField.borderStyle = UITextBorderStyle.Bezel
+        eventDescriptionTextView.layer.borderWidth = 1.0
+        eventDescriptionTextView.layer.borderColor = UIColor.blackColor().CGColor
+        
+        print("edit button pressed")
+    }
+    
+    
+    func saveInfo(sender: AnyObject){
+        
+        self.navigationItem.rightBarButtonItem = tempBarButton
+        
+        theEvent.eventName = eventNameTextField.text!
+        theEvent.host = hostTextField.text!
+        theEvent.startTime = startTimeTextField.text!
+        theEvent.endTime = endTimeTextField.text!
+        theEvent.eventDescription = eventDescriptionTextView.text!
+        
+        let firebaseAdapter = FirebaseAdapter()
+        
+        firebaseAdapter.editEvent(theEvent)
+        
+        eventNameTextField.enabled = false
+        hostTextField.enabled = false
+        startTimeTextField.enabled = false
+        endTimeTextField.enabled = false
+        eventDescriptionTextView.editable = false
+        
+        eventNameTextField.borderStyle = UITextBorderStyle.None
+        hostTextField.borderStyle = UITextBorderStyle.None
+        startTimeTextField.borderStyle = UITextBorderStyle.None
+        endTimeTextField.borderStyle = UITextBorderStyle.None
+        eventDescriptionTextView.layer.borderWidth = 0.0
+        eventDescriptionTextView.layer.borderColor = UIColor.blackColor().CGColor
+        
+        self.navigationItem.title = theEvent.eventName
+
+        print("save button pressed")
+        
+    }
 
     /*
     // MARK: - Navigation

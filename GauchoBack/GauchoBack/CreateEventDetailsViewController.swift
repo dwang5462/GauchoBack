@@ -24,6 +24,7 @@ class CreateEventDetailsController : UIViewController, UITextFieldDelegate, UITe
     
     var eventCoordinate:CLLocationCoordinate2D!
     var eventType:String!
+    
     override func viewDidLoad() {
         hostTextField.delegate = self
         locationTextField.delegate = self

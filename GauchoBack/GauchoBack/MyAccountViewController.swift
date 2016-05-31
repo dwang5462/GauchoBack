@@ -88,6 +88,8 @@ class MyAccountViewController: UIViewController
         {
             performSegueWithIdentifier("backToLoginSegue", sender: self)
         }
+        
+        firebaseAdapter.getNearbyEvents(currentLongitude, currentLatitude: currentLattitude, maxDistance: maxDistance)
     }
     
     func buildMyEventsTable()-> Void
@@ -128,9 +130,8 @@ class MyAccountViewController: UIViewController
     {
         
         let cell = self.tableView.dequeueReusableCellWithIdentifier("myEventCell", forIndexPath: indexPath) as! TableViewCell
-        
-        cell.eventTitle.text = (self.myEventsTable.objectAtIndex(indexPath.row) as! String)
-        cell.eventTitle.text = " " + cell.eventTitle.text!
+        print(indexPath.row)
+        cell.eventTitle.text = myAccountEventList[indexPath.row].eventName
         cell.eventTitle.textColor = UIColor.whiteColor()
         cell.layer.cornerRadius = 10
         cell.layer.masksToBounds = true
@@ -138,30 +139,19 @@ class MyAccountViewController: UIViewController
         
         return cell
         
-        
     }
-    
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        //tableView.cellForRowAtIndexPath(indexPath)
         
         var curEvent : Event
         
+        curEvent = myAccountEventList[indexPath.row]
+        selectedIndex = indexPath.row
         
-        //if searchController.active
-        //{
-            curEvent = myAccountEventList[indexPath.row] 
-            selectedIndex = indexPath.row
-        //}
-        /*else
-        {
-            curEvent = allNearbyEvents[indexPath.row] as Event
-            selectedIndex = indexPath.row
-        }*/
-        
-        print("table view event")
         print(curEvent.eventName)
         
         thisEvent = curEvent
@@ -169,57 +159,22 @@ class MyAccountViewController: UIViewController
         
     }
     
-    
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        var curEvent : Event
+        var curEvent : Event!
         
         if (segue.identifier == "myEventViewController")
         {
             let upcoming: MyEventViewController = segue.destinationViewController as! MyEventViewController
   
-           // if searchController.active
-            //{
-                curEvent = myAccountEventList[selectedIndex]
-                print("active")
-            //}
-            /*else
-            {
-                curEvent = allNearbyEvents[selectedIndex] as Event
-                print("inactive")
-            }*/
+            curEvent = myAccountEventList[selectedIndex]
             
-            print("cur event detail")
-            print(curEvent.eventName)
-            
-            //upcoming.titleString = curEvent.eventName
             self.tableView.reloadData()
             upcoming.theEvent = thisEvent
             
         }
         
     }
-    
-    
-    
-    
-   /* override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-        if (segue.identifier == "myEventViewController")
-        {
-            let upcoming: MyEventViewController = segue.destinationViewController as! MyEventViewController
-            
-            let indexPath = self.tableView.indexPathForSelectedRow!
-            
-            let curEvent = myAccountEventList[indexPath.row] as Event
-                
-            upcoming.theEvent = curEvent
-            
-            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        }
-        
-    }*/
     
     @IBAction func settingsButtonAction(sender: AnyObject) {        performSegueWithIdentifier("settingsSegue", sender: self)
 

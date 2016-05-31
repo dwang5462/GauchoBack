@@ -12,6 +12,7 @@ import Firebase
 
 
 class SearchEventViewController:   UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+    let firebaseAdapter = FirebaseAdapter()
     
     let searchController = UISearchController(searchResultsController: nil)
     var selectedIndex: Int = 0
@@ -34,6 +35,12 @@ class SearchEventViewController:   UITableViewController, UISearchResultsUpdatin
         self.tableView.tableHeaderView = searchController.searchBar
         
         self.tableView.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        firebaseAdapter.getNearbyEvents(currentLongitude, currentLatitude: currentLattitude, maxDistance: maxDistance)
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

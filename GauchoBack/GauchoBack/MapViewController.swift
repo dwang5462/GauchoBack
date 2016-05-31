@@ -9,6 +9,8 @@
 import UIKit
 import GoogleMaps
 var allNearbyEvents:[Event]!
+var currentLongitude: String!
+var currentLattitude: String!
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
@@ -63,7 +65,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     override func viewDidAppear(animated: Bool) {
         
         super.viewDidAppear(animated)
+        
+        //markersPlaced = false
 
+        firebaseAdapter.getNearbyEvents(currentLongitude, currentLatitude: currentLattitude, maxDistance: maxDistance)
+        
         if firebaseAdapter.loggedIn()
         {
             firebaseAdapter.myEvents()
@@ -76,7 +82,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             userLocation = locations[0]
             cam = GMSCameraPosition.cameraWithTarget(userLocation.coordinate, zoom: 18)
             mapView.camera = cam
-            nearbyEvents = firebaseAdapter.getNearbyEvents(String(userLocation.coordinate.longitude), currentLatitude: String(userLocation.coordinate.latitude), maxDistance: 1)
+            firebaseAdapter.getNearbyEvents(String(userLocation.coordinate.longitude), currentLatitude: String(userLocation.coordinate.latitude), maxDistance: maxDistance)
+            
+            currentLongitude = String(userLocation.coordinate.longitude)
+            currentLattitude = String(userLocation.coordinate.latitude)
             viewLoaded = false
         }
         if (allNearbyEvents != nil && markersPlaced == false){
@@ -102,8 +111,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         if viewLoaded == false{
             var longitudeDelta = (Double(String(locations[0].coordinate.longitude))! - Double(userLocation.coordinate.longitude)) as Double!
             var latitudeDelta = (Double(locations[0].coordinate.latitude) - Double(userLocation.coordinate.latitude)) as Double!
+            
             longitudeDelta = abs(longitudeDelta!) as Double!
             latitudeDelta = abs(latitudeDelta!) as Double!
+            
             let distanceAway = sqrt((longitudeDelta * longitudeDelta) + (latitudeDelta * latitudeDelta))
             if (distanceAway >= 1.0){
                 viewLoaded = true

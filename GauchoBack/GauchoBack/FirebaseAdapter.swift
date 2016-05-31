@@ -9,12 +9,12 @@
 import Foundation
 import Firebase
 
+let eventsBranch = FIREBASE_REF.childByAppendingPath("events")
+let usersBranch = FIREBASE_REF.childByAppendingPath("users")
 
 class FirebaseAdapter {
     var eventList:[Event]!
     
-    let eventsBranch = FIREBASE_REF.childByAppendingPath("events")
-    let usersBranch = FIREBASE_REF.childByAppendingPath("users")
     
     
     //Returns user's "firstName" at index 0, "lastName"  at index 1 and "email" at index 2
@@ -68,6 +68,21 @@ class FirebaseAdapter {
         
         
     }
+    
+    func editEvent(curEvent:Event)-> Void
+    {
+        //"author" is strictly used only in addEvent and MyEvents.  It will be used whenever we create events or look for events made by current user.
+        let curEventDict = ["event_name" : curEvent.eventName, "event_description" : curEvent.eventDescription, "start_time" : curEvent.startTime,"longitude":curEvent.longitude, "latitude":curEvent.latitude,  "end_time" : curEvent.endTime, "author": CURRENT_USER.authData.uid, "event_host": curEvent.host, "location":curEvent.location, "event_type" : curEvent.eventType]
+        
+        //ref the branch off the root events branch for this new event
+        let curEventBranch = eventsBranch.childByAppendingPath(curEvent.eventID)
+        
+        //save the event at the newEventBranch
+        curEventBranch.setValue(curEventDict)
+        
+        
+    }
+
 
     //This function Returns an array of events that match a certain keyword.
     func searchEvents(keyword:String, searchType:String) -> [Event]
@@ -153,8 +168,9 @@ class FirebaseAdapter {
                     let longitude = child.value.objectForKey("longitude")as! String!
                     let latitude = child.value.objectForKey("latitude")as! String!
                     let endTime = child.value.objectForKey("end_time")as! String!
+                    let eventID = child.key
 
-                    matchedEvents.append(Event(eventName: eventName, eventDescription: eventDescription,location:location, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, host: host, eventType:eventType))
+                    matchedEvents.append(Event(eventName: eventName, eventDescription: eventDescription,location:location, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, host: host, eventType:eventType, eventID: eventID))
                 }
                 //else don't add event
             }
@@ -192,10 +208,10 @@ class FirebaseAdapter {
                     let location = child.value.objectForKey("location") as! String!
                     let eventType = child.value.objectForKey("event_type") as! String!
                     let host = child.value.objectForKey("event_host") as! String!
-                    
+                    let eventID = child.key
                     //print("found event ", eventName)
                     
-                    myEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location:location, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, host:host, eventType: eventType))
+                    myEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location:location, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, host:host, eventType: eventType, eventID: eventID))
 
                 }
             }
@@ -207,11 +223,11 @@ class FirebaseAdapter {
     }
     
     //get all nearby events to user's current location, based on maximum distance away.
-    func getNearbyEvents(currentLongitude:String, currentLatitude:String, maxDistance:Double) -> [Event]
+    func getNearbyEvents(currentLongitude:String, currentLatitude:String, maxDistance:Double) -> Void
     {
         
         var nearbyEvents = [Event]()
-        eventsBranch.observeSingleEventOfType(.Value, withBlock:{snapshot in
+        eventsBranch.observeEventType(.Value, withBlock:{snapshot in
             
             let enumerator = snapshot.children
             
@@ -239,14 +255,15 @@ class FirebaseAdapter {
                     //let endTime = child.value.objectForKey("end_time")as! String!
                     let host = child.value.objectForKey("event_host") as! String!
                     let eventType = child.value.objectForKey("event_type") as! String!
+                    let eventID = child.key
                     //add event to event list
-                    nearbyEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location: location, longitude: eventLongitude, latitude: eventLatitude, startTime: startTime, endTime: endTime, host: host, eventType:eventType))
+                    nearbyEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location: location, longitude: eventLongitude, latitude: eventLatitude, startTime: startTime, endTime: endTime, host: host, eventType:eventType, eventID: eventID))
                 }
             }
             allNearbyEvents = nearbyEvents
         })
         
-        return nearbyEvents
+        //return nearbyEvents
     }
     
     
