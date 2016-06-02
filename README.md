@@ -24,20 +24,28 @@ App Control Instructions:
  - The Map view displays all of the events nearby the user's current location, within the their maximum distance.  
  - The maximum distance variable can be set within the My Account tab.  
  - Events are user created inside the Add Event tab.
- - In the Search Tab the user can search by a keyword and search type. The search types are: eventName, description, host, location, start time, and event type.
- - Once the search is done there will be a list of events undernesth the search text field that matched what the user searched.
+ - You can click on a pin to see the event's title, and click on its title to see the event details and its location
+ - You can zoom out of your immediate location to look at all the events around campus
+ - You can press the button in the bottom right hand corner to take you back to your phone's current location
+ 
+ - In the Search Tab the user can search by a keyword and search type. The search types are: title, description, host, and location
+ - Initially, all events will be shown. However, when you click on the search bar at the top, it will let you choose by search type and type in a search query
+ - Once the search is done there will be a list of events underneath the search text field that matched what the user searched.
  - After the search has been done the user can click on the event to view the details for the event and see where it's located with a map window.
 
- - In the Add Event Tab, The user will be presented with a map view of where they currently are.  
+ - In the Add Event Tab, The user will be presented with a map view of where they currently are if they are currently logged into an account
+ - There will be no other pins on the add event map
+ - If the user is using view only mode, it will segue them to the login page
  - The user can swipe on the map and navigate to where their event is happening, and drop a pin by doing a long press on the location where it is.  
  - Once the pin has been dropped, the user will be presented with 3 choices for what type of event it is. Warning, Meeting or Event.  
- - Depending on the choice the user makes it will take them to a particular window displaying the available text fields.  
- - There wil be a create button at the bottom, which will store the event onto our Firebase Server, and associate it to the current user.  Meaning it will set the author of the even to the current user.
+ - Depending on the choice the user makes it will take them to a particular window displaying the available text fields.
+ - You can click the preview button in the top right corner to look at a preview of what the event will look like when other users click on it
+ - There will be a create button at the bottom, which will store the event onto our Firebase Server, and associate it to the current user.  Meaning it will set the author of the even to the current user.
  - After the event was created the user will be redirected to the Map view to see their new pin and along with the other nearby events.
  -There is a color scheme to each event type.  Blue: Event, Red: Warning, and Yellow: Meeting
 
  - In the My Account tab the user will see their account settings and all the events they have added to GauchoBack
- - The user will be able to modify their events here.
+ - The user will be able to modify their events here by clicking on the event and then clicking the edit button in the top right corner
  - The user will be able to change their password here if they did not use Facebook to create their account.  
 
  -There will be more added to this, but as of right now this is everything we can think of.
