@@ -22,8 +22,17 @@ class GauchoBackTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let testEvent = Event(eventName: "Game", eventDescription: "Soccer Game", location: "Soccer Field", longitude: "55.4", latitude: "56", startTime: "5:00", endTime: "6:00", host: "UCSB Athlethics", eventType: "event")
+        XCTAssertTrue(testEvent.eventName == "Game")
+        let fbAdapter = FirebaseAdapter()
+        fbAdapter.setUserInfo("Bob", lastName: "Builder", email: "bobBuilder@yahoo.com")
+        XCTAssertTrue(fbAdapter.getUserInfo() == ["Bob","Builder","bobBuilder@yahoo.com"])
+        fbAdapter.addEvent(testEvent)
+        XCTAssertTrue(fbAdapter.removeIllegalChars("$%^(#$") == "")
+        fbAdapter.addAccount("bobBuilder@yahoo.com")
+        XCTAssertTrue(fbAdapter.doesUserExist("bobBuilder@yahoo.com"))
+        XCTAssertFalse(fbAdapter.loggedIn())
+        
     }
     
     func testPerformanceExample() {
