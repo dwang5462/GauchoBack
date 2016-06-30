@@ -10,7 +10,7 @@ import UIKit
 import FBSDKLoginKit
 
 var myAccountEventList:[Event]!
-
+var mySubscribedEventList:[Event]!
 
 class MyAccountViewController: UIViewController
 {
@@ -40,11 +40,11 @@ class MyAccountViewController: UIViewController
         //initialize the firebase adapter.
         
         firebaseAdapter = FirebaseAdapter()
-        
+        firebaseAdapter.getSubscribedEvents()
         firebaseAdapter.myEvents()
         
         buildMyEventsTable()
-
+        buildMySubscribedEventsTable()
         let userInfoBranch = FIREBASE_REF.childByAppendingPath("users").childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("user_info")
         
         //var userInfo:[String] = []
@@ -69,11 +69,11 @@ class MyAccountViewController: UIViewController
     override func viewDidAppear(animated: Bool)
     {
         super.viewDidAppear(animated)
-        
+        firebaseAdapter.getSubscribedEvents()
         firebaseAdapter.myEvents()
-
-        buildMyEventsTable()
         
+        buildMyEventsTable()
+        buildMySubscribedEventsTable()
         //If user is not already logged in then segue back to login page.
         //print(firebaseAdapter.getUserInfo())
         
@@ -111,7 +111,17 @@ class MyAccountViewController: UIViewController
         
         self.tableView.reloadData()
     }
-
+    
+    func buildMySubscribedEventsTable()-> Void
+    {
+        if mySubscribedEventList != nil
+        {
+                print("SubscribedEvents!!!!!!")
+        }
+        print("Hello")
+        self.tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

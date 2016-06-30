@@ -48,11 +48,76 @@ class FirebaseAdapter {
         
         let userInfoBranch = usersBranch.childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("user_info")
         let userInfoDict = ["first_name": firstName, "last_name" :lastName, "email" : email]
-        
         //saving info at user info location
         userInfoBranch.setValue(userInfoDict)
     }
     
+    func getSubscribedEvents()-> Void{
+        let subscribedEventsBranch = usersBranch.childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("sub_events")
+        var subscribedEventIDs = [String]()
+        
+        subscribedEventsBranch.observeSingleEventOfType(.Value, withBlock:{snapshot in
+            
+            let enumerator = snapshot.children
+            
+            //iterate over the all the children of the events branch
+            while let child = enumerator.nextObject() as? FDataSnapshot
+            {
+                subscribedEventIDs.append(child.key)
+                
+            }
+            //print(myEvents)
+            var mySubscribedEvents = [Event]()
+            
+            eventsBranch.observeSingleEventOfType(.Value, withBlock:{snapshot in
+                
+                let enumeratorEvents = snapshot.children
+                
+                //iterate over the all the children of the events branch
+                while let child = enumeratorEvents.nextObject() as? FDataSnapshot
+                {
+                    let eventID = child.key
+                    
+                    //if the author of the event matches the current author
+                    if subscribedEventIDs.contains(eventID)
+                    {
+                        let eventName = child.value.objectForKey("event_name") as! String!
+                        let eventDescription = child.value.objectForKey("event_description") as! String!
+                        let longitude = child.value.objectForKey("longitude")as! String!
+                        let latitude = child.value.objectForKey("latitude")as! String!
+                        let startTime = child.value.objectForKey("start_time")as! String!
+                        let endTime = child.value.objectForKey("end_time")as! String!
+                        let location = child.value.objectForKey("location") as! String!
+                        let eventType = child.value.objectForKey("event_type") as! String!
+                        let host = child.value.objectForKey("event_host") as! String!
+                        
+                        //print("found event ", eventName)
+                        
+                        mySubscribedEvents.append(Event(eventName: eventName, eventDescription: eventDescription, location:location, longitude: longitude, latitude: latitude, startTime: startTime, endTime: endTime, host:host, eventType: eventType, eventID: eventID))
+                        
+                    }
+                }
+                print(mySubscribedEvents)
+                mySubscribedEventList = mySubscribedEvents
+                
+            })
+
+            
+        })
+        
+    }
+    
+    func subscribeToEvent(event:Event){
+        let subscribedEventsBranch = usersBranch.childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("sub_events")
+        
+        let newSubscribedEventBranch = subscribedEventsBranch.childByAppendingPath(event.eventID)
+        newSubscribedEventBranch.setValue(["event_name":event.eventName])
+    }
+    func unsubscribeToEvent(event:Event){
+        let subscribedEventBranch = usersBranch.childByAppendingPath(CURRENT_USER.authData.uid).childByAppendingPath("sub_events").childByAppendingPath(event.eventID)
+        subscribedEventBranch.setValue(nil)
+        
+    }
     
    //Adds an event to the events branch
     func addEvent(newEvent:Event)-> Void

@@ -49,6 +49,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         
         if firebaseAdapter.loggedIn()
         {
+            firebaseAdapter.getSubscribedEvents()
             print(uid as! String)
         }
         else

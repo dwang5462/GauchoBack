@@ -16,6 +16,7 @@ class EventDetailViewController: UIViewController {
     var titleString: String!
     var cam:GMSCameraPosition! = nil
     
+    @IBOutlet weak var subcribeButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var hostLabel: UILabel!
@@ -71,5 +72,20 @@ class EventDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    @IBAction func subscribeButtonAction(sender: UIBarButtonItem) {
+        let fireBaseAdapter = FirebaseAdapter()
+        let buttonText = subcribeButtonOutlet.title
+        if (buttonText == "Subscribe"){
+            fireBaseAdapter.subscribeToEvent(theEvent)
+            subcribeButtonOutlet.title = "Unsubscribe"
+            mySubscribedEventList.append(theEvent)
+            print(mySubscribedEventList.last!.eventName)
+        }
+        else{
+            fireBaseAdapter.unsubscribeToEvent(theEvent)
+            subcribeButtonOutlet.title = "Subscribe"
+            mySubscribedEventList.removeLast()
+        }
+    }
 
 }
